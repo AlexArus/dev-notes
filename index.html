@@ -14,6 +14,10 @@
       padding: 0;
     }
 
+    article {
+      margin-top: 5mm;
+    }
+
     h1,
     h2,
     h3,
@@ -21,7 +25,7 @@
     h5,
     h6,
     p {
-      margin: 0;
+      margin: 2mm;
       padding: 0;
     }
 
@@ -56,20 +60,188 @@
   </nav>
   <article>
     <h3 id='data-structures'>Data structures</h3>
-    <p></p>
+    <section>
+      <h4>List</h4>
+      <ul>
+        <li>Linked list</li>
+        <li>Double linked list</li>
+        <li>Stack</li>
+        <li>Queuee</li>
+      </ul>
+    </section>
+    <h4>Graph</h4>
+    <h4>Tree</h4>
   </article>
   <article>
     <h3 id='algirithms'>Algorithms</h3>
-    <p></p>
+    <section>
+      <h4>Search algorithms</h4>
+      <ul>
+        <li>Linier (seqenciel) search</li>
+        <li>Binary search</li>
+        <li>Jump search</li>
+        <li>Interpolation search</li>
+        <li>Exponential search</li>
+        <li>Fibonaci search</li>
+      </ul>
+    </section>
+    <section>
+      <h4>Sort algorithms</h4>
+      <section>
+        <p>Simple sort (n<sup>2</sup>)</p>
+        <ul>
+          <li>Insertion sort</li>
+          <li>Selection sort</li>
+        </ul>
+      </section>
+      <section>
+        <p>Bubble sort and variation</p>
+        <ul>
+          <li>Bubble sort (n<sup>2</sup>)</li>
+          <li>Comb sort</li>
+          <li>Shell sort (n<sup>2</sup>)</li>
+        </ul>
+      </section>
+      <section>
+        <p>Effeciant sort (n log n)</p>
+        <ul>
+          <li>Merge sort</li>
+          <li>Heap sort</li>
+          <li>Quick sort</li>
+        </ul>
+      </section>
+    </section>
   </article>
   <article>
     <h3 id='sdlc'>Software development life cicle</h3>
   </article>
   <article>
     <h3 id="principles">Principles</h3>
+    <section>
+      <h4>SOLID</h4>
+      <ul>
+        <li>SRP - single responsibility principle</li>
+        <ul>
+          <li>class should have single responsibility</li>
+          <li>class should have one, and only one, reason to change</li>
+        </ul>
+        <li>OCP - open/closed principle</li>
+        <p>class should be open for extension, but closed for modification</p>
+        <li>LSP - Liskov substition principle</li>
+        <p>object should be replacable by instances of their subtypes without altering the correctness of that programm
+        </p>
+        <li>ISP - interface segregation principle</li>
+        <p>many client specific interface better then one general purpose interface</p>
+        <li>DIP - dependency inversion principle</li>
+        <p>one should depend upon abstaction not concretion</p>
+      </ul>
+    </section>
+    <section>
+      <h4>GRASP</h4>
+      <p>General responsibility software patterns</p>
+      <ul>
+        <li>Controller</li>
+        <p>responsibil for recievin and handling a system event</p>
+        <li>Creator</li>
+        <p>respoinsible for creating objects</p>
+        <li>High cohesion</li>
+        <p>responsibility highly focused and strongly related</p>
+        <li>Information expert</li>
+        <li>Indirection</li>
+        <li>Low coupling</li>
+        <li>Polimorphism</li>
+        <li>Protected variation</li>
+        <li>Pure fabrication</li>
+      </ul>
+    </section>
+    <section>
+      <h4>YARGNI</h4>
+      <p>You aren't gone need it</p>
+      <h4>KISS</h4>
+      <p>Keep it short and simple</p>
+      <h4>DRY</h4>
+      <p>Don't repeat your self</p>
+      <h4>Ocam's razor</h4>
+      <p>between to compition solutions one should prefer the solution with fewerst assumptions</p>
+    </section>
   </article>
   <article>
     <h3 id="patterns">Patterns</h3>
+
+    <section>
+      <h4>Creatinal principles</h4>
+      <ul>
+        <li>Abstract factory</li>
+        <li>Builder</li>
+        <li>Factory method</li>
+        <li>Lazy initialization (virtual proxy)</li>
+        <li>Multiton</li>
+        <li>Object library</li>
+        <li>Object pool</li>
+        <li>Prototype</li>
+        <li>Singleton</li>
+      </ul>
+    </section>
+
+    <section>
+      <h4>Behaviral principles</h4>
+      <ul>
+        <li>Blackboard</li>
+        <li>Chain of responsibility</li>
+        <li>Command</li>
+        <li>Interprete</li>
+        <li>Interator</li>
+        <li>Mediator</li>
+        <li>Memento</li>
+        <li>Null object</li>
+        <li>Observer or Publish/Subscrube</li>
+        <li>Servant</li>
+        <li>Specification</li>
+        <li>State</li>
+        <li>Strategy</li>
+        <li>Template method</li>
+        <li>Visitor</li>
+      </ul>
+    </section>
+
+    <section>
+      <h4>Structural principles</h4>
+      <ul>
+        <li>Adapter, Wrapper or Translator</li>
+        <li>Bridge</li>
+        <li>Composite</li>
+        <li>Decorator</li>
+        <li>Facade</li>
+        <li>Flyweight</li>
+        <li>Front controller</li>
+        <li>Marker</li>
+        <li>Module</li>
+        <li>Proxy</li>
+        <li>Twin</li>
+      </ul>
+    </section>
+
+    <section>
+      <h4>Concurency principles</h4>
+      <ul>
+        <li>Active object</li>
+        <li>Balking</li>
+        <li>Binding properties</li>
+        <li>Double checked locking</li>
+        <li>Event-based asynchrones</li>
+        <li>Guarded suspension</li>
+        <li>Join</li>
+        <li>Lock</li>
+        <li>Message desing pattern</li>
+        <li>Monitor object</li>
+        <li>Reactor</li>
+        <li>Read-write lock</li>
+        <li>Scheduler</li>
+        <li>Thread pool</li>
+        <li>Thread specific storage</li>
+      </ul>
+    </section>
+
   </article>
   <article>
     <h3 id="html">HTML</h3>
