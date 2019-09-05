@@ -3,63 +3,26 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>notes</title>
+  <title>dev-notes</title>
   <meta name="author" content="Alex Arus" />
   <meta name="subject" content="Dev Notes" />
   <meta name="keywords" content="programming" />
-  <style>
-    html,
-    body {
-      margin: 3mm;
-      padding: 0;
-    }
-
-    article {
-      margin-top: 5mm;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p {
-      margin: 2mm;
-      padding: 0;
-    }
-
-    @media print {
-      @page {
-        size: A5 portrait;
-      }
-
-      @page :left {
-        margin-left: 1cm;
-      }
-
-      @page :right {
-        margin-left: 0;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <nav>
-    <ul>
-      <li><a href="#data-structures">Data structures</a></li>
-      <li><a href="#algirithms">Algorithms</a></li>
-      <li><a href="#sdlc">Software development life cicle</a></li>
-      <li><a href="#principles">Principles</a></li>
-      <li><a href="#patterns">Patterns</a></li>
-      <li><a href="#html">HTML</a></li>
-      <li><a href="#css">CSS</a></li>
-      <li><a href="#javascript">JavaScript</a></li>
-    </ul>
+    <a href="#data-structures">Data structures</a>
+    <a href="#algirithms">Algorithms</a>
+    <a href="#sdlc">SDLC</a>
+    <a href="#principles">Principles</a>
+    <a href="#patterns">Patterns</a>
+    <a href="#html">HTML</a>
+    <a href="#css">CSS</a>
+    <a href="#javascript">JavaScript</a>
   </nav>
-  <article>
-    <h3 id='data-structures'>Data structures</h3>
+  <article id="data-structures">
+    <h3>Data structures</h3>
     <section>
       <h4>List</h4>
       <ul>
@@ -72,8 +35,8 @@
     <h4>Graph</h4>
     <h4>Tree</h4>
   </article>
-  <article>
-    <h3 id='algirithms'>Algorithms</h3>
+  <article id="algirithms">
+    <h3>Algorithms</h3>
     <section>
       <h4>Search algorithms</h4>
       <ul>
@@ -112,11 +75,11 @@
       </section>
     </section>
   </article>
-  <article>
-    <h3 id='sdlc'>Software development life cicle</h3>
+  <article id="sdlc">
+    <h3>Software development life cicle (SDLC)</h3>
   </article>
-  <article>
-    <h3 id="principles">Principles</h3>
+  <article id="principles">
+    <h3>Principles</h3>
     <section>
       <h4>SOLID</h4>
       <ul>
@@ -145,7 +108,7 @@
         <li>Creator</li>
         <p>respoinsible for creating objects</p>
         <li>High cohesion</li>
-        <p>responsibility highly focused and strongly related</p>
+        <p>responsibility highly focused and ply related</p>
         <li>Information expert</li>
         <li>Indirection</li>
         <li>Low coupling</li>
@@ -165,14 +128,13 @@
       <p>between to compition solutions one should prefer the solution with fewerst assumptions</p>
     </section>
   </article>
-  <article>
-    <h3 id="patterns">Patterns</h3>
-
+  <article id="patterns">
+    <h3>Patterns</h3>
     <section>
-      <h4>Creatinal principles</h4>
+      <h4>Creatinal patterns</h4>
       <ul>
         <li>Abstract factory</li>
-        <li>Builder</li>
+        <li>Builder</li>k
         <li>Factory method</li>
         <li>Lazy initialization (virtual proxy)</li>
         <li>Multiton</li>
@@ -184,12 +146,12 @@
     </section>
 
     <section>
-      <h4>Behaviral principles</h4>
+      <h4>Behaviral patterns</h4>
       <ul>
         <li>Blackboard</li>
         <li>Chain of responsibility</li>
         <li>Command</li>
-        <li>Interprete</li>
+        <li>Interpreter</li>
         <li>Interator</li>
         <li>Mediator</li>
         <li>Memento</li>
@@ -205,7 +167,7 @@
     </section>
 
     <section>
-      <h4>Structural principles</h4>
+      <h4>Structural patterns</h4>
       <ul>
         <li>Adapter, Wrapper or Translator</li>
         <li>Bridge</li>
@@ -222,12 +184,12 @@
     </section>
 
     <section>
-      <h4>Concurency principles</h4>
+      <h4>Concurency patterns</h4>
       <ul>
         <li>Active object</li>
         <li>Balking</li>
         <li>Binding properties</li>
-        <li>Double checked locking</li>
+        <li>Double-checked locking</li>
         <li>Event-based asynchrones</li>
         <li>Guarded suspension</li>
         <li>Join</li>
@@ -243,14 +205,51 @@
     </section>
 
   </article>
-  <article>
-    <h3 id="html">HTML</h3>
+  <article id="html">
+    <h3>HTML</h3>
+    <section>
+      <h4>Basic</h4>
+      <dl>
+        <dt>!DOCTYPE</dt>
+        <dd>Defines the document type</dd>
+        <dt>html</dt>
+        <dd>Defines an HTML document</dd>
+        <dt>head</dt>
+        <dd>Defines information about the document</dd>
+        <dt>title</dt>
+        <dd>Defines a title for the document</dd>
+        <dt>body</dt>
+        <dd>Defines the document's body</dd>
+        <dt>h1 to h6</dt>
+        <dd>Defines HTML headings</dd>
+        <dt>p</dt>
+        <dd>Defines a paragraph</dd>
+        <dt>br</dt>
+        <dd>Inserts a single line break</dd>
+        <dt>hr</dt>
+        <dd>Defines a thematic change in the content</dd>
+        <dt>&lt!--...--&gt</dt>
+        <dd>Defines a comment</dd>
+      </dl>
+      <div class="summary">
+        <p>!DOCTYPE</p>
+        <p>html</p>
+        <p>head</p>
+        <p>title</p>
+        <p>body</p>
+        <p>h1 to h6</p>
+        <p>p</p>
+        <p>br</p>
+        <p>hr</p>
+        <p>&lt!--...--&gt</p>
+      </div>
+    </section>
   </article>
-  <article>
-    <h3 id="css">CSS</h3>
+  <article id="css">
+    <h3>CSS</h3>
   </article>
-  <article>
-    <h3 id="javascript">JavaScript</h3>
+  <article id="javascript">
+    <h3>JavaScript</h3>
   </article>
 </body>
 
