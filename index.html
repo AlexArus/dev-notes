@@ -3,10 +3,11 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>dev-notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Alex Arus" />
   <meta name="subject" content="Dev Notes" />
   <meta name="keywords" content="programming" />
+  <title>dev-notes</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -23,216 +24,216 @@
     <a href="#javascript">JavaScript</a>
   </nav>
   <article id="data-structures">
-    <h3>Data structures</h3>
-    <section>
-      <h4>List</h4>
-      <ul>
-        <li>Linked list</li>
-        <li>Double linked list</li>
-        <li>Stack</li>
-        <li>Queuee</li>
-      </ul>
-    </section>
-    <h4>Graph</h4>
-    <h4>Tree</h4>
+    <details open>
+      <summary>
+        <h3>Data structures</h3>
+      </summary>
+      <section>
+        <h4>List</h4>
+        <ul>
+          <li>Linked list</li>
+          <li>Double linked list</li>
+          <li>Stack</li>
+          <li>Queuee</li>
+        </ul>
+      </section>
+      <h4>Graph</h4>
+      <h4>Tree</h4>
+    </details>
   </article>
   <article id="algirithms">
-    <h3>Algorithms</h3>
-    <section>
-      <h4>Search algorithms</h4>
-      <ul>
-        <li>Linier (seqenciel) search</li>
-        <li>Binary search</li>
-        <li>Jump search</li>
-        <li>Interpolation search</li>
-        <li>Exponential search</li>
-        <li>Fibonaci search</li>
-      </ul>
-    </section>
-    <section>
-      <h4>Sort algorithms</h4>
+    <details open>
+      <summary>
+        <h3>Algorithms</h3>
+      </summary>
       <section>
-        <p>Simple sort (n<sup>2</sup>)</p>
+        <h4>Search algorithms</h4>
         <ul>
-          <li>Insertion sort</li>
-          <li>Selection sort</li>
+          <li>Linier (seqenciel) search</li>
+          <li>Binary search</li>
+          <li>Jump search</li>
+          <li>Interpolation search</li>
+          <li>Exponential search</li>
+          <li>Fibonaci search</li>
         </ul>
       </section>
       <section>
-        <p>Bubble sort and variation</p>
-        <ul>
-          <li>Bubble sort (n<sup>2</sup>)</li>
-          <li>Comb sort</li>
-          <li>Shell sort (n<sup>2</sup>)</li>
-        </ul>
+        <h4>Sort algorithms</h4>
+        <section>
+          <p>Simple sort (n<sup>2</sup>)</p>
+          <ul>
+            <li>Insertion sort</li>
+            <li>Selection sort</li>
+          </ul>
+        </section>
+        <section>
+          <p>Bubble sort and variation</p>
+          <ul>
+            <li>Bubble sort (n<sup>2</sup>)</li>
+            <li>Comb sort</li>
+            <li>Shell sort (n<sup>2</sup>)</li>
+          </ul>
+        </section>
+        <section>
+          <p>Effeciant sort (n log n)</p>
+          <ul>
+            <li>Merge sort</li>
+            <li>Heap sort</li>
+            <li>Quick sort</li>
+          </ul>
+        </section>
       </section>
-      <section>
-        <p>Effeciant sort (n log n)</p>
-        <ul>
-          <li>Merge sort</li>
-          <li>Heap sort</li>
-          <li>Quick sort</li>
-        </ul>
-      </section>
-    </section>
+    </details>
   </article>
   <article id="sdlc">
-    <h3>Software development life cicle (SDLC)</h3>
+    <details open>
+      <summary>
+        <h3>Software development life cicle (SDLC)</h3>
+      </summary>
+    </details>
   </article>
   <article id="principles">
-    <h3>Principles</h3>
-    <section>
-      <h4>SOLID</h4>
-      <ul>
-        <li>SRP - single responsibility principle</li>
+    <details open>
+      <summary>
+        <h3>Principles</h3>
+      </summary>
+      <section>
+        <h4>SOLID</h4>
         <ul>
-          <li>class should have single responsibility</li>
-          <li>class should have one, and only one, reason to change</li>
+          <li>SRP - single responsibility principle</li>
+          <ul>
+            <li>class should have single responsibility</li>
+            <li>class should have one, and only one, reason to change</li>
+          </ul>
+          <li>OCP - open/closed principle</li>
+          <p>class should be open for extension, but closed for modification</p>
+          <li>LSP - Liskov substition principle</li>
+          <p>object should be replacable by instances of their subtypes without altering the correctness of that
+            programm
+          </p>
+          <li>ISP - interface segregation principle</li>
+          <p>many client specific interface better then one general purpose interface</p>
+          <li>DIP - dependency inversion principle</li>
+          <p>one should depend upon abstaction not concretion</p>
         </ul>
-        <li>OCP - open/closed principle</li>
-        <p>class should be open for extension, but closed for modification</p>
-        <li>LSP - Liskov substition principle</li>
-        <p>object should be replacable by instances of their subtypes without altering the correctness of that programm
-        </p>
-        <li>ISP - interface segregation principle</li>
-        <p>many client specific interface better then one general purpose interface</p>
-        <li>DIP - dependency inversion principle</li>
-        <p>one should depend upon abstaction not concretion</p>
-      </ul>
-    </section>
-    <section>
-      <h4>GRASP</h4>
-      <p>General responsibility software patterns</p>
-      <ul>
-        <li>Controller</li>
-        <p>responsibil for recievin and handling a system event</p>
-        <li>Creator</li>
-        <p>respoinsible for creating objects</p>
-        <li>High cohesion</li>
-        <p>responsibility highly focused and ply related</p>
-        <li>Information expert</li>
-        <li>Indirection</li>
-        <li>Low coupling</li>
-        <li>Polimorphism</li>
-        <li>Protected variation</li>
-        <li>Pure fabrication</li>
-      </ul>
-    </section>
-    <section>
-      <h4>YARGNI</h4>
-      <p>You aren't gone need it</p>
-      <h4>KISS</h4>
-      <p>Keep it short and simple</p>
-      <h4>DRY</h4>
-      <p>Don't repeat your self</p>
-      <h4>Ocam's razor</h4>
-      <p>between to compition solutions one should prefer the solution with fewerst assumptions</p>
-    </section>
+      </section>
+      <section>
+        <h4>GRASP</h4>
+        <p>General responsibility software patterns</p>
+        <ul>
+          <li>Controller</li>
+          <p>responsibil for recievin and handling a system event</p>
+          <li>Creator</li>
+          <p>respoinsible for creating objects</p>
+          <li>High cohesion</li>
+          <p>responsibility highly focused and ply related</p>
+          <li>Information expert</li>
+          <li>Indirection</li>
+          <li>Low coupling</li>
+          <li>Polimorphism</li>
+          <li>Protected variation</li>
+          <li>Pure fabrication</li>
+        </ul>
+      </section>
+      <section>
+        <h4>YARGNI</h4>
+        <p>You aren't gone need it</p>
+        <h4>KISS</h4>
+        <p>Keep it short and simple</p>
+        <h4>DRY</h4>
+        <p>Don't repeat your self</p>
+        <h4>Ocam's razor</h4>
+        <p>between to compition solutions one should prefer the solution with fewerst assumptions</p>
+      </section>
+    </details>
   </article>
   <article id="patterns">
-    <h3>Patterns</h3>
-    <section>
-      <h4>Creatinal patterns</h4>
-      <ul>
-        <li>Abstract factory</li>
-        <li>Builder</li>k
-        <li>Factory method</li>
-        <li>Lazy initialization (virtual proxy)</li>
-        <li>Multiton</li>
-        <li>Object library</li>
-        <li>Object pool</li>
-        <li>Prototype</li>
-        <li>Singleton</li>
-      </ul>
-    </section>
+    <details open>
+      <summary>
+        <h3>Patterns</h3>
+      </summary>
+      <section>
+        <h4>Creatinal patterns</h4>
+        <ul>
+          <li>Abstract factory</li>
+          <li>Builder</li>k
+          <li>Factory method</li>
+          <li>Lazy initialization (virtual proxy)</li>
+          <li>Multiton</li>
+          <li>Object library</li>
+          <li>Object pool</li>
+          <li>Prototype</li>
+          <li>Singleton</li>
+        </ul>
+      </section>
 
-    <section>
-      <h4>Behaviral patterns</h4>
-      <ul>
-        <li>Blackboard</li>
-        <li>Chain of responsibility</li>
-        <li>Command</li>
-        <li>Interpreter</li>
-        <li>Interator</li>
-        <li>Mediator</li>
-        <li>Memento</li>
-        <li>Null object</li>
-        <li>Observer or Publish/Subscrube</li>
-        <li>Servant</li>
-        <li>Specification</li>
-        <li>State</li>
-        <li>Strategy</li>
-        <li>Template method</li>
-        <li>Visitor</li>
-      </ul>
-    </section>
+      <section>
+        <h4>Behaviral patterns</h4>
+        <ul>
+          <li>Blackboard</li>
+          <li>Chain of responsibility</li>
+          <li>Command</li>
+          <li>Interpreter</li>
+          <li>Interator</li>
+          <li>Mediator</li>
+          <li>Memento</li>
+          <li>Null object</li>
+          <li>Observer or Publish/Subscrube</li>
+          <li>Servant</li>
+          <li>Specification</li>
+          <li>State</li>
+          <li>Strategy</li>
+          <li>Template method</li>
+          <li>Visitor</li>
+        </ul>
+      </section>
 
-    <section>
-      <h4>Structural patterns</h4>
-      <ul>
-        <li>Adapter, Wrapper or Translator</li>
-        <li>Bridge</li>
-        <li>Composite</li>
-        <li>Decorator</li>
-        <li>Facade</li>
-        <li>Flyweight</li>
-        <li>Front controller</li>
-        <li>Marker</li>
-        <li>Module</li>
-        <li>Proxy</li>
-        <li>Twin</li>
-      </ul>
-    </section>
+      <section>
+        <h4>Structural patterns</h4>
+        <ul>
+          <li>Adapter, Wrapper or Translator</li>
+          <li>Bridge</li>
+          <li>Composite</li>
+          <li>Decorator</li>
+          <li>Facade</li>
+          <li>Flyweight</li>
+          <li>Front controller</li>
+          <li>Marker</li>
+          <li>Module</li>
+          <li>Proxy</li>
+          <li>Twin</li>
+        </ul>
+      </section>
 
-    <section>
-      <h4>Concurency patterns</h4>
-      <ul>
-        <li>Active object</li>
-        <li>Balking</li>
-        <li>Binding properties</li>
-        <li>Double-checked locking</li>
-        <li>Event-based asynchrones</li>
-        <li>Guarded suspension</li>
-        <li>Join</li>
-        <li>Lock</li>
-        <li>Message desing pattern</li>
-        <li>Monitor object</li>
-        <li>Reactor</li>
-        <li>Read-write lock</li>
-        <li>Scheduler</li>
-        <li>Thread pool</li>
-        <li>Thread specific storage</li>
-      </ul>
-    </section>
-
+      <section>
+        <h4>Concurency patterns</h4>
+        <ul>
+          <li>Active object</li>
+          <li>Balking</li>
+          <li>Binding properties</li>
+          <li>Double-checked locking</li>
+          <li>Event-based asynchrones</li>
+          <li>Guarded suspension</li>
+          <li>Join</li>
+          <li>Lock</li>
+          <li>Message desing pattern</li>
+          <li>Monitor object</li>
+          <li>Reactor</li>
+          <li>Read-write lock</li>
+          <li>Scheduler</li>
+          <li>Thread pool</li>
+          <li>Thread specific storage</li>
+        </ul>
+      </section>
+    </details>
   </article>
   <article id="html">
-    <h3>HTML</h3>
-    <section>
-      <h4>Basic</h4>
-      <dl>
-        <dt>!DOCTYPE</dt>
-        <dd>Defines the document type</dd>
-        <dt>html</dt>
-        <dd>Defines an HTML document</dd>
-        <dt>head</dt>
-        <dd>Defines information about the document</dd>
-        <dt>title</dt>
-        <dd>Defines a title for the document</dd>
-        <dt>body</dt>
-        <dd>Defines the document's body</dd>
-        <dt>h1 to h6</dt>
-        <dd>Defines HTML headings</dd>
-        <dt>p</dt>
-        <dd>Defines a paragraph</dd>
-        <dt>br</dt>
-        <dd>Inserts a single line break</dd>
-        <dt>hr</dt>
-        <dd>Defines a thematic change in the content</dd>
-        <dt>&lt!--...--&gt</dt>
-        <dd>Defines a comment</dd>
-      </dl>
+    <details open>
+      <summary>
+        <h3>HTML</h3>
+      </summary>
       <div class="summary">
+        <p class="summary-subtitle">Basic</p>
         <p>!DOCTYPE</p>
         <p>html</p>
         <p>head</p>
@@ -242,15 +243,268 @@
         <p>p</p>
         <p>br</p>
         <p>hr</p>
-        <p>&lt!--...--&gt</p>
+        <p>&lt;!--...--&gt;</p>
+        <p class="summary-subtitle">Formatting</p>
+        <p>abbr</p>
+        <p>address</p>
+        <p>b</p>
+        <p>bdi</p>
+        <p>bdo</p>
+        <p>blockquote</p>
+        <p>cite</p>
+        <p>code</p>
+        <p>del</p>
+        <p>dfn</p>
+        <p>em</p>
+        <p>i</p>
+        <p>ins</p>
+        <p>kbd</p>
+        <p>mark</p>
+        <p>meter</p>
+        <p>pre</p>
+        <p>progress</p>
+        <p>q</p>
+        <p>rp</p>
+        <p>rt</p>
+        <p>ruby</p>
+        <p>s</p>
+        <p>samp</p>
+        <p>small</p>
+        <p>strong</p>
+        <p>sub</p>
+        <p>sup</p>
+        <p>template</p>
+        <p>time</p>
+        <p>u</p>
+        <p>var</p>
+        <p>wbr</p>
+        <p class="summary-subtitle">Forms and Input</p>
+        <p>form</p>
+        <p>input</p>
+        <p>textarea</p>
+        <p>button</p>
+        <p>select</p>
+        <p>optgroup</p>
+        <p>option</p>
+        <p>label</p>
+        <p>fieldset</p>
+        <p>legend</p>
+        <p>datalist</p>
+        <p>output</p>
+        <p class="summary-subtitle">Frames</p>
+        <p>iframe</p>
       </div>
-    </section>
+      <section>
+        <h4>Basic</h4>
+        <div class="summary">
+          <p>!DOCTYPE</p>
+          <p>html</p>
+          <p>head</p>
+          <p>title</p>
+          <p>body</p>
+          <p>h1 to h6</p>
+          <p>p</p>
+          <p>br</p>
+          <p>hr</p>
+          <p>&lt!--...--&gt</p>
+        </div>
+        <dl>
+          <dt>!DOCTYPE</dt>
+          <dd>Defines the document type</dd>
+          <dt>html</dt>
+          <dd>Defines an HTML document</dd>
+          <dt>head</dt>
+          <dd>Defines information about the document</dd>
+          <dt>title</dt>
+          <dd>Defines a title for the document</dd>
+          <dt>body</dt>
+          <dd>Defines the document's body</dd>
+          <dt>h1 to h6</dt>
+          <dd>Defines HTML headings</dd>
+          <dt>p</dt>
+          <dd>Defines a paragraph</dd>
+          <dt>br</dt>
+          <dd>Inserts a single line break</dd>
+          <dt>hr</dt>
+          <dd>Defines a thematic change in the content</dd>
+          <dt>&lt;!--...--&gt;</dt>
+          <dd>Defines a comment</dd>
+        </dl>
+      </section>
+      <section>
+        <h4>Formatting</h4>
+        <div class="summary">
+          <p>abbr</p>
+          <p>address</p>
+          <p>b</p>
+          <p>bdi</p>
+          <p>bdo</p>
+          <p>blockquote</p>
+          <p>cite</p>
+          <p>code</p>
+          <p>del</p>
+          <p>dfn</p>
+          <p>em</p>
+          <p>i</p>
+          <p>ins</p>
+          <p>kbd</p>
+          <p>mark</p>
+          <p>meter</p>
+          <p>pre</p>
+          <p>progress</p>
+          <p>q</p>
+          <p>rp</p>
+          <p>rt</p>
+          <p>ruby</p>
+          <p>s</p>
+          <p>samp</p>
+          <p>small</p>
+          <p>strong</p>
+          <p>sub</p>
+          <p>sup</p>
+          <p>template</p>
+          <p>time</p>
+          <p>u</p>
+          <p>var</p>
+          <p>wbr</p>
+        </div>
+        <dl>
+          <dt>abbr</dt>
+          <dd>Defines an abbreviation or an acronym</dd>
+          <dt>address</dt>
+          <dd>Defines contact information for the author/owner of a document/article</dd>
+          <dt>b</dt>
+          <dd>Defines bold text</dd>
+          <dt>bdi</dt>
+          <dd>Isolates a part of text that might be formatted in a different direction from other text outside it</dd>
+          <dt>bdo</dt>
+          <dd>Overrides the current text direction</dd>
+          <dt>blockquote</dt>
+          <dd>Defines a section that is quoted from another source</dd>
+          <dt>cite</dt>
+          <dd>Defines the title of a work</dd>
+          <dt>code</dt>
+          <dd>Defines a piece of computer code</dd>
+          <dt>del</dt>
+          <dd>Defines text that has been deleted from a document</dd>
+          <dt>dfn</dt>
+          <dd>Represents the defining instance of a term</dd>
+          <dt>em</dt>
+          <dd>Defines emphasized text</dd>
+          <dt>i</dt>
+          <dd>Defines a part of text in an alternate voice or mood</dd>
+          <dt>ins</dt>
+          <dd>Defines a text that has been inserted into a document</dd>
+          <dt>kbd</dt>
+          <dd>Defines keyboard input</dd>
+          <dt>mark</dt>
+          <dd>Defines marked/highlighted text</dd>
+          <dt>meter</dt>
+          <dd>Defines a scalar measurement within a known range (a gauge)</dd>
+          <dt>pre</dt>
+          <dd>Defines preformatted text</dd>
+          <dt>progress</dt>
+          <dd>Represents the progress of a task</dd>
+          <dt>q</dt>
+          <dd>Defines a short quotation</dd>
+          <dt>rp</dt>
+          <dd>Defines what to show in browsers that do not support ruby annotations</dd>
+          <dt>rt</dt>
+          <dd>Defines an explanation/pronunciation of characters (for East Asian typography)</dd>
+          <dt>ruby</dt>
+          <dd>Defines a ruby annotation (for East Asian typography)</dd>
+          <dt>s</dt>
+          <dd>Defines text that is no longer correct</dd>
+          <dt>samp</dt>
+          <dd>Defines sample output from a computer program</dd>
+          <dt>small</dt>
+          <dd>Defines smaller text</dd>
+          <dt>strong</dt>
+          <dd>Defines important text</dd>
+          <dt>sub</dt>
+          <dd>Defines subscripted text</dd>
+          <dt>sup</dt>
+          <dd>Defines superscripted text</dd>
+          <dt>template</dt>
+          <dd>Defines a template</dd>
+          <dt>time</dt>
+          <dd>Defines a date/time</dd>
+          <dt>u</dt>
+          <dd>Defines text that should be stylistically different from normal text</dd>
+          <dt>var</dt>
+          <dd>Defines a variable</dd>
+          <dt>wbr</dt>
+          <dd>Defines a possible line-break</dd>
+        </dl>
+      </section>
+      <section>
+        <h4>Forms and Input</h4>
+        <div class="summary">
+          <p>form</p>
+          <p>input</p>
+          <p>textarea</p>
+          <p>button</p>
+          <p>select</p>
+          <p>optgroup</p>
+          <p>option</p>
+          <p>label</p>
+          <p>fieldset</p>
+          <p>legend</p>
+          <p>datalist</p>
+          <p>output</p>
+        </div>
+        <dl>
+          <dt>form</dt>
+          <dd>Defines an HTML form for user input</dd>
+          <dt>input</dt>
+          <dd>Defines an input control</dd>
+          <dt>textarea</dt>
+          <dd>Defines a multiline input control (text area)</dd>
+          <dt>button</dt>
+          <dd>Defines a clickable button</dd>
+          <dt>select</dt>
+          <dd>Defines a drop-down list</dd>
+          <dt>optgroup</dt>
+          <dd>Defines a group of related options in a drop-down list</dd>
+          <dt>option</dt>
+          <dd>Defines an option in a drop-down list</dd>
+          <dt>label</dt>
+          <dd>Defines a label for an &lt;input&gt; element</dd>
+          <dt>fieldset</dt>
+          <dd>Groups related elements in a form</dd>
+          <dt>legend</dt>
+          <dd>Defines a caption for a &lt;fieldset&gt; element</dd>
+          <dt>datalist</dt>
+          <dd>Specifies a list of pre-defined options for input controls</dd>
+          <dt>output</dt>
+          <dd>Defines the result of a calculation</dd>
+        </dl>
+      </section>
+      <section>
+        <h4>Frames</h4>
+        <dl>
+          <dt>iframe</dt>
+          <dd>Defines an inline frame</dd>
+        </dl>
+      </section>
+      <section>
+        <h4></h4>
+      </section>
+    </details>
   </article>
   <article id="css">
-    <h3>CSS</h3>
+    <details open>
+      <summary>
+        <h3>CSS</h3>
+      </summary>
+    </details>
   </article>
   <article id="javascript">
-    <h3>JavaScript</h3>
+    <details open>
+      <summary>
+        <h3>JavaScript</h3>
+      </summary>
+    </details>
   </article>
 </body>
 
