@@ -1,6 +1,8 @@
 html, body {
-  margin: 3mm;
+  margin: 10px;
   padding: 0;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -11,12 +13,12 @@ body {
 
 nav, article {
   width: 100%;
-  max-width: 27cm;
+  max-width: 300px;
 }
 
 nav {
-  margin: 1mm;
-  padding: 3mm;
+  margin: 5px;
+  padding: 10px;
   border: 2px solid gray;
   display: flex;
   justify-content: space-around;
@@ -24,26 +26,30 @@ nav {
 }
 
 article {
-  margin-top: 5mm;
+  margin-top: 10px;
 }
 
 h1, h2, h3, h4, h5, h6, p {
-  margin: 2mm;
+  margin: 5px;
   padding: 0;
 }
 
+dt {
+  font-weight: bold;
+}
+
 .summary {
-  margin: 1mm;
-  padding: 3mm;
+  margin: 3px;
+  padding: 8px;
   border: 1px solid gray;
-  column-count: 3;
-  column-gap: 2mm;
+  column-count: 2;
+  column-gap: 5px;
   column-fill: balance;
 }
 
 .summary p {
   font-weight: bold;
-  margin: 1mm 2mm;
+  margin: 3px 5px;
 }
 
 @media print {
@@ -51,11 +57,112 @@ h1, h2, h3, h4, h5, h6, p {
     size: A5 portrait;
   }
 
+  nav, article {
+    width: 100%;
+    max-width: 600px;
+  }
+
   @page :left {
-    margin-left: 1cm;
+    margin-left: 20px;
   }
 
   @page :right {
     margin-left: 0;
+  }
+}
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  nav, article {
+    max-width: 800px;
+  }
+
+  .summary {
+    column-count: 4;
+    column-gap: 10px;
+  }
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  nav, article {
+    max-width: 800px;
+  }
+
+  .summary {
+    column-count: 4;
+    column-gap: 10px;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  nav, article {
+    max-width: 700px;
+  }
+
+  .summary {
+    column-count: 3;
+    column-gap: 10px;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  nav, article {
+    max-width: 700px;
+  }
+
+  .summary {
+    column-count: 3;
+    column-gap: 10px;
+  }
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  nav, article {
+    max-width: 400px;
+  }
+
+  .summary {
+    column-count: 2;
+    column-gap: 10px;
+  }
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  nav, article {
+    max-width: 300px;
+  }
+
+  .summary {
+    column-count: 2;
+    column-gap: 5px;
   }
 }
