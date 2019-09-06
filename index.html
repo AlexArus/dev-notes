@@ -9,7 +9,6 @@
   <meta name="keywords" content="programming" />
   <title>dev-notes</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <style>
     html,
     body {
@@ -73,6 +72,13 @@
       margin: 3px;
       padding: 8px;
       border: 1px solid lightgray;
+    }
+
+    .summary p {
+      margin: 3px 5px;
+    }
+
+    .summary-section {
       column-count: 2;
       column-gap: 5px;
       column-fill: balance;
@@ -82,11 +88,7 @@
       text-align: center;
       font-style: italic;
       column-span: all;
-    }
-
-    .summary p {
-      font-weight: bold;
-      margin: 3px 5px;
+      border-bottom: 1px solid lightgrey;
     }
 
     @media print {
@@ -113,7 +115,7 @@
       ##Screen = 1281px to higher resolution desktops
     */
     @media (min-width: 1281px) {
-      .summary {
+      .summary-section {
         column-count: 4;
         column-gap: 10px;
       }
@@ -124,7 +126,7 @@
       ##Screen = B/w 1025px to 1280px
     */
     @media (min-width: 1025px) and (max-width: 1280px) {
-      .summary {
+      .summary-section {
         column-count: 4;
         column-gap: 10px;
       }
@@ -135,7 +137,7 @@
       ##Screen = B/w 768px to 1024px
     */
     @media (min-width: 768px) and (max-width: 1024px) {
-      .summary {
+      .summary-section {
         column-count: 3;
         column-gap: 10px;
       }
@@ -146,7 +148,7 @@
       ##Screen = B/w 768px to 1024px
     */
     @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-      .summary {
+      .summary-section {
         column-count: 3;
         column-gap: 10px;
       }
@@ -157,7 +159,7 @@
       ##Screen = B/w 481px to 767px
     */
     @media (min-width: 481px) and (max-width: 767px) {
-      .summary {
+      .summary-section {
         column-count: 2;
         column-gap: 10px;
       }
@@ -168,7 +170,7 @@
       ##Screen = B/w 320px to 479px
     */
     @media (min-width: 320px) and (max-width: 480px) {
-      .summary {
+      .summary-section {
         column-count: 2;
         column-gap: 5px;
       }
@@ -186,6 +188,7 @@
     <a href="#html">HTML</a>
     <a href="#css">CSS</a>
     <a href="#javascript">JavaScript</a>
+    <a href="#typescript">TypeScript</a>
   </nav>
   <article id="data-structures">
     <details open>
@@ -398,69 +401,153 @@
       </summary>
       <div class="summary">
         <p class="summary-subtitle">Basic</p>
-        <p>!DOCTYPE</p>
-        <p>html</p>
-        <p>head</p>
-        <p>title</p>
-        <p>body</p>
-        <p>h1 to h6</p>
-        <p>p</p>
-        <p>br</p>
-        <p>hr</p>
-        <p>&lt;!--...--&gt;</p>
+        <div class="summary-section">
+          <p>!DOCTYPE</p>
+          <p>html</p>
+          <p>head</p>
+          <p>title</p>
+          <p>body</p>
+          <p>h1 to h6</p>
+          <p>p</p>
+          <p>br</p>
+          <p>hr</p>
+          <p>&lt;!--...--&gt;</p>
+        </div>
         <p class="summary-subtitle">Formatting</p>
-        <p>abbr</p>
-        <p>address</p>
-        <p>b</p>
-        <p>bdi</p>
-        <p>bdo</p>
-        <p>blockquote</p>
-        <p>cite</p>
-        <p>code</p>
-        <p>del</p>
-        <p>dfn</p>
-        <p>em</p>
-        <p>i</p>
-        <p>ins</p>
-        <p>kbd</p>
-        <p>mark</p>
-        <p>meter</p>
-        <p>pre</p>
-        <p>progress</p>
-        <p>q</p>
-        <p>rp</p>
-        <p>rt</p>
-        <p>ruby</p>
-        <p>s</p>
-        <p>samp</p>
-        <p>small</p>
-        <p>strong</p>
-        <p>sub</p>
-        <p>sup</p>
-        <p>template</p>
-        <p>time</p>
-        <p>u</p>
-        <p>var</p>
-        <p>wbr</p>
+        <div class="summary-section">
+          <p>abbr</p>
+          <p>address</p>
+          <p>b</p>
+          <p>bdi</p>
+          <p>bdo</p>
+          <p>blockquote</p>
+          <p>cite</p>
+          <p>code</p>
+          <p>del</p>
+          <p>dfn</p>
+          <p>em</p>
+          <p>i</p>
+          <p>ins</p>
+          <p>kbd</p>
+          <p>mark</p>
+          <p>meter</p>
+          <p>pre</p>
+          <p>progress</p>
+          <p>q</p>
+          <p>rp</p>
+          <p>rt</p>
+          <p>ruby</p>
+          <p>s</p>
+          <p>samp</p>
+          <p>small</p>
+          <p>strong</p>
+          <p>sub</p>
+          <p>sup</p>
+          <p>template</p>
+          <p>time</p>
+          <p>u</p>
+          <p>var</p>
+          <p>wbr</p>
+        </div>
         <p class="summary-subtitle">Forms and Input</p>
-        <p>form</p>
-        <p>input</p>
-        <p>textarea</p>
-        <p>button</p>
-        <p>select</p>
-        <p>optgroup</p>
-        <p>option</p>
-        <p>label</p>
-        <p>fieldset</p>
-        <p>legend</p>
-        <p>datalist</p>
-        <p>output</p>
+        <div class="summary-section">
+          <p>form</p>
+          <p>input</p>
+          <p>textarea</p>
+          <p>button</p>
+          <p>select</p>
+          <p>optgroup</p>
+          <p>option</p>
+          <p>label</p>
+          <p>fieldset</p>
+          <p>legend</p>
+          <p>datalist</p>
+          <p>output</p>
+        </div>
         <p class="summary-subtitle">Frames</p>
-        <p>iframe</p>
+        <div class="summary-section">
+          <p>iframe</p>
+        </div>
+        <p class="summary-subtitle">Images</p>
+        <div class="summary-section">
+          <p>img</p>
+          <p>map</p>
+          <p>area</p>
+          <p>canvas</p>
+          <p>figcaption</p>
+          <p>figure</p>
+          <p>picture</p>
+          <p>svg</p>
+        </div>
+        <p class="summary-subtitle">Audio / Video</p>
+        <div class="summary-section">
+          <p>audio</p>
+          <p>source</p>
+          <p>track</p>
+          <p>video</p>
+        </div>
+        <p class="summary-subtitle">Links</p>
+        <div class="summary-section">
+          <p>a</p>
+          <p>link</p>
+          <p>nav</p>
+        </div>
+        <p class="summary-subtitle">Lists</p>
+        <div class="summary-section">
+          <p>ul</p>
+          <p>ol</p>
+          <p>li</p>
+          <p>dl</p>
+          <p>dt</p>
+          <p>dd</p>
+        </div>
+        <p class="summary-subtitle">Tables</p>
+        <div class="summary-section">
+          <p>table</p>
+          <p>caption</p>
+          <p>th</p>
+          <p>tr</p>
+          <p>td</p>
+          <p>thead</p>
+          <p>tbody</p>
+          <p>tfoot</p>
+          <p>col</p>
+          <p>colgroup</p>
+        </div>
+        <p class="summary-subtitle">Styles and Semantics</p>
+        <div class="summary-section">
+          <p>style</p>
+          <p>div</p>
+          <p>span</p>
+          <p>header</p>
+          <p>footer</p>
+          <p>main</p>
+          <p>section</p>
+          <p>article</p>
+          <p>aside</p>
+          <p>details</p>
+          <p>dialog</p>
+          <p>summary</p>
+          <p>data</p>
+        </div>
+        <p class="summary-subtitle">Meta Info</p>
+        <div class="summary-section">
+          <p>head</p>
+          <p>meta</p>
+          <p>base</p>
+        </div>
+        <p class="summary-subtitle">Programming</p>
+        <div class="summary-section">
+          <p>script</p>
+          <p>noscript</p>
+          <p>embed</p>
+          <p>object</p>
+          <p>param</p>
+        </div>
       </div>
       <section>
         <h4>Basic</h4>
-        <div class="summary">
+        <div class="summary summary-section">
           <p>!DOCTYPE</p>
           <p>html</p>
           <p>head</p>
@@ -497,7 +584,7 @@
       </section>
       <section>
         <h4>Formatting</h4>
-        <div class="summary">
+        <div class="summary summary-section">
           <p>abbr</p>
           <p>address</p>
           <p>b</p>
@@ -603,7 +690,7 @@
       </section>
       <section>
         <h4>Forms and Input</h4>
-        <div class="summary">
+        <div class="summary summary-section">
           <p>form</p>
           <p>input</p>
           <p>textarea</p>
@@ -651,9 +738,230 @@
           <dd>Defines an inline frame</dd>
         </dl>
       </section>
+
+
       <section>
-        <h4></h4>
+        <h4>Images</h4>
+        <div class="summary summary-section">
+          <p>img</p>
+          <p>map</p>
+          <p>area</p>
+          <p>canvas</p>
+          <p>figcaption</p>
+          <p>figure</p>
+          <p>picture</p>
+          <p>svg</p>
+        </div>
+        <dl>
+          <dt>img</dt>
+          <dd>Defines an image</dd>
+          <dt>map</dt>
+          <dd>Defines a client-side image-map</dd>
+          <dt>area</dt>
+          <dd>Defines an area inside an image-map</dd>
+          <dt>canvas</dt>
+          <dd>Used to draw graphics, on the fly, via scripting (usually JavaScript)</dd>
+          <dt>figcaption</dt>
+          <dd>Defines a caption for a &lt;figure&gt; element</dd>
+          <dt>figure</dt>
+          <dd>Specifies self-contained content</dd>
+          <dt>picture</dt>
+          <dd>Defines a container for multiple image resources</dd>
+          <dt>svg</dt>
+          <dd>Defines a container for SVG graphics</dd>
+        </dl>
       </section>
+
+      <section>
+        <h4>Audio / Video</h4>
+        <div class="summary summary-section">
+          <p>audio</p>
+          <p>source</p>
+          <p>track</p>
+          <p>video</p>
+        </div>
+        <dl>
+          <dt>audio</dt>
+          <dd>Defines sound content</dd>
+          <dt>source</dt>
+          <dd>Defines multiple media resources for media elements (&lt;video&gt;, &lt;audio&gt; and &lt;picture&gt;)
+          </dd>
+          <dt>track</dt>
+          <dd>Defines text tracks for media elements (&lt;video&gt; and &lt;audio&gt;)</dd>
+          <dt>video</dt>
+          <dd>Defines a video or movie</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Links</h4>
+        <div class="summary summary-section">
+          <p>a</p>
+          <p>link</p>
+          <p>nav</p>
+        </div>
+        <dl>
+          <dt>a</dt>
+          <dd>Defines a hyperlink</dd>
+          <dt>link</dt>
+          <dd>Defines the relationship between a document and an external resource (most used to link to style sheets)
+          </dd>
+          <dt>nav</dt>
+          <dd>Defines navigation links</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Lists</h4>
+        <div class="summary summary-section">
+          <p>ul</p>
+          <p>ol</p>
+          <p>li</p>
+          <p>dl</p>
+          <p>dt</p>
+          <p>dd</p>
+        </div>
+        <dl>
+          <dt>ul</dt>
+          <dd>Defines an unordered list</dd>
+          <dt>ol</dt>
+          <dd>Defines an ordered list</dd>
+          <dt>li</dt>
+          <dd>Defines a list item</dd>
+          <dt>dl</dt>
+          <dd>Defines a description list</dd>
+          <dt>dt</dt>
+          <dd>Defines a term/name in a description list</dd>
+          <dt>dd</dt>
+          <dd>Defines a description of a term/name in a description list</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Tables</h4>
+        <div class="summary summary-section">
+          <p>table</p>
+          <p>caption</p>
+          <p>th</p>
+          <p>tr</p>
+          <p>td</p>
+          <p>thead</p>
+          <p>tbody</p>
+          <p>tfoot</p>
+          <p>col</p>
+          <p>colgroup</p>
+        </div>
+        <dl>
+          <dt>table</dt>
+          <dd>Defines a table</dd>
+          <dt>caption</dt>
+          <dd>Defines a table caption</dd>
+          <dt>th</dt>
+          <dd>Defines a header cell in a table</dd>
+          <dt>tr</dt>
+          <dd>Defines a row in a table</dd>
+          <dt>td</dt>
+          <dd>Defines a cell in a table</dd>
+          <dt>thead</dt>
+          <dd>Groups the header content in a table</dd>
+          <dt>tbody</dt>
+          <dd>Groups the body content in a table</dd>
+          <dt>tfoot</dt>
+          <dd>Groups the footer content in a table</dd>
+          <dt>col</dt>
+          <dd>Specifies column properties for each column within a &lt;colgroup&gt; element</dd>
+          <dt>colgroup</dt>
+          <dd>Specifies a group of one or more columns in a table for formatting</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4></h4>Styles and Semantics</h4>
+        <div class="summary summary-section">
+          <p>style</p>
+          <p>div</p>
+          <p>span</p>
+          <p>header</p>
+          <p>footer</p>
+          <p>main</p>
+          <p>section</p>
+          <p>article</p>
+          <p>aside</p>
+          <p>details</p>
+          <p>dialog</p>
+          <p>summary</p>
+          <p>data</p>
+        </div>
+        <dl>
+          <dt>style</dt>
+          <dd>Defines style information for a document</dd>
+          <dt>div</dt>
+          <dd>Defines a section in a document</dd>
+          <dt>span</dt>
+          <dd>Defines a section in a document</dd>
+          <dt>header</dt>
+          <dd>Defines a header for a document or section</dd>
+          <dt>footer</dt>
+          <dd>Defines a footer for a document or section</dd>
+          <dt>main</dt>
+          <dd>Specifies the main content of a document</dd>
+          <dt>section</dt>
+          <dd>Defines a section in a document</dd>
+          <dt>article</dt>
+          <dd>Defines an article</dd>
+          <dt>aside</dt>
+          <dd>Defines content aside from the page content</dd>
+          <dt>details</dt>
+          <dd>Defines additional details that the user can view or hide</dd>
+          <dt>dialog</dt>
+          <dd>Defines a dialog box or window</dd>
+          <dt>summary</dt>
+          <dd>Defines a visible heading for a &lt;details&gt; element</dd>
+          <dt>data</dt>
+          <dd>Links the given content with a machine-readable translation</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Meta Info</h4>
+        <div class="summary summary-section">
+          <p>head</p>
+          <p>meta</p>
+          <p>base</p>
+        </div>
+        <dl>
+          <dt>head</dt>
+          <dd>Defines information about the document</dd>
+          <dt>meta</dt>
+          <dd>Defines metadata about an HTML document</dd>
+          <dt>base</dt>
+          <dd>Specifies the base URL/target for all relative URLs in a document</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Programming</h4>
+        <div class="summary summary-section">
+          <p>script</p>
+          <p>noscript</p>
+          <p>embed</p>
+          <p>object</p>
+          <p>param</p>
+        </div>
+        <dl>
+          <dt>script</dt>
+          <dd>Defines a client-side script</dd>
+          <dt>noscript</dt>
+          <dd>Defines an alternate content for users that do not support client-side scripts</dd>
+          <dt>embed</dt>
+          <dd>Defines a container for an external (non-HTML) application</dd>
+          <dt>object</dt>
+          <dd>Defines an embedded object</dd>
+          <dt>param</dt>
+          <dd>Defines a parameter for an object</dd>
+        </dl>
+      </section>
+
     </details>
   </article>
   <article id="css">
@@ -668,6 +976,76 @@
       <summary>
         <h3>JavaScript</h3>
       </summary>
+    </details>
+  </article>
+  <article id="typescript">
+    <details open>
+      <summary>
+        <h3>TypeScript</h3>
+      </summary>
+      <section>
+        <h4>Internal types</h4>
+        <div class="summary summary-section">
+          <p>Partial</p>
+          <p>Required</p>
+          <p>Readonly</p>
+          <p>Pick</p>
+          <p>Record</p>
+          <p>Exclude</p>
+          <p>Extract</p>
+          <p>Omit</p>
+          <p>NonNullable</p>
+          <p>Parameters</p>
+          <p>ConstructorParameters</p>
+          <p>ReturnType</p>
+          <p>InstanceType</p>
+        </div>
+      </section>
+      <dl>
+        <dt>type Partial&lt;T&gt; = { [P in keyof T]?: T[P]; };</dt>
+        <dd>Make all properties in T optional</dd>
+
+        <dt>type Required&lt;T&gt; = { [P in keyof T]-?: T[P]; };</dt>
+        <dd>Make all properties in T required</dd>
+
+        <dt>type Readonly&lt;T&gt; = { readonly [P in keyof T]: T[P]; };</dt>
+        <dd>Make all properties in T readonly</dd>
+
+        <dt>type Pick&lt;T, K extends keyof T&gt; = { [P in K]: T[P]; };</dt>
+        <dd>From T, pick a set of properties whose keys are in the union K</dd>
+
+        <dt>type Record&lt;K extends keyof any, T&gt; = { [P in K]: T; };</dt>
+        <dd>Construct a type with a set of properties K of type T</dd>
+
+        <dt>type Exclude&lt;T, U&gt; = T extends U ? never : T;</dt>
+        <dd>Exclude from T those types that are assignable to U</dd>
+
+        <dt>type Extract&lt;T, U&gt; = T extends U ? T : never;</dt>
+        <dd>Extract from T those types that are assignable to U</dd>
+
+        <dt>type Omit&lt;T, K extends keyof any&gt; = Pick&lt;T, Exclude&lt;keyof T, K&gt;&gt;;</dt>
+        <dd>Construct a type with the properties of T except for those in type K.</dd>
+
+        <dt>type NonNullable&lt;T&gt; = T extends null | undefined ? never : T;</dt>
+        <dd>Exclude null and undefined from T</dd>
+
+        <dt>type Parameters&lt;T extends (...args: any) =&gt; any&gt; = T extends (...args: infer P) =&gt; any ? P :
+          never;</dt>
+        <dd>Obtain the parameters of a function type in a tuple</dd>
+
+        <dt>type ConstructorParameters&lt;T extends new (...args: any) =&gt; any&gt; = T extends new (...args: infer P)
+          =&gt; any ? P : never;</dt>
+        <dd>Obtain the parameters of a constructor function type in a tuple</dd>
+
+        <dt>type ReturnType&lt;T extends (...args: any) =&gt; any&gt; = T extends (...args: any) =&gt; infer R ? R :
+          any;</dt>
+        <dd>Obtain the return type of a function type</dd>
+
+        <dt>type InstanceType&lt;T extends new (...args: any) =&gt; any&gt; = T extends new (...args: any) =&gt; infer R
+          ? R : any;</dt>
+        <dd>Obtain the return type of a constructor function type</dd>
+
+      </dl>
     </details>
   </article>
 </body>
