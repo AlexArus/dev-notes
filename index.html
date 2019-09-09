@@ -189,6 +189,7 @@
     <a href="#css">CSS</a>
     <a href="#javascript">JavaScript</a>
     <a href="#typescript">TypeScript</a>
+    <a href="#react">React</a>
   </nav>
   <article id="data-structures">
     <details open>
@@ -323,7 +324,7 @@
         <h4>Creatinal patterns</h4>
         <ul>
           <li>Abstract factory</li>
-          <li>Builder</li>k
+          <li>Builder</li>
           <li>Factory method</li>
           <li>Lazy initialization (virtual proxy)</li>
           <li>Multiton</li>
@@ -1048,6 +1049,148 @@
       </dl>
     </details>
   </article>
+  <article id="react">
+    <details open>
+      <summary>
+        <h3>React</h3>
+      </summary>
+
+      <div class="summary">
+        <p class="summary-subtitle">Hooks</p>
+        <div class="summary-section">
+          <p>useState</p>
+          <p>useEffect</p>
+          <p>useContext</p>
+          <p>useReducer</p>
+          <p>useCallback</p>
+          <p>useMemo</p>
+          <p>useRef</p>
+          <p>useImperativeHandle</p>
+          <p>useLayoutEffect</p>
+          <p>useDebugValue</p>
+        </div>
+      </div>
+
+      <section>
+        <h4></h4>
+        <div class="summary summary-section">
+          <p></p>
+        </div>
+        <dl>
+          <dt></dt>
+          <dd></dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Class component lifecycle</h4>
+        <div class="summary summary-section">
+          <p></p>
+        </div>
+        <dl>
+          <dt></dt>
+          <dd></dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>React Hooks</h4>
+        <div class="summary">
+          <p class="summary-subtitle">Basic Hooks</p>
+          <div class="summary-section">
+            <p>useState</p>
+            <p>useEffect</p>
+            <p>useContext</p>
+          </div>
+          <p class="summary-subtitle">Additional Hooks</p>
+          <div class="summary-section">
+            <p>useReducer</p>
+            <p>useCallback</p>
+            <p>useMemo</p>
+            <p>useRef</p>
+            <p>useImperativeHandle</p>
+            <p>useLayoutEffect</p>
+            <p>useDebugValue</p>
+          </div>
+        </div>
+
+        <dl>
+          <dt>useState</dt>
+          <dd>Returns a stateful value, and a function to update it.</dd>
+          <dt>useEffect</dt>
+          <dd>Accepts a function that contains imperative, possibly effectful code. The function passed to useEffect
+            will
+            run after the render is committed to the screen. By default, effects run after every completed render, but
+            you
+            can choose to fire it only when certain values have changed.</dd>
+          <dt>useContext</dt>
+          <dd>Accepts a context object (the value returned from React.createContext) and returns the current context
+            value
+            for that context. The current context value is determined by the value prop of the nearest
+            &lt;MyContext.Provider>&gt; above the calling component in the tree. When the nearest
+            &lt;MyContext.Provider&gt; above the component updates, this Hook will trigger a rerender with the latest
+            context value passed to that MyContext provider.</dd>
+          <dt>useReducer</dt>
+          <dd>Accepts a reducer of type (state, action) => newState, and returns the current state paired with a
+            dispatch
+            method.</dd>
+          <dt>useCallback</dt>
+          <dd>Returns a memoized callback. Pass an inline callback and an array of dependencies. useCallback will return
+            a
+            memoized version of the callback that only changes if one of the dependencies has changed. useCallback(fn,
+            deps) is equivalent to useMemo(() => fn, deps).</dd>
+          <dt>useMemo</dt>
+          <dd>Returns a memoized value. Pass a “create” function and an array of dependencies. useMemo will only
+            recompute
+            the memoized value when one of the dependencies has changed. This optimization helps to avoid expensive
+            calculations on every render. If no array is provided, a new value will be computed on every render.</dd>
+          <dt>useRef</dt>
+          <dd>Returns a mutable ref object whose .current property is initialized to the passed argument (initialValue).
+            The returned object will persist for the full lifetime of the component.</dd>
+          <dt>useImperativeHandle</dt>
+          <dd>Customizes the instance value that is exposed to parent components when using ref.</dd>
+          <dt>useLayoutEffect</dt>
+          <dd>The signature is identical to useEffect, but it fires synchronously after all DOM mutations. Use this to
+            read layout from the DOM and synchronously re-render. Updates scheduled inside useLayoutEffect will be
+            flushed
+            synchronously, before the browser has a chance to paint.</dd>
+          <dt>useDebugValue</dt>
+          <dd>Can be used to display a label for custom hooks in React DevTools</dd>
+        </dl>
+      </section>
+    </details>
+
+  </article>
 </body>
 
 </html>
+
+<!-- Article Template
+
+  <article id="">
+    <details open>
+      <summary>
+        <h3></h3>
+      </summary>
+    </details>
+
+    <div class="summary">
+      <p class="summary-subtitle"></p>
+      <div class="summary-section">
+      </div>
+    </div>
+
+    <section>
+      <h4></h4>
+      <div class="summary summary-section">
+        <p></p>
+      </div>
+      <dl>
+        <dt></dt>
+        <dd></dd>
+      </dl>
+    </section>
+
+  </article>
+
+-->
