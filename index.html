@@ -190,7 +190,9 @@
     <a href="#javascript">JavaScript</a>
     <a href="#typescript">TypeScript</a>
     <a href="#react">React</a>
+    <a href="#nodejs">Node.js</a>
   </nav>
+
   <article id="data-structures">
     <details open>
       <summary>
@@ -209,6 +211,7 @@
       <h4>Tree</h4>
     </details>
   </article>
+
   <article id="algirithms">
     <details open>
       <summary>
@@ -253,6 +256,7 @@
       </section>
     </details>
   </article>
+
   <article id="sdlc">
     <details open>
       <summary>
@@ -260,6 +264,7 @@
       </summary>
     </details>
   </article>
+
   <article id="principles">
     <details open>
       <summary>
@@ -311,10 +316,13 @@
         <h4>DRY</h4>
         <p>Don't repeat your self</p>
         <h4>Ocam's razor</h4>
-        <p>between to compition solutions one should prefer the solution with fewerst assumptions</p>
+        <p>Entities should not be multiplied without necessity. When presented with competing hypotheses that make the
+          same predictions, one should select the solution with the fewest assumptions, and it is not meant to be a way
+          of choosing between hypotheses that make different predictions.</p>
       </section>
     </details>
   </article>
+
   <article id="patterns">
     <details open>
       <summary>
@@ -384,7 +392,7 @@
           <li>Guarded suspension</li>
           <li>Join</li>
           <li>Lock</li>
-          <li>Message desing pattern</li>
+          <li>Messaging desing pattern (MDP)</li>
           <li>Monitor object</li>
           <li>Reactor</li>
           <li>Read-write lock</li>
@@ -395,6 +403,7 @@
       </section>
     </details>
   </article>
+
   <article id="html">
     <details open>
       <summary>
@@ -965,13 +974,130 @@
 
     </details>
   </article>
+
   <article id="css">
     <details open>
       <summary>
         <h3>CSS</h3>
       </summary>
+
+      <div class="summary">
+        <p class="summary-subtitle"></p>
+        <div class="summary-section">
+        </div>
+      </div>
+
+      <section>
+        <h4>Functions</h4>
+        <div class="summary summary-section">
+          <p>attr()</p>
+          <p>calc()</p>
+          <p>cubic-bezier()</p>
+          <p>hsl()</p>
+          <p>hsla()</p>
+          <p>linear-gradient()</p>
+          <p>radial-gradient()</p>
+          <p>repeating-linear-gradient()</p>
+          <p>repeating-radial-gradient()</p>
+          <p>rgb()</p>
+          <p>rgba()</p>
+          <p>var()</p>
+        </div>
+        <dl>
+          <dt>attr()</dt>
+          <dd>Returns the value of an attribute of the selected element</dd>
+          <dt>calc()</dt>
+          <dd>Allows you to perform calculations to determine CSS property values</dd>
+          <dt>cubic-bezier()</dt>
+          <dd>Defines a Cubic Bezier curve</dd>
+          <dt>hsl()</dt>
+          <dd>Defines colors using the Hue-Saturation-Lightness model (HSL)</dd>
+          <dt>hsla()</dt>
+          <dd>Defines colors using the Hue-Saturation-Lightness-Alpha model (HSLA)</dd>
+          <dt>linear-gradient()</dt>
+          <dd>Sets a linear gradient as the background image. Define at least two colors (top to bottom)</dd>
+          <dt>radial-gradient()</dt>
+          <dd>Sets a radial gradient as the background image. Define at least two colors (center to edges)</dd>
+          <dt>repeating-linear-gradient()</dt>
+          <dd>Repeats a linear gradient</dd>
+          <dt>repeating-radial-gradient()</dt>
+          <dd>Repeats a radial gradient</dd>
+          <dt>rgb()</dt>
+          <dd>Defines colors using the Red-Green-Blue model (RGB)</dd>
+          <dt>rgba()</dt>
+          <dd>Defines colors using the Red-Green-Blue-Alpha model (RGBA)</dd>
+          <dt>var()</dt>
+          <dd>Inserts the value of a custom property</dd>
+          <dt></dt>
+          <dd></dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Units</h4>
+        <div class="summary">
+          <p class="summary-subtitle">Absolute Lengths</p>
+          <div class="summary-section">
+            <p>cm</p>
+            <p>mm</p>
+            <p>in</p>
+            <p>px</p>
+            <p>pt</p>
+            <p>pc</p>
+          </div>
+          <p class="summary-subtitle">Relative Lengths</p>
+          <div class="summary-section">
+            <p>em</p>
+            <p>ex</p>
+            <p>ch</p>
+            <p>rem</p>
+            <p>vw</p>
+            <p>vh</p>
+            <p>vmin</p>
+            <p>vmax</p>
+            <p>%</p>
+          </div>
+        </div>
+
+        <dl>
+          <dt>cm</dt>
+          <dd>centimeters</dd>
+          <dt>mm</dt>
+          <dd>millimeters</dd>
+          <dt>in</dt>
+          <dd>inches (1in = 96px = 2.54cm)</dd>
+          <dt>px</dt>
+          <dd>pixels (1px = 1/96th of 1in) (pixels (px) are relative to the viewing device. For low-dpi devices, 1px is
+            one device pixel (dot) of the display. For printers and high resolution screens 1px implies multiple device
+            pixels)</dd>
+          <dt>pt</dt>
+          <dd>points (1pt = 1/72 of 1in)</dd>
+          <dt>pc</dt>
+          <dd>picas (1pc = 12 pt) </dd>
+          <dt>em</dt>
+          <dd>relative to the font-size of the element (2em means 2 times the size of the current font) </dd>
+          <dt>ex</dt>
+          <dd>relative to the x-height of the current font (rarely used) </dd>
+          <dt>ch</dt>
+          <dd>relative to width of the "0" (zero) </dd>
+          <dt>rem</dt>
+          <dd>relative to font-size of the root element </dd>
+          <dt>vw</dt>
+          <dd>relative to 1% of the width of the viewport* </dd>
+          <dt>vh</dt>
+          <dd>relative to 1% of the height of the viewport* </dd>
+          <dt>vmin</dt>
+          <dd>relative to 1% of viewport's* smaller dimension </dd>
+          <dt>vmax</dt>
+          <dd>relative to 1% of viewport's* larger dimension </dd>
+          <dt>%</dt>
+          <dd>Relative to the parent element</dd>
+        </dl>
+      </section>
+
     </details>
   </article>
+
   <article id="javascript">
     <details open>
       <summary>
@@ -979,6 +1105,7 @@
       </summary>
     </details>
   </article>
+
   <article id="typescript">
     <details open>
       <summary>
@@ -1049,6 +1176,7 @@
       </dl>
     </details>
   </article>
+
   <article id="react">
     <details open>
       <summary>
@@ -1159,6 +1287,32 @@
         </dl>
       </section>
     </details>
+
+  </article>
+
+  <article id="nodejs">
+    <details open>
+      <summary>
+        <h3>Node.js</h3>
+      </summary>
+    </details>
+
+    <div class="summary">
+      <p class="summary-subtitle"></p>
+      <div class="summary-section">
+      </div>
+    </div>
+
+    <section>
+      <h4></h4>
+      <div class="summary summary-section">
+        <p></p>
+      </div>
+      <dl>
+        <dt></dt>
+        <dd></dd>
+      </dl>
+    </section>
 
   </article>
 </body>
