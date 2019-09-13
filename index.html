@@ -91,6 +91,21 @@
       border-bottom: 1px solid lightgrey;
     }
 
+    table {
+      width: 100%;
+      padding: 5px;
+      border-spacing: 5px;
+      border-collapse: separate;
+    }
+
+    td {
+      padding: 10px;
+    }
+
+    .border {
+      border: 1px solid lightgray;
+    }
+
     @media print {
       @page {
         size: A5 portrait;
@@ -185,6 +200,7 @@
     <a href="#sdlc">SDLC</a>
     <a href="#principles">Principles</a>
     <a href="#patterns">Patterns</a>
+    <a href="#database">DataBase</a>
     <a href="#html">HTML</a>
     <a href="#css">CSS</a>
     <a href="#javascript">JavaScript</a>
@@ -194,7 +210,7 @@
   </nav>
 
   <article id="data-structures">
-    <details open>
+    <details>
       <summary>
         <h3>Data structures</h3>
       </summary>
@@ -213,7 +229,7 @@
   </article>
 
   <article id="algirithms">
-    <details open>
+    <details>
       <summary>
         <h3>Algorithms</h3>
       </summary>
@@ -258,7 +274,7 @@
   </article>
 
   <article id="sdlc">
-    <details open>
+    <details>
       <summary>
         <h3>Software development life cicle (SDLC)</h3>
       </summary>
@@ -266,7 +282,7 @@
   </article>
 
   <article id="principles">
-    <details open>
+    <details>
       <summary>
         <h3>Principles</h3>
       </summary>
@@ -324,7 +340,7 @@
   </article>
 
   <article id="patterns">
-    <details open>
+    <details>
       <summary>
         <h3>Patterns</h3>
       </summary>
@@ -404,8 +420,71 @@
     </details>
   </article>
 
+  <article id="database">
+    <details>
+      <summary>
+        <h3>Database</h3>
+      </summary>
+
+      <div class="summary">
+        <p class="summary-subtitle"></p>
+        <div class="summary-section">
+        </div>
+      </div>
+
+      <section>
+        <h4>ACID</h4>
+        <div class="summary summary-section">
+          <p></p>
+        </div>
+        <dl>
+          <dt></dt>
+          <dd></dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Isolation</h4>
+        <table class="border">
+          <thead>
+            <tr>
+              <th style="width: 50%;">Isolation levels</th>
+              <th style="width: 50%;">Phenomena</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border">read uncommitted</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="border">dirty read</td>
+            </tr>
+            <tr>
+              <td class="border">read committed</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="border">non repeatable read</td>
+            </tr>
+            <tr>
+              <td class="border">repeatable read</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="border">phantom read</td>
+            </tr>
+            <tr>
+              <td class="border">serializable</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </details>
+  </article>
+
   <article id="html">
-    <details open>
+    <details>
       <summary>
         <h3>HTML</h3>
       </summary>
@@ -748,8 +827,6 @@
           <dd>Defines an inline frame</dd>
         </dl>
       </section>
-
-
       <section>
         <h4>Images</h4>
         <div class="summary summary-section">
@@ -781,7 +858,6 @@
           <dd>Defines a container for SVG graphics</dd>
         </dl>
       </section>
-
       <section>
         <h4>Audio / Video</h4>
         <div class="summary summary-section">
@@ -802,7 +878,6 @@
           <dd>Defines a video or movie</dd>
         </dl>
       </section>
-
       <section>
         <h4>Links</h4>
         <div class="summary summary-section">
@@ -820,7 +895,6 @@
           <dd>Defines navigation links</dd>
         </dl>
       </section>
-
       <section>
         <h4>Lists</h4>
         <div class="summary summary-section">
@@ -846,7 +920,6 @@
           <dd>Defines a description of a term/name in a description list</dd>
         </dl>
       </section>
-
       <section>
         <h4>Tables</h4>
         <div class="summary summary-section">
@@ -883,10 +956,19 @@
           <dt>colgroup</dt>
           <dd>Specifies a group of one or more columns in a table for formatting</dd>
         </dl>
+        <h5>Tips:</h5>
+        <ul>
+          <li>Use the CSS border property to define a border</li>
+          <li>Use the CSS border-collapse property to collapse cell borders</li>
+          <li>Use the CSS padding property to add padding to cells</li>
+          <li>Use the CSS border-spacing property to set the spacing between cells</li>
+          <li>Use the colspan attribute to make a cell span many columns</li>
+          <li>Use the rowspan attribute to make a cell span many rows</li>
+          <li>Use the id attribute to uniquely define one table</li>
+        </ul>
       </section>
-
       <section>
-        <h4></h4>Styles and Semantics</h4>
+        <h4>Styles and Semantics</h4>
         <div class="summary summary-section">
           <p>style</p>
           <p>div</p>
@@ -931,7 +1013,6 @@
           <dd>Links the given content with a machine-readable translation</dd>
         </dl>
       </section>
-
       <section>
         <h4>Meta Info</h4>
         <div class="summary summary-section">
@@ -948,7 +1029,6 @@
           <dd>Specifies the base URL/target for all relative URLs in a document</dd>
         </dl>
       </section>
-
       <section>
         <h4>Programming</h4>
         <div class="summary summary-section">
@@ -971,12 +1051,11 @@
           <dd>Defines a parameter for an object</dd>
         </dl>
       </section>
-
     </details>
   </article>
 
   <article id="css">
-    <details open>
+    <details>
       <summary>
         <h3>CSS</h3>
       </summary>
@@ -1099,7 +1178,7 @@
   </article>
 
   <article id="javascript">
-    <details open>
+    <details>
       <summary>
         <h3>JavaScript</h3>
       </summary>
@@ -1107,7 +1186,7 @@
   </article>
 
   <article id="typescript">
-    <details open>
+    <details>
       <summary>
         <h3>TypeScript</h3>
       </summary>
@@ -1178,7 +1257,7 @@
   </article>
 
   <article id="react">
-    <details open>
+    <details>
       <summary>
         <h3>React</h3>
       </summary>
@@ -1291,29 +1370,29 @@
   </article>
 
   <article id="nodejs">
-    <details open>
+    <details>
       <summary>
         <h3>Node.js</h3>
       </summary>
+
+      <div class="summary">
+        <p class="summary-subtitle"></p>
+        <div class="summary-section">
+        </div>
+      </div>
+
+      <section>
+        <h4></h4>
+        <div class="summary summary-section">
+          <p></p>
+        </div>
+        <dl>
+          <dt></dt>
+          <dd></dd>
+        </dl>
+      </section>
+
     </details>
-
-    <div class="summary">
-      <p class="summary-subtitle"></p>
-      <div class="summary-section">
-      </div>
-    </div>
-
-    <section>
-      <h4></h4>
-      <div class="summary summary-section">
-        <p></p>
-      </div>
-      <dl>
-        <dt></dt>
-        <dd></dd>
-      </dl>
-    </section>
-
   </article>
 </body>
 
@@ -1322,11 +1401,10 @@
 <!-- Article Template
 
   <article id="">
-    <details open>
+    <details>
       <summary>
         <h3></h3>
       </summary>
-    </details>
 
     <div class="summary">
       <p class="summary-subtitle"></p>
@@ -1344,7 +1422,7 @@
         <dd></dd>
       </dl>
     </section>
-
+    </details>
   </article>
 
 -->
