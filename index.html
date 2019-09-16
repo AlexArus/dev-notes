@@ -106,12 +106,36 @@
       border: 1px solid lightgray;
     }
 
+    .strong {
+      font-weight: bold;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .small-font {
+      font-size: 10px;
+    }
+
+    .border-bottom {
+      border-bottom: 1px solid lightgray;
+    }
+
+    .border-top {
+      border-top: 1px solid lightgray;
+    }
+
     @media print {
       @page {
         size: A5 portrait;
       }
 
-      nav,
+      nav {
+        margin-top: 0;
+        padding-top: 0;
+      }
+
       article {
         max-width: 600px;
       }
@@ -215,16 +239,33 @@
         <h3>Data structures</h3>
       </summary>
       <section>
-        <h4>List</h4>
+        <h4>Array&List</h4>
         <ul>
+          <li>Array</li>
           <li>Linked list</li>
           <li>Double linked list</li>
           <li>Stack</li>
-          <li>Queuee</li>
+          <li>Queque</li>
         </ul>
       </section>
-      <h4>Graph</h4>
-      <h4>Tree</h4>
+      <section>
+        <h4>Graph&Tree</h4>
+        <ul>
+          <li>Graph</li>
+          <li>Tree</li>
+        </ul>
+      </section>
+      <section>
+        <h4>Set&Map</h4>
+        <ul>
+          <li>Set</li>
+          <li>Map</li>
+          <li>Hash Map</li>
+        </ul>
+      </section>
+      <section>
+        <h4>Matrix</h4>
+      </section>
     </details>
   </article>
 
@@ -236,12 +277,12 @@
       <section>
         <h4>Search algorithms</h4>
         <ul>
-          <li>Linier (seqenciel) search</li>
-          <li>Binary search</li>
+          <li>Linear / Sequential search</li>
+          <li>Binary / Half-interval / Logarithmic / Binary chop search</li>
           <li>Jump search</li>
           <li>Interpolation search</li>
-          <li>Exponential search</li>
-          <li>Fibonaci search</li>
+          <li>Exponential /Doubling / Galloping / Struzik search</li>
+          <li>Fibonacci search</li>
         </ul>
       </section>
       <section>
@@ -254,19 +295,27 @@
           </ul>
         </section>
         <section>
-          <p>Bubble sort and variation</p>
+          <p>Bubble sort and variants</p>
           <ul>
             <li>Bubble sort (n<sup>2</sup>)</li>
-            <li>Comb sort</li>
-            <li>Shell sort (n<sup>2</sup>)</li>
+            <li>Shell sort</li>
+            <li>Comb sort (n<sup>2</sup>)</li>
           </ul>
         </section>
         <section>
-          <p>Effeciant sort (n log n)</p>
+          <p>Efficiant sort (n log n)</p>
           <ul>
             <li>Merge sort</li>
             <li>Heap sort</li>
             <li>Quick sort</li>
+          </ul>
+        </section>
+        <section>
+          <p>Distribution sort</p>
+          <ul>
+            <li>Counting sort (n+r)</li>
+            <li>Bucket sort (n+k)</li>
+            <li>Radix sort</li>
           </ul>
         </section>
       </section>
@@ -278,6 +327,9 @@
       <summary>
         <h3>Software development life cicle (SDLC)</h3>
       </summary>
+
+      <strong>Planning -> Analysis -> Design -> Development -> Intergration / Testing -> Implementation ->
+        Maintenance</strong>
 
       <section>
         <h4>Waterfall</h4>
@@ -1059,7 +1111,6 @@
           <li>Use the CSS border-spacing property to set the spacing between cells</li>
           <li>Use the colspan attribute to make a cell span many columns</li>
           <li>Use the rowspan attribute to make a cell span many rows</li>
-          <li>Use the id attribute to uniquely define one table</li>
         </ul>
       </section>
       <section>
@@ -1396,10 +1447,88 @@
       <section>
         <h4>Class component lifecycle</h4>
         <div class="summary summary-section">
-          <p></p>
+          <p>constructor</p>
+          <p>render</p>
+          <p>getDerivedStateFromProps</p>
+          <p>getDerivedStateFromError</p>
+          <p>shoulComponentUpdate</p>
+          <p>getSnapshotBeforeUpdate</p>
+          <p>componentDidMount</p>
+          <p>componentDidUpdate</p>
+          <p>componentDidCatch</p>
+          <p>componentWillUnmount</p>
         </div>
+
+        <table class="border text-center small-font">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Mounting</th>
+              <th>Updating</th>
+              <th>Error boundaries</th>
+              <th>Unmounting</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="4" class="strong border-top border-bottom">Render phase</td>
+              <td class="border">constructor(props)</td>
+            </tr>
+            <tr>
+              <td colspan="2" class="border">static getDerivedStateFromProps(props, state)</td>
+              <td class="border">static getDerivedStateFromError(error)</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="border">shoulComponentUpdate(nextProps, nextState)</td>
+            </tr>
+            <tr>
+              <td colspan="2" class="border">render()</td>
+            </tr>
+            <tr>
+              <td class="strong border-top border-bottom">Pre-commit phase</td>
+              <td></td>
+              <td class="border" class="border">getSnapshotBeforeUpdate(prevProps, prevState)</td>
+            </tr>
+            <tr>
+              <td rowspan="2" class="strong border-top border-bottom">Commit phase</td>
+              <td colspan="2">React updates DOM and refs</td>
+            </tr>
+            <tr>
+              <td class="border">componentDidMount()</td>
+              <td class="border">componentDidUpdate(prevProps, prevState, snapshot)</td>
+              <td class="border">componentDidCatch(error, info)</td>
+              <td class="border">componentWillUnmount()</td>
+            </tr>
+          </tbody>
+        </table>
+
         <dl>
-          <dt></dt>
+          <dt>Render phase</dt>
+          <dd>Pure and has no side effects. May be paused, aborted or restarted by React.</dd>
+          <dt>Pre-commit phase</dt>
+          <dd>Can read the DOM.</dd>
+          <dt>Commit phase</dt>
+          <dd>Can work with DOM, run side effects, schedule updates.</dd>
+          <dt>constructor</dt>
+          <dd></dd>
+          <dt>render</dt>
+          <dd></dd>
+          <dt>getDerivedStateFromProps</dt>
+          <dd></dd>
+          <dt>getDerivedStateFromError</dt>
+          <dd></dd>
+          <dt>shoulComponentUpdate</dt>
+          <dd></dd>
+          <dt>getSnapshotBeforeUpdate</dt>
+          <dd></dd>
+          <dt>componentDidMount</dt>
+          <dd></dd>
+          <dt>componentDidUpdate</dt>
+          <dd></dd>
+          <dt>componentDidCatch</dt>
+          <dd></dd>
+          <dt>componentWillUnmount</dt>
           <dd></dd>
         </dl>
       </section>
@@ -1499,6 +1628,35 @@
     </details>
   </article>
 </body>
+
+<script lang="javascript">
+  var beforePrint = function () {
+    const detailsElements = document.getElementsByTagName("details")
+    for (const elem of detailsElements)
+      elem.setAttribute('open', '')
+  };
+  var afterPrint = function () {
+    const detailsElements = document.getElementsByTagName("details")
+    for (const elem of detailsElements)
+      elem.removeAttribute('open')
+  };
+
+  // Webkit
+  if (window.matchMedia) {
+    var mediaQueryList = window.matchMedia('print');
+    mediaQueryList.addListener(function (mql) {
+      if (mql.matches) {
+        beforePrint();
+      } else {
+        afterPrint();
+      }
+    });
+  }
+
+  // IE, Firefox
+  window.onbeforeprint = beforePrint;
+  window.onafterprint = afterPrint;
+</script>
 
 </html>
 
