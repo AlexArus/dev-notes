@@ -1435,6 +1435,7 @@
           <p>ConstructorParameters</p>
           <p>ReturnType</p>
           <p>InstanceType</p>
+          <p>ThisType</p>
         </div>
       </section>
       <dl>
@@ -1481,6 +1482,9 @@
           ? R : any;</dt>
         <dd>Obtain the return type of a constructor function type</dd>
 
+        <dt>ThisType&lt;T&gt;</dt>
+        <dd>This utility does not return a transformed type. Instead, it serves as a marker for a contextual this type.
+          Note that the --noImplicitThis flag must be enabled to use this utility.</dd>
       </dl>
     </details>
   </article>
