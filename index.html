@@ -1609,19 +1609,1343 @@
       </summary>
 
       <div class="summary">
-        <p class="summary-subtitle"></p>
+        <p class="summary-subtitle">Built-in Modules</p>
         <div class="summary-section">
+          <p>assert</p>
+          <p>buffer</p>
+          <p>child_process</p>
+          <p>cluster</p>
+          <p>crypto</p>
+          <p>dgram</p>
+          <p>dns</p>
+          <p>events</p>
+          <p>fs</p>
+          <p>http</p>
+          <p>https</p>
+          <p>net</p>
+          <p>os</p>
+          <p>path</p>
+          <p>querystring</p>
+          <p>readline</p>
+          <p>stream</p>
+          <p>string_decoder</p>
+          <p>timers</p>
+          <p>tls</p>
+          <p>tty</p>
+          <p>url</p>
+          <p>util</p>
+          <p>v8</p>
+          <p>vm</p>
+          <p>zlib</p>
         </div>
       </div>
 
       <section>
-        <h4></h4>
+        <h4>Built-in Modules</h4>
         <div class="summary summary-section">
+          <p>assert</p>
+          <p>buffer</p>
+          <p>child_process</p>
+          <p>cluster</p>
+          <p>crypto</p>
+          <p>dgram</p>
+          <p>dns</p>
+          <p>events</p>
+          <p>fs</p>
+          <p>http</p>
+          <p>https</p>
+          <p>net</p>
+          <p>os</p>
+          <p>path</p>
+          <p>querystring</p>
+          <p>readline</p>
+          <p>stream</p>
+          <p>string_decoder</p>
+          <p>timers</p>
+          <p>tls</p>
+          <p>tty</p>
+          <p>url</p>
+          <p>util</p>
+          <p>v8</p>
+          <p>vm</p>
+          <p>zlib</p>
+        </div>
+        <dl>
+          <dt>assert</dt>
+          <dd>Provides a set of assertion tests</dd>
+          <dt>buffer</dt>
+          <dd>To handle binary data</dd>
+          <dt>child_process</dt>
+          <dd>To run a child process</dd>
+          <dt>cluster</dt>
+          <dd>To split a single Node process into multiple processes</dd>
+          <dt>crypto</dt>
+          <dd>To handle OpenSSL cryptographic functions</dd>
+          <dt>dgram</dt>
+          <dd>Provides implementation of UDP datagram sockets</dd>
+          <dt>dns</dt>
+          <dd>To do DNS lookups and name resolution functions</dd>
+          <dt>events</dt>
+          <dd>To handle events</dd>
+          <dt>fs</dt>
+          <dd>To handle the file system</dd>
+          <dt>http</dt>
+          <dd>To make Node.js act as an HTTP server</dd>
+          <dt>https</dt>
+          <dd>To make Node.js act as an HTTPS server.</dd>
+          <dt>net</dt>
+          <dd>To create servers and clients</dd>
+          <dt>os</dt>
+          <dd>Provides information about the operation system</dd>
+          <dt>path</dt>
+          <dd>To handle file paths</dd>
+          <dt>querystring</dt>
+          <dd>To handle URL query strings</dd>
+          <dt>readline</dt>
+          <dd>To handle readable streams one line at the time</dd>
+          <dt>stream</dt>
+          <dd>To handle streaming data</dd>
+          <dt>string_decoder</dt>
+          <dd>To decode buffer objects into strings</dd>
+          <dt>timers</dt>
+          <dd>To execute a function after a given number of milliseconds</dd>
+          <dt>tls</dt>
+          <dd>To implement TLS and SSL protocols</dd>
+          <dt>tty</dt>
+          <dd>Provides classes used by a text terminal</dd>
+          <dt>url</dt>
+          <dd>To parse URL strings</dd>
+          <dt>util</dt>
+          <dd>To access utility functions</dd>
+          <dt>v8</dt>
+          <dd>To access information about V8 (the JavaScript engine)</dd>
+          <dt>vm</dt>
+          <dd>To compile JavaScript code in a virtual machine</dd>
+          <dt>zlib</dt>
+          <dd>To compress or decompress files</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Assert Module</h4>
+        <div class="summary summary-section">
+          <p>assert()</p>
+          <p>deepEqual()</p>
+          <p>deepStrictEqual()</p>
+          <p>equal()</p>
+          <p>fail()</p>
+          <p>ifError()</p>
+          <p>notDeepEqual()</p>
+          <p>notDeepStrictEqual()</p>
+          <p>notEqual()</p>
+          <p>notStrictEqual()</p>
+          <p>ok()</p>
+          <p>strictEqual()</p>
           <p></p>
         </div>
         <dl>
+          <dt>assert()</dt>
+          <dd>Checks if a value is true. Same as assert.ok()</dd>
+          <dt>deepEqual()</dt>
+          <dd>Checks if two values are equal</dd>
+          <dt>deepStrictEqual()</dt>
+          <dd>Checks if two values are equal, using the strict equal operator (===)</dd>
+          <dt>equal()</dt>
+          <dd>Checks if two values are equal, using the equal operator (==)</dd>
+          <dt>fail()</dt>
+          <dd>Throws an Assertion Error</dd>
+          <dt>ifError()</dt>
+          <dd>Throws a specified error if the specified error evaluates to true</dd>
+          <dt>notDeepEqual()</dt>
+          <dd>Checks if two values are not equal</dd>
+          <dt>notDeepStrictEqual()</dt>
+          <dd>Checks if two values are not equal, using the strict not equal operator (!==)</dd>
+          <dt>notEqual()</dt>
+          <dd>Checks if two values are not equal, using the not equal operator (!=)</dd>
+          <dt>notStrictEqual()</dt>
+          <dd>Checks if two values are not equal, using the strict not equal operator (!==)</dd>
+          <dt>ok()</dt>
+          <dd>Checks if a value is true</dd>
+          <dt>strictEqual()</dt>
+          <dd>Checks if two values are equal, using the strict equal operator (===)</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Buffer Module</h4>
+        <div class="summary summary-section">
+          <p>alloc()</p>
+          <p>allocUnsafe()</p>
+          <p>allocUnsafeSlow </p>
+          <p>byteLength()</p>
+          <p>compare()</p>
+          <p>concat()</p>
+          <p>copy()</p>
+          <p>entries()</p>
+          <p>equals()</p>
+          <p>fill()</p>
+          <p>from()</p>
+          <p>includes()</p>
+          <p>indexOf()</p>
+          <p>isBuffer()</p>
+          <p>isEncoding()</p>
+          <p>keys()</p>
+          <p>lastIndexOf()</p>
+          <p>length </p>
+          <p>poolSize </p>
+          <p>readDoubleBE()</p>
+          <p>readDoubleLE()</p>
+          <p>readFloatBE()</p>
+          <p>readFloatLE()</p>
+          <p>readInt8()</p>
+          <p>readInt16BE()</p>
+          <p>readInt16LE()</p>
+          <p>readInt32BE()</p>
+          <p>readInt32LE()</p>
+          <p>readIntBE()</p>
+          <p>readIntLE()</p>
+          <p>readUInt8()</p>
+          <p>readUInt16BE()</p>
+          <p>readUInt16LE()</p>
+          <p>readUInt32BE()</p>
+          <p>readUInt32LE()</p>
+          <p>readUintBE()</p>
+          <p>readUIntLE()</p>
+          <p>slice()</p>
+          <p>swap16()</p>
+          <p>swap32()</p>
+          <p>swap64()</p>
+          <p>toString()</p>
+          <p>toJSON()</p>
+          <p>values()</p>
+          <p>write()</p>
+          <p>writeDoubleBE()</p>
+          <p>writeDoubleLE()</p>
+          <p>writeFloatBE()</p>
+          <p>writeFloatLE()</p>
+          <p>writeInt8()</p>
+          <p>writeInt16BE()</p>
+          <p>writeInt16LE()</p>
+          <p>writeInt32BE()</p>
+          <p>writeInt32LE()</p>
+          <p>writeIntBE()</p>
+          <p>writeIntLE()</p>
+          <p>writeUInt8()</p>
+          <p>writeUInt16BE()</p>
+          <p>writeUInt16LE()</p>
+          <p>writeUInt32BE()</p>
+          <p>writeUInt32LE()</p>
+          <p>writeUIntBE()</p>
+          <p>writeUIntLE()</p>
+        </div>
+        <dl>
+          <dt>alloc()</dt>
+          <dd>Creates a Buffer object of the specified length</dd>
+          <dt>allocUnsafe()</dt>
+          <dd>Creates a non-zero-filled Buffer of the specified length</dd>
+          <dt>allocUnsafeSlow </dt>Cr<dd>eates a non-zero-filled and non-pooled Buffer of the specified length</dd>
+          <dt>byteLength()</dt>
+          <dd>Returns the numbers of bytes in a specified object</dd>
+          <dt>compare()</dt>
+          <dd>Compares two Buffer objects</dd>
+          <dt>concat()</dt>
+          <dd>Concatenates an array of Buffer objects into one Buffer object</dd>
+          <dt>copy()</dt>
+          <dd>Copies the specified number of bytes of a Buffer object</dd>
+          <dt>entries()</dt>
+          <dd>Returns an iterator of "index" "byte" pairs of a Buffer object</dd>
+          <dt>equals()</dt>
+          <dd>Compares two Buffer objects, and returns true if it is a match, otherwise false</dd>
+          <dt>fill()</dt>
+          <dd>Fills a Buffer object with the specified values</dd>
+          <dt>from()</dt>
+          <dd>Creates a Buffer object from an object (string/array/buffer)</dd>
+          <dt>includes()</dt>
+          <dd>Checks if the Buffer object contains the specified value. Returns true if there is a match, otherwise
+            false</dd>
+          <dt>indexOf()</dt>
+          <dd>Checks if the Buffer object contains the specified value. Returns the first occurrence, otherwise -1</dd>
+          <dt>isBuffer()</dt>
+          <dd>Checks if an object is a Buffer object</dd>
+          <dt>isEncoding()</dt>
+          <dd>Checks if the Buffer object supports the specified encoding</dd>
+          <dt>keys()</dt>
+          <dd>Returns an array of keys in a Buffer object</dd>
+          <dt>lastIndexOf()</dt>
+          <dd>Checks if the Buffer object contains the specified value. Returns the first occurrence, starting from the
+            end, otherwise -1</dd>
+          <dt>length </dt>Re<dd>turns the length of a Buffer object, in bytes</dd>
+          <dt>poolSize </dt>Se<dd>ts or returns the number of bytes used for pooling</dd>
+          <dt>readDoubleBE()</dt>
+          <dd>Reads a 64 bit double from a Buffer object, returns the result in big endian</dd>
+          <dt>readDoubleLE()</dt>
+          <dd>Reads a 64 bit double from a Buffer object, returns the result in little endian</dd>
+          <dt>readFloatBE()</dt>
+          <dd>Reads a 32 bit float from a Buffer object, returns the result in big endian</dd>
+          <dt>readFloatLE()</dt>
+          <dd>Reads a 32 bit float from a Buffer object, returns the result in little endian</dd>
+          <dt>readInt8()</dt>
+          <dd>Reads a 8 bit integer from a Buffer object</dd>
+          <dt>readInt16BE()</dt>
+          <dd>Reads a 16 bit integer from a Buffer object, returns the result in big endian</dd>
+          <dt>readInt16LE()</dt>
+          <dd>Reads a 16 bit integer from a Buffer object, returns the result in little endian</dd>
+          <dt>readInt32BE()</dt>
+          <dd>Reads a 32 bit integer from a Buffer object, returns the result in big endian</dd>
+          <dt>readInt32LE()</dt>
+          <dd>Reads a 32 bit integer from a Buffer object, returns the result in little endian</dd>
+          <dt>readIntBE()</dt>
+          <dd>Reads the specified number of bytes from a Buffer object, returns the result in big endian</dd>
+          <dt>readIntLE()</dt>
+          <dd>Reads the specified number of bytes from a Buffer object, returns the result in little endian</dd>
+          <dt>readUInt8()</dt>
+          <dd>Reads an unsigned 8 bit integer from a Buffer object</dd>
+          <dt>readUInt16BE()</dt>
+          <dd>Reads an unsigned 16 bit integer from a Buffer object, returns the result in big endian</dd>
+          <dt>readUInt16LE()</dt>
+          <dd>Reads an unsigned 16 bit integer from a Buffer object, returns the result in little endian</dd>
+          <dt>readUInt32BE()</dt>
+          <dd>Reads an unsigned 32 bit integer from a Buffer object, returns the result in big endian</dd>
+          <dt>readUInt32LE()</dt>
+          <dd>Reads an unsigned 32 bit integer from a Buffer object, returns the result in little endian</dd>
+          <dt>readUintBE()</dt>
+          <dd>Reads the specified number of bytes from a Buffer object, returns the result as an unsigned integer</dd>
+          <dt>readUIntLE()</dt>
+          <dd>Reads the specified number of bytes from a Buffer object, returns the result as an unsigned integer</dd>
+          <dt>slice()</dt>
+          <dd>Slices a Buffer object into a new Buffer objects starting and ending at the specified positions</dd>
+          <dt>swap16()</dt>
+          <dd>Swaps the byte-order of a 16 bit Buffer object</dd>
+          <dt>swap32()</dt>
+          <dd>Swaps the byte-order of a 32 bit Buffer object</dd>
+          <dt>swap64()</dt>
+          <dd>Swaps the byte-order of a 64 bit Buffer object</dd>
+          <dt>toString()</dt>
+          <dd>Returns a string version of a Buffer object</dd>
+          <dt>toJSON()</dt>
+          <dd>Returns a JSON version of a Buffer object</dd>
+          <dt>values()</dt>
+          <dd>Returns an array of values in a Buffer object</dd>
+          <dt>write()</dt>
+          <dd>Writes a specified string to a Buffer object</dd>
+          <dt>writeDoubleBE()</dt>
+          <dd>Writes the specified bytes, using big endian, to a Buffer object. The bytes should be 64 bit double.</dd>
+          <dt>writeDoubleLE()</dt>
+          <dd>Writes the specified bytes, using little endian, to a Buffer object. The bytes should be 64 bit double.
+          </dd>
+          <dt>writeFloatBE()</dt>
+          <dd>Writes the specified bytes, using big endian, to a Buffer object. The bytes should be 32 bit float.</dd>
+          <dt>writeFloatLE()</dt>
+          <dd>Writes the specified bytes, using little endian, to a Buffer object. The bytes should be 32 bit float.
+          </dd>
+          <dt>writeInt8()</dt>
+          <dd>Writes the specified bytes to a Buffer object. The bytes should be 8 bit integer</dd>
+          <dt>writeInt16BE()</dt>
+          <dd>Writes the specified bytes, using big endian, to a Buffer object. The bytes should be 16 bit integer.</dd>
+          <dt>writeInt16LE()</dt>
+          <dd>Writes the specified bytes, using little endian, to a Buffer object. The bytes should be 16 bit integer.
+          </dd>
+          <dt>writeInt32BE()</dt>
+          <dd>Writes the specified bytes, using big endian, to a Buffer object. The bytes should be 32 bit integer.</dd>
+          <dt>writeInt32LE()</dt>
+          <dd>Writes the specified bytes, using little endian, to a Buffer object. The bytes should be 32 bit integer.
+          </dd>
+          <dt>writeIntBE()</dt>
+          <dd>Writes the specified bytes, using big endian, to a Buffer object.</dd>
+          <dt>writeIntLE()</dt>
+          <dd>Writes the specified bytes, using little endian, to a Buffer object.</dd>
+          <dt>writeUInt8()</dt>
+          <dd>Writes the specified bytes to a Buffer object. The bytes should be 8 bit unsigned integer</dd>
+          <dt>writeUInt16BE()</dt>
+          <dd>Writes the specified bytes, using big endian, to a Buffer object. The bytes should be 16 bit unsigned
+            integer.</dd>
+          <dt>writeUInt16LE()</dt>
+          <dd>Writes the specified bytes, using little endian, to a Buffer object. The bytes should be 16 bit unsigned
+            integer.</dd>
+          <dt>writeUInt32BE()</dt>
+          <dd>Writes the specified bytes, using big endian, to a Buffer object. The bytes should be 32 bit unsigned
+            integer.</dd>
+          <dt>writeUInt32LE()</dt>
+          <dd>Writes the specified bytes, using little endian, to a Buffer object. The bytes should be 32 bit unsigned
+            integer.</dd>
+          <dt>writeUIntBE()</dt>
+          <dd>Writes the specified bytes, using big endian, to a Buffer object</dd>
+          <dt>writeUIntLE()</dt>
+          <dd>Writes the specified bytes, using little endian, to a Buffer object</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Cluster Module</h4>
+        <div class="summary summary-section">
+          <p>disconnect()</p>
+          <p>exitedAfterDisconnect</p>
+          <p>fork()</p>
+          <p>id</p>
+          <p>isConnected</p>
+          <p>isDead</p>
+          <p>isMaster</p>
+          <p>isWorker</p>
+          <p>kill()</p>
+          <p>process</p>
+          <p>schedulingPolicy</p>
+          <p>send()</p>
+          <p>settings</p>
+          <p>setupMaster()</p>
+          <p>worker</p>
+          <p>workers</p>
+          <p></p>
+        </div>
+        <dl>
+          <dt>disconnect()</dt>
+          <dd>Disconnects all workers</dd>
+          <dt>exitedAfterDisconnect</dt>
+          <dd>Returns true if a worker was exited after disconnect, or the kill method</dd>
+          <dt>fork()</dt>
+          <dd>Creates a new worker, from a master</dd>
+          <dt>id</dt>
+          <dd>A unique id for a worker</dd>
+          <dt>isConnected</dt>
+          <dd>Returns true if the worker is connected to its master, otherwise false</dd>
+          <dt>isDead</dt>
+          <dd>Returns true if the worker's process is dead, otherwise false</dd>
+          <dt>isMaster</dt>
+          <dd>Returns true if the current process is master, otherwise false</dd>
+          <dt>isWorker</dt>
+          <dd>Returns true if the current process is worker, otherwise false</dd>
+          <dt>kill()</dt>
+          <dd>Kills the current worker</dd>
+          <dt>process</dt>
+          <dd>Returns the global Child Process</dd>
+          <dt>schedulingPolicy</dt>
+          <dd>Sets or gets the schedulingPolicy</dd>
+          <dt>send()</dt>
+          <dd>sends a message to a master or a worker</dd>
+          <dt>settings</dt>
+          <dd>Returns an object containing the cluster's settings</dd>
+          <dt>setupMaster()</dt>
+          <dd>Changes the settings of a cluster</dd>
+          <dt>worker</dt>
+          <dd>Returns the current worker object</dd>
+          <dt>workers</dt>
+          <dd>Returns all workers of a master</dd>
           <dt></dt>
           <dd></dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Crypto Module</h4>
+        <div class="summary summary-section">
+          <p>constants</p>
+          <p>fips</p>
+          <p>createCipher()</p>
+          <p>createCipheriv()</p>
+          <p>createDecipher()</p>
+          <p>createDecipheriv()</p>
+          <p>createDiffieHellman()</p>
+          <p>createECDH()</p>
+          <p>createHash()</p>
+          <p>createHmac()</p>
+          <p>createSign()</p>
+          <p>createVerify()</p>
+          <p>getCiphers</p>
+          <p>getCurves()</p>
+          <p>getDiffieHellman()</p>
+          <p>getHashes()</p>
+          <p>pbkdf2()</p>
+          <p>pbkdf2Sync()</p>
+          <p>privateDecrypt()</p>
+          <p>timingSafeEqual()</p>
+          <p>privateEncrypt()</p>
+          <p>publicDecrypt()</p>
+          <p>publicEncrypt()</p>
+          <p>randomBytes()</p>
+          <p>setEngine()</p>
+          <p></p>
+        </div>
+        <dl>
+          <dt>constants</dt>
+          <dd>Returns an object containing Crypto Constants</dd>
+          <dt>fips</dt>
+          <dd>Checks if a FIPS crypto provider is in use</dd>
+          <dt>createCipher()</dt>
+          <dd>Creates a Cipher object using the specific algorithm and password</dd>
+          <dt>createCipheriv()</dt>
+          <dd>Creates a Cipher object using the specific algorithm, password and initialization vector</dd>
+          <dt>createDecipher()</dt>
+          <dd>Creates a Decipher object using the specific algorithm and password</dd>
+          <dt>createDecipheriv()</dt>
+          <dd>Creates a Decipher object using the specific algorithm, password and initialization vector</dd>
+          <dt>createDiffieHellman()</dt>
+          <dd>Creates a DiffieHellman key exchange object</dd>
+          <dt>createECDH()</dt>
+          <dd>Creates an Elliptic Curve Diffie Hellmann key exchange object</dd>
+          <dt>createHash()</dt>
+          <dd>Creates a Hash object using the specified algorithm</dd>
+          <dt>createHmac()</dt>
+          <dd>Creates a Hmac object using the specified algorithm and key</dd>
+          <dt>createSign()</dt>
+          <dd>Creates a Sign object using the specified algorithm and key</dd>
+          <dt>createVerify()</dt>
+          <dd>Creates a Verify object using the specified algorithm</dd>
+          <dt>getCiphers</dt>
+          <dd>Returns an array of supported cipher algorithms</dd>
+          <dt>getCurves()</dt>
+          <dd>Returns an array of supported elliptic curves</dd>
+          <dt>getDiffieHellman()</dt>
+          <dd>Returns a predefined Diffie Hellman key exchange object</dd>
+          <dt>getHashes()</dt>
+          <dd>Returns an array of supported hash algorithms</dd>
+          <dt>pbkdf2()</dt>
+          <dd>Creates a Password Based Key Derivation Function 2 implementation</dd>
+          <dt>pbkdf2Sync()</dt>
+          <dd>Creates a synchronous Password Based Key Derivation Function 2 implementation</dd>
+          <dt>privateDecrypt()</dt>
+          <dd>Decrypts data using a private key</dd>
+          <dt>timingSafeEqual()</dt>
+          <dd>Compare two Buffers and returns true is they are equal, otherwise false</dd>
+          <dt>privateEncrypt()</dt>
+          <dd>Encrypts data using a private key</dd>
+          <dt>publicDecrypt()</dt>
+          <dd>Decrypts data using a public key</dd>
+          <dt>publicEncrypt()</dt>
+          <dd>Encrypts data using a public key</dd>
+          <dt>randomBytes()</dt>
+          <dd>Creates random data</dd>
+          <dt>setEngine()</dt>
+          <dd>Sets the engine for some or all OpenSSL function</dd>
+          <dt></dt>
+          <dd></dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Datagram Module (dgram)</h4>
+        <div class="summary summary-section">
+          <p>createSocket()</p>
+        </div>
+        <dl>
+          <dt>createSocket()</dt>
+          <dd>Creates a Socket object</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>DNS Module</h4>
+        <div class="summary summary-section">
+          <p>getServers()</p>
+          <p>lookup()</p>
+          <p>lookupService()</p>
+          <p>resolve()</p>
+          <p>resolve4()</p>
+          <p>resolve6()</p>
+          <p>resolveCname()</p>
+          <p>resolveMx()</p>
+          <p>resolveNaptr()</p>
+          <p>resolveNs()</p>
+          <p>resolveSoa()</p>
+          <p>resolveSrv()</p>
+          <p>resolvePtr()</p>
+          <p>resolveTxt()</p>
+          <p>reverse()</p>
+          <p>setServers()</p>
+        </div>
+        <dl>
+          <dt>getServers()</dt>
+          <dd>Returns an array containing all IP addresses belonging to the current server</dd>
+          <dt>lookup()</dt>
+          <dd>Looks up a hostname. A callback function contains information about the hostname, including it's IP
+            address</dd>
+          <dt>lookupService()</dt>
+          <dd>Looks up a address and port. A callback function contains information about the address, such as the
+            hostname</dd>
+          <dt>resolve()</dt>
+          <dd>Returns an array of record types belonging to the specified hostname</dd>
+          <dt>resolve4()</dt>
+          <dd>Looks up an IPv4 address. The callback function includes an array of IPv4 addresses</dd>
+          <dt>resolve6()</dt>
+          <dd>Looks up an IPv6 address. The callback function includes an array of IPv6 addresses</dd>
+          <dt>resolveCname()</dt>
+          <dd>Looks up CNAME records for the specified hostname. The callback function includes an array of available
+            domains for the hostname</dd>
+          <dt>resolveMx()</dt>
+          <dd>Looks up mail exchange records for the specified hostname.</dd>
+          <dt>resolveNaptr()</dt>
+          <dd>Looks up regular expression based records for the specified hostname.</dd>
+          <dt>resolveNs()</dt>
+          <dd>Looks up name server records for the specified hostname.</dd>
+          <dt>resolveSoa()</dt>
+          <dd>Looks up a start of authority record for the specified hostname.</dd>
+          <dt>resolveSrv()</dt>
+          <dd>Looks up service records for the specified hostname.</dd>
+          <dt>resolvePtr()</dt>
+          <dd>Looks up pointer records for the specified hostname.</dd>
+          <dt>resolveTxt()</dt>
+          <dd>Looks up text query records for the specified hostname.</dd>
+          <dt>reverse()</dt>
+          <dd>Reverses an IP address into an array of hostnames</dd>
+          <dt>setServers()</dt>
+          <dd>Sets the IP addresses of the servers</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Events Module</h4>
+        <div class="summary summary-section">
+          <p>addListener()</p>
+          <p>defaultMaxListeners</p>
+          <p>emit()</p>
+          <p>eventNames()</p>
+          <p>getMaxListeners()</p>
+          <p>listenerCount()</p>
+          <p>listeners()</p>
+          <p>on()</p>
+          <p>once()</p>
+          <p>prependListener()</p>
+          <p>prependOnceListener()</p>
+          <p>removeAllListeners()</p>
+          <p>removeListener()</p>
+          <p>setMaxListeners()</p>
+          <p></p>
+        </div>
+        <dl>
+          <dt>addListener()</dt>
+          <dd>Adds the specified listener</dd>
+          <dt>defaultMaxListeners</dt>
+          <dd>Sets the maximum number of listeners allowed for one event. Default is 10</dd>
+          <dt>emit()</dt>
+          <dd>Call all the listeners registered with the specified name</dd>
+          <dt>eventNames()</dt>
+          <dd>Returns an array containing all registered events</dd>
+          <dt>getMaxListeners()</dt>
+          <dd>Returns the maximum number of listeners allowed for one event</dd>
+          <dt>listenerCount()</dt>
+          <dd>Returns the number of listeners with the specified name</dd>
+          <dt>listeners()</dt>
+          <dd>Returns an array of listeners with the specified name</dd>
+          <dt>on()</dt>
+          <dd>Adds the specified listener</dd>
+          <dt>once()</dt>
+          <dd>Adds the specified listener once. When the specified listener has been executed, the listener is removed
+          </dd>
+          <dt>prependListener()</dt>
+          <dd>Adds the specified listener as the first event with the specified name</dd>
+          <dt>prependOnceListener()</dt>
+          <dd>Adds the specified listener as the first event with the specified name, once. When the specified listener
+            has been executed, the listener is removed</dd>
+          <dt>removeAllListeners()</dt>
+          <dd>Removes all listeners with the specified name, or ALL listeners if no name is specified</dd>
+          <dt>removeListener()</dt>
+          <dd>Removes the specified listener with the specified name</dd>
+          <dt>setMaxListeners()</dt>
+          <dd>Sets the maximum number of listeners allowed for one event. Default is 10</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>File System Module (fs)</h4>
+        <div class="summary summary-section">
+          <p>access()</p>
+          <p>accessSync()</p>
+          <p>appendFile()</p>
+          <p>appendFileSync()</p>
+          <p>chmod()</p>
+          <p>chmodSync()</p>
+          <p>chown()</p>
+          <p>chownSync()</p>
+          <p>close()</p>
+          <p>closeSync()</p>
+          <p>constants Returns</p>
+          <p>createReadStream()</p>
+          <p>createWriteStream()</p>
+          <p>exists()</p>
+          <p>existsSync()</p>
+          <p>fchmod()</p>
+          <p>fchmodSync()</p>
+          <p>fchown()</p>
+          <p>fchownSync()</p>
+          <p>fdatasync()</p>
+          <p>fdatasyncSync()</p>
+          <p>fstat()</p>
+          <p>fstatSync()</p>
+          <p>fsync()</p>
+          <p>fsyncSync()</p>
+          <p>ftruncated()</p>
+          <p>ftruncatedSync()</p>
+          <p>futimes()</p>
+          <p>futimesSync()</p>
+          <p>lchmod()</p>
+          <p>lchmodSync()</p>
+          <p>lchown()</p>
+          <p>lchownSync()</p>
+          <p>link()</p>
+          <p>linksync()</p>
+          <p>lstat()</p>
+          <p>lstatSync()</p>
+          <p>mkdir()</p>
+          <p>mkdirSync()</p>
+          <p>mkdtemp()</p>
+          <p>mkdtempSync()</p>
+          <p>open()</p>
+          <p>openSync()</p>
+          <p>read()</p>
+          <p>readdir()</p>
+          <p>readdirSync()</p>
+          <p>readFile()</p>
+          <p>readFileSync()</p>
+          <p>readlink()</p>
+          <p>readlinkSync()</p>
+          <p>realpath()</p>
+          <p>realpathSync()</p>
+          <p>rename()</p>
+          <p>renameSync()</p>
+          <p>rmdir()</p>
+          <p>rmdirSync()</p>
+          <p>stat()</p>
+          <p>statSync()</p>
+          <p>symlink()</p>
+          <p>symlinkSync()</p>
+          <p>truncate()</p>
+          <p>truncateSync()</p>
+          <p>unlink()</p>
+          <p>unlinkSync()</p>
+          <p>unwatchFile()</p>
+          <p>utimes()</p>
+          <p>utimesSync()</p>
+          <p>watch()</p>
+          <p>watchFile()</p>
+          <p>write()</p>
+          <p>write()</p>
+          <p>writeFile()</p>
+          <p>writeFileSync()</p>
+          <p>writeSync()</p>
+          <p>writeSync()</p>
+        </div>
+        <dl>
+          <dt>access()</dt>
+          <dd>Checks if a user has access to this file or directory</dd>
+          <dt>accessSync()</dt>
+          <dd>Same as access(), but synchronous instead of asynchronous</dd>
+          <dt>appendFile()</dt>
+          <dd>Appends data to a file</dd>
+          <dt>appendFileSync()</dt>
+          <dd>Same as appendFile(), but synchronous instead of asynchronous</dd>
+          <dt>chmod()</dt>
+          <dd>Changes the mode of a file</dd>
+          <dt>chmodSync()</dt>
+          <dd>Same as chmod(), but synchronous instead of asynchronous</dd>
+          <dt>chown()</dt>
+          <dd>Changes the owner of a file</dd>
+          <dt>chownSync()</dt>
+          <dd>Same as chown(), but synchronous instead of asynchronous</dd>
+          <dt>close()</dt>
+          <dd>Closes a file</dd>
+          <dt>closeSync()</dt>
+          <dd>Same as close(), but synchronous instead of asynchronous</dd>
+          <dt>constants Returns</dt> a<dd>n object containing constant values for the file system</dd>
+          <dt>createReadStream()</dt>
+          <dd>Returns a new stream object</dd>
+          <dt>createWriteStream()</dt>
+          <dd>Returns a new writeable stream object</dd>
+          <dt>exists()</dt>
+          <dd>Deprecated. Checks if a file or folder exists</dd>
+          <dt>existsSync()</dt>
+          <dd>Same as exists(), but synchronous instead of asynchronous. This method is NOT deprecated</dd>
+          <dt>fchmod()</dt>
+          <dd>Changes the mode of a file</dd>
+          <dt>fchmodSync()</dt>
+          <dd>Same as fchmod(), but synchronous instead of asynchronous</dd>
+          <dt>fchown()</dt>
+          <dd>Changes the owner of a file</dd>
+          <dt>fchownSync()</dt>
+          <dd>Same as fchown(), but synchronous instead of asynchronous</dd>
+          <dt>fdatasync()</dt>
+          <dd>Syncronizes a file with the one stored on the computer</dd>
+          <dt>fdatasyncSync()</dt>
+          <dd>Same as fdatasync(), but synchronous instead of asynchronous</dd>
+          <dt>fstat()</dt>
+          <dd>Returns the status of a file</dd>
+          <dt>fstatSync()</dt>
+          <dd>Same as fstat(), but synchronous instead of asynchronous</dd>
+          <dt>fsync()</dt>
+          <dd>Syncronizes a file with the one stored on the computer</dd>
+          <dt>fsyncSync()</dt>
+          <dd>Same as fsync(), but synchronous instead of asynchronous</dd>
+          <dt>ftruncated()</dt>
+          <dd>Truncates a file</dd>
+          <dt>ftruncatedSync()</dt>
+          <dd>Same as ftruncated(), but synchronous instead of asynchronous</dd>
+          <dt>futimes()</dt>
+          <dd>Change the timestamp of a file</dd>
+          <dt>futimesSync()</dt>
+          <dd>Same as futimes(), but synchronous instead of asynchronous</dd>
+          <dt>lchmod()</dt>
+          <dd>Changes the mode of a file, for Mac OS X</dd>
+          <dt>lchmodSync()</dt>
+          <dd>Same as lchmod(), but synchronous instead of asynchronous</dd>
+          <dt>lchown()</dt>
+          <dd>Changes the owner of a file, for Mac OS X</dd>
+          <dt>lchownSync()</dt>
+          <dd>Same as lchown(), but synchronous instead of asynchronous</dd>
+          <dt>link()</dt>
+          <dd>Makes an addition name for a file. Both the old and the new name may be used</dd>
+          <dt>linksync()</dt>
+          <dd>Same as link(), but synchronous instead of asynchronous</dd>
+          <dt>lstat()</dt>
+          <dd>Returns the status of a file</dd>
+          <dt>lstatSync()</dt>
+          <dd>Same as lstat(), but synchronous instead of asynchronous</dd>
+          <dt>mkdir()</dt>
+          <dd>Makes a new directory</dd>
+          <dt>mkdirSync()</dt>
+          <dd>Same as mkdir(), but synchronous instead of asynchronous</dd>
+          <dt>mkdtemp()</dt>
+          <dd>Makes a new temporary directory</dd>
+          <dt>mkdtempSync()</dt>
+          <dd>Same as mktemp(), but synchronous instead of asynchronous</dd>
+          <dt>open()</dt>
+          <dd>Opens a file</dd>
+          <dt>openSync()</dt>
+          <dd>Same as open(), but synchronous instead of asynchronous</dd>
+          <dt>read()</dt>
+          <dd>Reads the content of a file</dd>
+          <dt>readdir()</dt>
+          <dd>Reads the content of a directory</dd>
+          <dt>readdirSync()</dt>
+          <dd>Same as readdir(), but synchronous instead of asynchronous</dd>
+          <dt>readFile()</dt>
+          <dd>Reads the content of a file</dd>
+          <dt>readFileSync()</dt>
+          <dd>Same as readFile(), but synchronous instead of asynchronous</dd>
+          <dt>readlink()</dt>
+          <dd>Reads the value of a link</dd>
+          <dt>readlinkSync()</dt>
+          <dd>Same as readlink(), but synchronous instead of asynchronous</dd>
+          <dt>realpath()</dt>
+          <dd>Returns the absolute pathname</dd>
+          <dt>realpathSync()</dt>
+          <dd>Same as realpath(), but synchronous instead of asynchronous</dd>
+          <dt>rename()</dt>
+          <dd>Renames a file</dd>
+          <dt>renameSync()</dt>
+          <dd>Same as rename(), but synchronous instead of asynchronous</dd>
+          <dt>rmdir()</dt>
+          <dd>Removes a directory</dd>
+          <dt>rmdirSync()</dt>
+          <dd>Same as rmdir(), but synchronous instead of asynchronous</dd>
+          <dt>stat()</dt>
+          <dd>Returns the status of a file</dd>
+          <dt>statSync()</dt>
+          <dd>Same as stat(), but synchronous instead of asynchronous</dd>
+          <dt>symlink()</dt>
+          <dd>Makes a symbolic name for a file</dd>
+          <dt>symlinkSync()</dt>
+          <dd>Same as symlink(), but synchronous instead of asynchronous</dd>
+          <dt>truncate()</dt>
+          <dd>Truncates a file</dd>
+          <dt>truncateSync()</dt>
+          <dd>Same as truncate(), but synchronous instead of asynchronous</dd>
+          <dt>unlink()</dt>
+          <dd>Removes a link</dd>
+          <dt>unlinkSync()</dt>
+          <dd>Same as unlink(), but synchronous instead of asynchronous</dd>
+          <dt>unwatchFile()</dt>
+          <dd>Stops watching for changes on a filename</dd>
+          <dt>utimes()</dt>
+          <dd>Change the timestamp of a file</dd>
+          <dt>utimesSync()</dt>
+          <dd>Same as utimes(), but synchronous instead of asynchronous</dd>
+          <dt>watch()</dt>
+          <dd>Watch for changes of a filename or directoryname</dd>
+          <dt>watchFile()</dt>
+          <dd>Watch for changes of a filename</dd>
+          <dt>write()</dt>
+          <dd>Writes buffer to a file</dd>
+          <dt>write()</dt>
+          <dd>Writes data to a file</dd>
+          <dt>writeFile()</dt>
+          <dd>Writes data to a file</dd>
+          <dt>writeFileSync()</dt>
+          <dd>Same as writeFile(), but synchronous instead of asynchronous</dd>
+          <dt>writeSync()</dt>
+          <dd>Same as write(); writes buffer to a file synchronous instead of asynchronous</dd>
+          <dt>writeSync()</dt>
+          <dd>Same as write(); writes data to a file synchronous instead of asynchronous</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>HTTP Module</h4>
+        <div class="summary summary-section">
+          <p>createClient()</p>
+          <p>createServer()</p>
+          <p>get()</p>
+          <p>globalAgent</p>
+          <p>request()</p>
+        </div>
+        <dl>
+          <dt>createClient()</dt>
+          <dd>Deprecated. Creates a HTTP client</dd>
+          <dt>createServer()</dt>
+          <dd>Creates an HTTP server</dd>
+          <dt>get()</dt>
+          <dd>Sets the method to GET, and returns an object containing the user's request</dd>
+          <dt>globalAgent</dt>
+          <dd>Returns the HTTP Agent</dd>
+          <dt>request()</dt>
+          <dd>Returns an object containing the user's request</dd>
+          <dt></dt>
+          <dd></dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>HTTPS Module</h4>
+        <div class="summary summary-section">
+          <p>createServer()</p>
+          <p>get()</p>
+          <p>globalAgent</p>
+          <p>request</p>
+        </div>
+        <dl>
+          <dt>createServer()</dt>
+          <dd>Creates an HTTPS server</dd>
+          <dt>get()</dt>
+          <dd>Sets the method to GET, and returns an object containing the user's request</dd>
+          <dt>globalAgent</dt>
+          <dd>Returns the HTTPS Agent</dd>
+          <dt>request</dt>
+          <dd>Makes a request to a secure web server</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Net Module</h4>
+        <div class="summary summary-section">
+          <p>connect()</p>
+          <p>createConnection()</p>
+          <p>createServer()</p>
+          <p>isIP</p>
+          <p>isIPv4</p>
+          <p>isIPv6</p>
+          <p></p>
+        </div>
+        <dl>
+          <dt>connect()</dt>
+          <dd>Creates a new connection to the server, and returns a new Socket</dd>
+          <dt>createConnection()</dt>
+          <dd>Creates a new connection to the server, and returns a new Socket</dd>
+          <dt>createServer()</dt>
+          <dd>Creates a new server</dd>
+          <dt>isIP</dt>
+          <dd>Checks if the specified value is an IP address</dd>
+          <dt>isIPv4</dt>
+          <dd>Checks if the specified value is an IPv4 address</dd>
+          <dt>isIPv6</dt>
+          <dd>Checks if the specified value is an IPv6 address</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>OS Module</h4>
+        <div class="summary summary-section">
+          <p>arch()</p>
+          <p>constants</p>
+          <p>cpus()</p>
+          <p>endiannes()</p>
+          <p>EOL</p>
+          <p>freemem()</p>
+          <p>hostname()</p>
+          <p>loadavg()</p>
+          <p>networkInterfaces()</p>
+          <p>platform()</p>
+          <p>release()</p>
+          <p>tmpdir()</p>
+          <p>totalmem()</p>
+          <p>type()</p>
+          <p>uptime()</p>
+          <p>userInfo()</p>
+        </div>
+        <dl>
+          <dt>arch()</dt>
+          <dd>Returns the operating system CPU architecture</dd>
+          <dt>constants</dt>
+          <dd>Returns an object containing the operating system's constants for process signals, error cotes etc.</dd>
+          <dt>cpus()</dt>
+          <dd>Returns an array containing information about the computer's CPUs</dd>
+          <dt>endiannes()</dt>
+          <dd>Returns the endianness of the CPU</dd>
+          <dt>EOL</dt>
+          <dd>Returns the end-of-line marker for the current operating system</dd>
+          <dt>freemem()</dt>
+          <dd>Returns the number of free memory of the system</dd>
+          <dt>hostname()</dt>
+          <dd>Returns the hostname of the operating system</dd>
+          <dt>loadavg()</dt>
+          <dd>Returns an array containing the load averages, (1, 5, and 15 minutes)</dd>
+          <dt>networkInterfaces()</dt>
+          <dd>Returns the network interfaces that has a network address</dd>
+          <dt>platform()</dt>
+          <dd>Returns information about the operating system's platform</dd>
+          <dt>release()</dt>
+          <dd>Returns information about the operating system's release</dd>
+          <dt>tmpdir()</dt>
+          <dd>Returns the operating system's default directory for temporary files</dd>
+          <dt>totalmem()</dt>
+          <dd>Returns the number of total memory of the system</dd>
+          <dt>type()</dt>
+          <dd>Returns the name of the operating system</dd>
+          <dt>uptime()</dt>
+          <dd>Returns the uptime of the operating system, in seconds</dd>
+          <dt>userInfo()</dt>
+          <dd>Returns information about the current user</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Path Module</h4>
+        <div class="summary summary-section">
+          <p>basename()</p>
+          <p>delimiter</p>
+          <p>dirname()</p>
+          <p>extname()</p>
+          <p>format()</p>
+          <p>isAbsolute()</p>
+          <p>join()</p>
+          <p>normalize()</p>
+          <p>parse()</p>
+          <p>posix</p>
+          <p>relative()</p>
+          <p>resolve()</p>
+          <p>sep</p>
+          <p>win32</p>
+        </div>
+        <dl>
+          <dt>basename()</dt>
+          <dd>Returns the last part of a path</dd>
+          <dt>delimiter</dt>
+          <dd>Returns the delimiter specified for the platform</dd>
+          <dt>dirname()</dt>
+          <dd>Returns the directories of a path</dd>
+          <dt>extname()</dt>
+          <dd>Returns the file extension of a path</dd>
+          <dt>format()</dt>
+          <dd>Formats a path object into a path string</dd>
+          <dt>isAbsolute()</dt>
+          <dd>Returns true if a path is an absolute path, otherwise false</dd>
+          <dt>join()</dt>
+          <dd>Joins the specified paths into one</dd>
+          <dt>normalize()</dt>
+          <dd>Normalizes the specified path</dd>
+          <dt>parse()</dt>
+          <dd>Formats a path string into a path object</dd>
+          <dt>posix</dt>
+          <dd>Returns an object containing POSIX specific properties and methods</dd>
+          <dt>relative()</dt>
+          <dd>Returns the relative path from one specified path to another specified path</dd>
+          <dt>resolve()</dt>
+          <dd>Resolves the specified paths into an absolute path</dd>
+          <dt>sep</dt>
+          <dd>Returns the segment separator specified for the platform</dd>
+          <dt>win32</dt>
+          <dd>Returns an object containing Windows specific properties and methods</dd>
+        </dl>
+      </section>
+
+
+      <section>
+        <h4>Query String Module (querystring)</h4>
+        <div class="summary summary-section">
+          <p>escape()</p>
+          <p>parse()</p>
+          <p>stringify()</p>
+          <p>unescape()</p>
+        </div>
+        <dl>
+          <dt>escape()</dt>
+          <dd>Returns an escaped querystring</dd>
+          <dt>parse()</dt>
+          <dd>Parses the querystring and returns an object</dd>
+          <dt>stringify()</dt>
+          <dd>Stringifies an object, and returns a query string</dd>
+          <dt>unescape()</dt>
+          <dd>Returns an unescaped query string</dd>
+        </dl>
+      </section>
+
+
+      <section>
+        <h4>Readline Module</h4>
+        <div class="summary summary-section">
+          <p>clearLine()</p>
+          <p>clearScreenDown()</p>
+          <p>createInterface()</p>
+          <p>cursorTo()</p>
+          <p>emitKeypressEvents()</p>
+          <p>moveCursor()</p>
+        </div>
+        <dl>
+          <dt>clearLine()</dt>
+          <dd>Clears the current line of the specified stream</dd>
+          <dt>clearScreenDown()</dt>
+          <dd>Clears the specified stream from the current cursor down position</dd>
+          <dt>createInterface()</dt>
+          <dd>Creates an Interface object</dd>
+          <dt>cursorTo()</dt>
+          <dd>Moves the cursor to the specified position</dd>
+          <dt>emitKeypressEvents()</dt>
+          <dd>Fires keypress events for the specified stream</dd>
+          <dt>moveCursor()</dt>
+          <dd>Moves the cursor to a new position, relative to the current position</dd>
+        </dl>
+      </section>
+
+
+      <section>
+        <h4>Stream Module</h4>
+        <div class="summary summary-section">
+          <p>isPaused()</p>
+          <p>pause()</p>
+          <p>pipe()</p>
+          <p>read()</p>
+          <p>resume()</p>
+          <p>setEncoding()</p>
+          <p>unpipe()</p>
+          <p>unshift()</p>
+          <p>wrap()</p>
+        </div>
+        <dl>
+          <dt>isPaused()</dt>
+          <dd>Returns true if the state of the readable stream is paused, otherwise false</dd>
+          <dt>pause()</dt>
+          <dd>Pauses the readable stream</dd>
+          <dt>pipe()</dt>
+          <dd>Turns the readable stream into the specified writable stream</dd>
+          <dt>read()</dt>
+          <dd>Returns a specified part of the readable stream</dd>
+          <dt>resume()</dt>
+          <dd>Resumes a paused stream</dd>
+          <dt>setEncoding()</dt>
+          <dd>Sets the character encoding of the readable stream</dd>
+          <dt>unpipe()</dt>
+          <dd>Stops turning a readable stream into a writable stream, caused by the pipe() method</dd>
+          <dt>unshift()</dt>
+          <dd>Pushes some specified data back into the internal buffer</dd>
+          <dt>wrap()</dt>
+          <dd>Helps reading streams made by older Node.js versions</dd>
+        </dl>
+      </section>
+
+
+      <section>
+        <h4>String Decoder Module (string_decoder)</h4>
+        <div class="summary summary-section">
+          <p>end()</p>
+          <p>write()</p>
+        </div>
+        <dl>
+          <dt>end()</dt>
+          <dd>Returns what remains of the input stored in the internal buffer</dd>
+          <dt>write()</dt>
+          <dd>Returns the specified buffer as a string</dd>
+        </dl>
+      </section>
+
+
+      <section>
+        <h4>Timers Module</h4>
+        <div class="summary summary-section">
+          <p>clearImmediate()</p>
+          <p>clearInterval()</p>
+          <p>clearTimeout()</p>
+          <p>ref()</p>
+          <p>setImmediate()</p>
+          <p>setInterval()</p>
+          <p>setTimeout()</p>
+          <p>unref()</p>
+        </div>
+        <dl>
+          <dt>clearImmediate()</dt>
+          <dd>Cancels an Immediate object</dd>
+          <dt>clearInterval()</dt>
+          <dd>Cancels an Interval object</dd>
+          <dt>clearTimeout()</dt>
+          <dd>Cancels a Timeout object</dd>
+          <dt>ref()</dt>
+          <dd>Makes the Timeout object active. Will only have an effect if the Timeout.unref() method has been called to
+            make the Timeout object inactive.</dd>
+          <dt>setImmediate()</dt>
+          <dd>Executes a given function immediately.</dd>
+          <dt>setInterval()</dt>
+          <dd>Executes a given function at every given milliseconds</dd>
+          <dt>setTimeout()</dt>
+          <dd>Executes a given function after a given time (in milliseconds)</dd>
+          <dt>unref()</dt>
+          <dd>Stops the Timeout object from remaining active.</dd>
+        </dl>
+      </section>
+
+
+      <section>
+        <h4>TLS Module</h4>
+        <div class="summary summary-section">
+          <p>connect()</p>
+          <p>createSecureContext()</p>
+          <p>createServer()</p>
+          <p>getCiphers()</p>
+        </div>
+        <dl>
+          <dt>connect()</dt>
+          <dd>Returns a Socket object</dd>
+          <dt>createSecureContext()</dt>
+          <dd>Creates an object containing security details</dd>
+          <dt>createServer()</dt>
+          <dd>Creates a Server object</dd>
+          <dt>getCiphers()</dt>
+          <dd>Returns an array containing the supported SSL ciphers</dd>
+        </dl>
+      </section>
+
+
+      <section>
+        <h4>URL Module</h4>
+        <div class="summary summary-section">
+          <p>url.format()</p>
+          <p>url.parse()</p>
+          <p>url.resolve()</p>
+        </div>
+        <dl>
+          <dt>url.format()</dt>
+          <dd>Returns a formatted URL string</dd>
+          <dt>url.parse()</dt>
+          <dd>Returns a URL object</dd>
+          <dt>url.resolve()</dt>
+          <dd>Resolves a URL</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Util Module</h4>
+        <div class="summary summary-section">
+          <p>debuglog()</p>
+          <p>deprecate()</p>
+          <p>format()</p>
+          <p>inherits()</p>
+          <p>inspect()</p>
+        </div>
+        <dl>
+          <dt>debuglog()</dt>
+          <dd>Writes debug messages to the error object</dd>
+          <dt>deprecate()</dt>
+          <dd>Marks the specified function as deprecated</dd>
+          <dt>format()</dt>
+          <dd>Formats the specified string, using the specified arguments</dd>
+          <dt>inherits()</dt>
+          <dd>Inherits methods from one function into another</dd>
+          <dt>inspect()</dt>
+          <dd>Inspects the specified object and returns the object as a string</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>VM Module</h4>
+        <div class="summary summary-section">
+          <p>createContext()</p>
+          <p>isContext()</p>
+          <p>runInContext()</p>
+          <p>runInDebug()</p>
+          <p>runInNewContext()</p>
+          <p>runInThisContext()</p>
+        </div>
+        <dl>
+          <dt>createContext()</dt>
+          <dd>Prepares a virtual machine, or sandbox, where you can execute scripts</dd>
+          <dt>isContext()</dt>
+          <dd>Returns true if the specified sandbox has been created by the createContext() method</dd>
+          <dt>runInContext()</dt>
+          <dd>Executes JavaScript code in the specified context, and returns the result</dd>
+          <dt>runInDebug()</dt>
+          <dd>Executes JavaScript inside the debug context</dd>
+          <dt>runInNewContext()</dt>
+          <dd>Executes JavaScript code in a new context, and returns the result</dd>
+          <dt>runInThisContext()</dt>
+          <dd>Executes JavaScript code in the global context, and returns the result</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h4>Zlib Module</h4>
+        <div class="summary summary-section">
+          <p>constants</p>
+          <p>createDeflate()</p>
+          <p>createDeflateRaw()</p>
+          <p>createGunzip()</p>
+          <p>createGzip()</p>
+          <p>createInflate()</p>
+          <p>createInflateRaw()</p>
+          <p>createUnzip()</p>
+          <p>deflate()</p>
+          <p>deflateSync()</p>
+          <p>deflateRaw()</p>
+          <p>deflateRawSync()</p>
+          <p>gunzip()</p>
+          <p>gunzipSync()</p>
+          <p>gzip()</p>
+          <p>gzipSync()</p>
+          <p>inflate()</p>
+          <p>inflateSync()</p>
+          <p>inflateRaw()</p>
+          <p>inflateRawSync()</p>
+          <p>unzip()</p>
+          <p>unzipSync()</p>
+          <p></p>
+        </div>
+        <dl>
+          <dt>constants</dt>
+          <dd>Returns an object containing Zlib constants</dd>
+          <dt>createDeflate()</dt>
+          <dd>Creates a Deflate object</dd>
+          <dt>createDeflateRaw()</dt>
+          <dd>Creates a DeflateRaw object</dd>
+          <dt>createGunzip()</dt>
+          <dd>Creates a Gunzip object</dd>
+          <dt>createGzip()</dt>
+          <dd>Creates a Gzip object</dd>
+          <dt>createInflate()</dt>
+          <dd>Creates a Inflate object</dd>
+          <dt>createInflateRaw()</dt>
+          <dd>Creates a InflateRaw object</dd>
+          <dt>createUnzip()</dt>
+          <dd>Creates a Unzip object</dd>
+          <dt>deflate()</dt>
+          <dd>Compress a string or buffer, using Deflate</dd>
+          <dt>deflateSync()</dt>
+          <dd>Compress a string or buffer, syncronously, using Deflate</dd>
+          <dt>deflateRaw()</dt>
+          <dd>Compress a string or buffer, using DeflateRaw</dd>
+          <dt>deflateRawSync()</dt>
+          <dd>Compress a string or buffer, syncronously, using DeflateRaw</dd>
+          <dt>gunzip()</dt>
+          <dd>Compress a string or buffer, using Gunzip</dd>
+          <dt>gunzipSync()</dt>
+          <dd>Compress a string or buffer, syncronously, using Gunzip</dd>
+          <dt>gzip()</dt>
+          <dd>Compress a string or buffer, using Gzip</dd>
+          <dt>gzipSync()</dt>
+          <dd>Compress a string or buffer, syncronously, using Gzip</dd>
+          <dt>inflate()</dt>
+          <dd>Decompress a string or buffer, using Inflate</dd>
+          <dt>inflateSync()</dt>
+          <dd>Decompress a string or buffer, syncronously, using Inflate</dd>
+          <dt>inflateRaw()</dt>
+          <dd>Decompress a string or buffer, using InflateRaw</dd>
+          <dt>inflateRawSync()</dt>
+          <dd>Decompress a string or buffer, syncronously, using InflateRaw</dd>
+          <dt>unzip()</dt>
+          <dd>Decompress a string or buffer, using Unzip</dd>
+          <dt>unzipSync()</dt>
+          <dd>Decompress a string or buffer, syncronously, using Unzip</dd>
         </dl>
       </section>
 
@@ -1629,7 +2953,7 @@
   </article>
 </body>
 
-<script lang="javascript">
+<script lang="javascript" defer>
   var beforePrint = function () {
     const detailsElements = document.getElementsByTagName("details")
     for (const elem of detailsElements)
