@@ -16,7 +16,7 @@
     body {
       margin: 10px;
       padding: 0;
-      font-size: 16px;
+      font-size: 14px;
       font-family: 'Roboto', sans-serif;
       min-width: 300px;
     }
@@ -47,12 +47,8 @@
     }
 
     article {
-      margin-top: 10px;
+      padding: 10px 0;
       border-bottom: 1px solid lightgray;
-    }
-
-    summary>h3 {
-      display: inline-block;
     }
 
     h1,
@@ -66,8 +62,37 @@
       padding: 0;
     }
 
+    details summary h1 {
+      display: inline-block;
+      font-size: 20px;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 16px;
+    }
+
+    dl {
+      margin: 5px 0;
+    }
+
     dt {
       font-weight: bold;
+    }
+
+    dd {
+      margin-left: 8px;
     }
 
     .summary {
@@ -238,35 +263,35 @@
   <article id="data-structures">
     <details>
       <summary>
-        <h3>Data structures</h3>
+        <h1>Data structures</h1>
       </summary>
       <section>
-        <h4>Array&List</h4>
-        <ul>
-          <li>Array</li>
-          <li>Linked list</li>
-          <li>Double linked list</li>
-          <li>Stack</li>
-          <li>Queque</li>
-        </ul>
+        <h2>Array&List</h2>
+        <dl>
+          <dt>Array</dt>
+          <dt>Linked list</dt>
+          <dt>Double linked list</dt>
+          <dt>Stack</dt>
+          <dt>Queque</dt>
+        </dl>
       </section>
       <section>
-        <h4>Graph&Tree</h4>
-        <ul>
-          <li>Graph</li>
-          <li>Tree</li>
-        </ul>
+        <h2>Graph&Tree</h2>
+        <dl>
+          <dt>Graph</dt>
+          <dt>Tree</dt>
+        </dl>
       </section>
       <section>
-        <h4>Set&Map</h4>
-        <ul>
-          <li>Set</li>
-          <li>Map</li>
-          <li>Hash Map</li>
-        </ul>
+        <h2>Set&Map</h2>
+        <dl>
+          <dt>Set</dt>
+          <dt>Map</dt>
+          <dt>Hash Map</dt>
+        </dl>
       </section>
       <section>
-        <h4>Matrix</h4>
+        <h2>Matrix</h2>
       </section>
     </details>
   </article>
@@ -274,51 +299,80 @@
   <article id="algirithms">
     <details>
       <summary>
-        <h3>Algorithms</h3>
+        <h1>Algorithms</h1>
       </summary>
+
+      <div class="summary">
+        <p class="summary-subtitle">Search algorithms</p>
+        <div class="summary-section">
+          <p>Linear / Sequential search</p>
+          <p>Binary / Half-interval / Logarithmic / Binary chop search</p>
+          <p>Jump search</p>
+          <p>Interpolation search</p>
+          <p>Exponential /Doubling / Galloping / Struzik search</p>
+          <p>Fibonacci search</p>
+        </div>
+        <p class="summary-subtitle">Sort algorithms</p>
+        <div class="summary-section">
+          <p>Selection sort</p>
+          <p>Insertion sort</p>
+          <p>Bubble sort</p>
+          <p>Comb sort</p>
+          <p>Shell sort</p>
+          <p>Merge sort</p>
+          <p>Heap sort</p>
+          <p>Quick sort</p>
+          <p>Counting sort (n+r)</p>
+          <p>Bucket sort (n+k)</p>
+          <p>Radix sort</p>
+        </div>
+      </div>
+
       <section>
-        <h4>Search algorithms</h4>
-        <ul>
-          <li>Linear / Sequential search</li>
-          <li>Binary / Half-interval / Logarithmic / Binary chop search</li>
-          <li>Jump search</li>
-          <li>Interpolation search</li>
-          <li>Exponential /Doubling / Galloping / Struzik search</li>
-          <li>Fibonacci search</li>
-        </ul>
+        <h2>Search algorithms</h2>
+        <dl>
+          <dt>Linear / Sequential search</dt>
+          <dt>Binary / Half-interval / Logarithmic / Binary chop search</dt>
+          <dt>Jump search</dt>
+          <dt>Interpolation search</dt>
+          <dt>Exponential /Doubling / Galloping / Struzik search</dt>
+          <dt>Fibonacci search</dt>
+        </dl>
       </section>
       <section>
-        <h4>Sort algorithms</h4>
+        <h2>Sort algorithms</h2>
         <section>
-          <p>Simple sort (n<sup>2</sup>)</p>
-          <ul>
-            <li>Insertion sort</li>
-            <li>Selection sort</li>
-          </ul>
+          <h5>Simple sort (n<sup>2</sup>)</h5>
+          <dl>
+            <dt>Selection sort</dt>
+            <dt>Insertion sort</dt>
+            </ul>
+            <h5>Bubble sort</h5>
+            <dl>
+              <dt>Bubble sort (n<sup>2</sup>)</dt>
+              <dt>Comb sort (n<sup>2</sup>)</dt>
+            </dl>
+            <dl>
+              <dt>Shell sort</dt>
+              <dd>in-place comparison sort, can be seen as either a generalization of sorting by
+                exchange (bubble sort) or sorting by insertion (insertion sort)</dd>
+            </dl>
         </section>
         <section>
-          <p>Bubble sort and variants</p>
-          <ul>
-            <li>Bubble sort (n<sup>2</sup>)</li>
-            <li>Shell sort</li>
-            <li>Comb sort (n<sup>2</sup>)</li>
-          </ul>
+          <h5>Efficiant sort (n log n)</h5>
+          <dl>
+            <dt>Merge sort</dt>
+            <dt>Heap sort</dt>
+            <dt>Quick sort</dt>
+          </dl>
         </section>
         <section>
-          <p>Efficiant sort (n log n)</p>
-          <ul>
-            <li>Merge sort</li>
-            <li>Heap sort</li>
-            <li>Quick sort</li>
-          </ul>
-        </section>
-        <section>
-          <p>Distribution sort</p>
-          <ul>
-            <li>Counting sort (n+r)</li>
-            <li>Bucket sort (n+k)</li>
-            <li>Radix sort</li>
-          </ul>
+          <h5>Distribution sort</h5>
+          <dl>
+            <dt>Counting sort (n+r)</dt>
+            <dt>Bucket sort (n+k)</dt>
+            <dt>Radix sort</dt>
+          </dl>
         </section>
       </section>
     </details>
@@ -327,14 +381,14 @@
   <article id="sdlc">
     <details>
       <summary>
-        <h3>Software development life cicle (SDLC)</h3>
+        <h1>Software development life cicle (SDLC)</h1>
       </summary>
 
       <strong>Planning -> Analysis -> Design -> Development -> Intergration / Testing -> Implementation ->
         Maintenance</strong>
 
       <section>
-        <h4>Waterfall</h4>
+        <h2>Waterfall</h2>
         <div class="summary summary-section">
           <p></p>
         </div>
@@ -345,7 +399,7 @@
       </section>
 
       <section>
-        <h4>V model</h4>
+        <h2>V model</h2>
         <div class="summary summary-section">
           <p></p>
         </div>
@@ -356,7 +410,7 @@
       </section>
 
       <section>
-        <h4>Iterative model</h4>
+        <h2>Iterative model</h2>
         <div class="summary summary-section">
           <p></p>
         </div>
@@ -367,7 +421,7 @@
       </section>
 
       <section>
-        <h4>Spiral model</h4>
+        <h2>Spiral model</h2>
         <div class="summary summary-section">
           <p></p>
         </div>
@@ -378,7 +432,7 @@
       </section>
 
       <section>
-        <h4>Agile</h4>
+        <h2>Agile</h2>
         <div class="summary summary-section">
           <p></p>
         </div>
@@ -389,7 +443,7 @@
       </section>
 
       <section>
-        <h4>Scrum</h4>
+        <h2>Scrum</h2>
         <div class="summary summary-section">
           <p></p>
         </div>
@@ -400,7 +454,7 @@
       </section>
 
       <section>
-        <h4>Kanban</h4>
+        <h2>Kanban</h2>
         <div class="summary summary-section">
           <p></p>
         </div>
@@ -411,7 +465,7 @@
       </section>
 
       <section>
-        <h4>XP</h4>
+        <h2>XP</h2>
         <div class="summary summary-section">
           <p></p>
         </div>
@@ -427,59 +481,93 @@
   <article id="principles">
     <details>
       <summary>
-        <h3>Principles</h3>
+        <h1>Principles</h1>
       </summary>
+
+      <div class="summary">
+        <p class="summary-subtitle">SOLID</p>
+        <div class="summary-section">
+          <p>Single responsibility principle</p>
+          <p>Open/closed principle</p>
+          <p>Liskov substition principle</p>
+          <p>Interface segregation principle</p>
+          <p>Dependency inversion principle</p>
+        </div>
+        <p class="summary-subtitle">GRASP</p>
+        <div class="summary-section">
+          <p>Controller</p>
+          <p>Creator</p>
+          <p>High cohesion</p>
+          <p>Information expert</p>
+          <p>Indirection</p>
+          <p>Low coupling</p>
+          <p>Polimorphism</p>
+          <p>Protected variation</p>
+          <p>Pure fabrication</p>
+        </div>
+        <p class="summary-subtitle">Other</p>
+        <div class="summary-section">
+          <p>YARGNI</p>
+          <p>KISS</p>
+          <p>DRY</p>
+          <p>Ocam's razor</p>
+          <p>Hollywood Principle</p>
+        </div>
+      </div>
+
       <section>
-        <h4>SOLID</h4>
-        <ul>
-          <li>SRP - single responsibility principle</li>
-          <ul>
-            <li>class should have single responsibility</li>
-            <li>class should have one, and only one, reason to change</li>
-          </ul>
-          <li>OCP - open/closed principle</li>
-          <p>class should be open for extension, but closed for modification</p>
-          <li>LSP - Liskov substition principle</li>
-          <p>object should be replacable by instances of their subtypes without altering the correctness of that
+        <h2>SOLID</h2>
+        <dl>
+          <dt>SRP - Single responsibility principle</dt>
+          <dd>
+            class should have single responsibility<br />
+            class should have one, and only one, reason to change
+          </dd>
+          <dt>OCP - Open/closed principle</dt>
+          <dd>class should be open for extension, but closed for modification</dd>
+          <dt>LSP - Liskov substition principle</dt>
+          <dd>object should be replacable by instances of their subtypes without altering the correctness of that
             programm
-          </p>
-          <li>ISP - interface segregation principle</li>
-          <p>many client specific interface better then one general purpose interface</p>
-          <li>DIP - dependency inversion principle</li>
-          <p>one should depend upon abstaction not concretion</p>
-        </ul>
+          </dd>
+          <dt>ISP - Interface segregation principle</dt>
+          <dd>many client specific interface better then one general purpose interface</dd>
+          <dt>DIP - Dependency inversion principle</dt>
+          <dd>one should depend upon abstaction not concretion</dd>
+        </dl>
       </section>
       <section>
-        <h4>GRASP</h4>
+        <h2>GRASP</h2>
         <p>General responsibility software patterns</p>
-        <ul>
-          <li>Controller</li>
-          <p>responsibil for recievin and handling a system event</p>
-          <li>Creator</li>
-          <p>respoinsible for creating objects</p>
-          <li>High cohesion</li>
-          <p>responsibility highly focused and ply related</p>
-          <li>Information expert</li>
-          <li>Indirection</li>
-          <li>Low coupling</li>
-          <li>Polimorphism</li>
-          <li>Protected variation</li>
-          <li>Pure fabrication</li>
-        </ul>
+        <dl>
+          <dt>Controller</dt>
+          <dd>responsibil for recievin and handling a system event</dd>
+          <dt>Creator</dt>
+          <dd>respoinsible for creating objects</dd>
+          <dt>High cohesion</dt>
+          <dd>responsibility highly focused and strongly related</dd>
+          <dt>Information expert</dt>
+          <dt>Indirection</dt>
+          <dt>Low coupling</dt>
+          <dt>Polimorphism</dt>
+          <dt>Protected variation</dt>
+          <dt>Pure fabrication</dt>
+        </dl>
       </section>
       <section>
-        <h4>YARGNI</h4>
-        <p>You aren't gone need it</p>
-        <h4>KISS</h4>
-        <p>Keep it short and simple</p>
-        <h4>DRY</h4>
-        <p>Don't repeat your self</p>
-        <h4>Ocam's razor</h4>
-        <p>Entities should not be multiplied without necessity. When presented with competing hypotheses that make the
-          same predictions, one should select the solution with the fewest assumptions, and it is not meant to be a way
-          of choosing between hypotheses that make different predictions.</p>
-        <h4>Hollywood Principle</h4>
-        <p>Don’t Call Us, We’ll Call You.</p>
+        <dl>
+          <dt>YARGNI</dt>
+          <dd>You aren't gone need it</dd>
+          <dt>KISS</dt>
+          <dd>Keep it short and simple</dd>
+          <dt>DRY</dt>
+          <dd>Don't repeat your self</dd>
+          <dt>Ocam's razor</dt>
+          <dd>Entities should not be multiplied without necessity. When presented with competing hypotheses that make
+            the same predictions, one should select the solution with the fewest assumptions, and it is not meant to be
+            a way of choosing between hypotheses that make different predictions.</dd>
+          <dt>Hollywood Principle</dt>
+          <dd>Don’t Call Us, We’ll Call You.</dd>
+        </dl>
       </section>
     </details>
   </article>
@@ -487,88 +575,97 @@
   <article id="patterns">
     <details>
       <summary>
-        <h3>Patterns</h3>
+        <h1>Patterns</h1>
       </summary>
+
       <section>
-        <h4>Creatinal patterns</h4>
-        <ul>
-          <li>Abstract factory</li>
-          <li>Builder</li>
-          <li>Factory method</li>
-          <li>Lazy initialization (virtual proxy)</li>
-          <li>Multiton</li>
-          <li>Object library</li>
-          <li>Object pool</li>
-          <li>Prototype</li>
-          <li>Singleton</li>
-        </ul>
+        <h2>Creatinal patterns</h2>
+        <dl>
+          <dt>Abstract factory</dt>
+          <dt>Builder</dt>
+          <dt>Factory method</dt>
+          <dt>Lazy initialization (virtual proxy)</dt>
+          <dt>Multiton</dt>
+          <dt>Object library</dt>
+          <dt>Object pool</dt>
+          <dt>Prototype</dt>
+          <dt>Singleton</dt>
+        </dl>
       </section>
 
       <section>
-        <h4>Behaviral patterns</h4>
-        <ul>
-          <li>Blackboard</li>
-          <li>Chain of responsibility</li>
-          <li>Command</li>
-          <li>Interpreter</li>
-          <li>Interator</li>
-          <li>Mediator</li>
-          <li>Memento</li>
-          <li>Null object</li>
-          <li>Observer or Publish/Subscrube</li>
-          <li>Servant</li>
-          <li>Specification</li>
-          <li>State</li>
-          <li>Strategy</li>
-          <li>Template method</li>
-          <li>Visitor</li>
-        </ul>
+        <h2>Behaviral patterns</h2>
+        <dl>
+          <dt>Blackboard</dt>
+          <dt>Chain of responsibility</dt>
+          <dt>Command</dt>
+          <dt>Interpreter</dt>
+          <dt>Interator</dt>
+          <dt>Mediator</dt>
+          <dt>Memento</dt>
+          <dt>Null object</dt>
+          <dt>Observer or Publish/Subscrube</dt>
+          <dt>Servant</dt>
+          <dt>Specification</dt>
+          <dt>State</dt>
+          <dt>Strategy</dt>
+          <dt>Template method</dt>
+          <dt>Visitor</dt>
+        </dl>
       </section>
 
       <section>
-        <h4>Structural patterns</h4>
-        <ul>
-          <li>Adapter, Wrapper or Translator</li>
-          <li>Bridge</li>
-          <li>Composite</li>
-          <li>Decorator</li>
-          <li>Facade</li>
-          <li>Flyweight</li>
-          <li>Front controller</li>
-          <li>Marker</li>
-          <li>Module</li>
-          <li>Proxy</li>
-          <li>Twin</li>
-        </ul>
+        <h2>Structural patterns</h2>
+        <dl>
+          <dt>Adapter, Wrapper or Translator</dt>
+          <dt>Bridge</dt>
+          <dt>Composite</dt>
+          <dt>Decorator</dt>
+          <dt>Facade</dt>
+          <dt>Flyweight</dt>
+          <dt>Front controller</dt>
+          <dt>Marker</dt>
+          <dt>Module</dt>
+          <dt>Proxy</dt>
+          <dt>Twin</dt>
+        </dl>
       </section>
 
       <section>
-        <h4>Concurency patterns</h4>
-        <ul>
-          <li>Active object</li>
-          <li>Balking</li>
-          <li>Binding properties</li>
-          <li>Double-checked locking</li>
-          <li>Event-based asynchrones</li>
-          <li>Guarded suspension</li>
-          <li>Join</li>
-          <li>Lock</li>
-          <li>Messaging desing pattern (MDP)</li>
-          <li>Monitor object</li>
-          <li>Reactor</li>
-          <li>Read-write lock</li>
-          <li>Scheduler</li>
-          <li>Thread pool</li>
-          <li>Thread specific storage</li>
-        </ul>
+        <h2>Concurency patterns</h2>
+        <dl>
+          <dt>Active object</dt>
+          <dt>Balking</dt>
+          <dt>Binding properties</dt>
+          <dt>Double-checked locking</dt>
+          <dt>Event-based asynchrones</dt>
+          <dt>Guarded suspension</dt>
+          <dt>Join</dt>
+          <dt>Lock</dt>
+          <dt>Messaging desing pattern (MDP)</dt>
+          <dt>Monitor object</dt>
+          <dt>Reactor</dt>
+          <dt>Read-write lock</dt>
+          <dt>Scheduler</dt>
+          <dt>Thread pool</dt>
+          <dt>Thread specific storage</dt>
+        </dl>
       </section>
+
+      <section>
+        <h2>Anti-Patterns</h2>
+        <dl>
+          <dt></dt>
+        </dl>
+      </section>
+
     </details>
   </article>
 
   <article id="database">
     <details>
       <summary>
-        <h3>Database</h3>
+        <h1>Database</h1>
       </summary>
 
       <div class="summary">
@@ -578,7 +675,7 @@
       </div>
 
       <section>
-        <h4>ACID</h4>
+        <h2>ACID</h2>
         <div class="summary summary-section">
           <p></p>
         </div>
@@ -595,7 +692,7 @@
       </section>
 
       <section>
-        <h4>Isolation</h4>
+        <h2>Isolation</h2>
         <table class="border">
           <thead>
             <tr>
@@ -637,7 +734,7 @@
   <article id="html">
     <details>
       <summary>
-        <h3>HTML</h3>
+        <h1>HTML</h1>
       </summary>
       <div class="summary">
         <p class="summary-subtitle">Basic</p>
@@ -804,7 +901,7 @@
         </div>
       </div>
       <section>
-        <h4>Basic</h4>
+        <h2>Basic</h2>
         <div class="summary summary-section">
           <p>!DOCTYPE</p>
           <p>html</p>
@@ -841,7 +938,7 @@
         </dl>
       </section>
       <section>
-        <h4>Formatting</h4>
+        <h2>Formatting</h2>
         <div class="summary summary-section">
           <p>abbr</p>
           <p>address</p>
@@ -947,7 +1044,7 @@
         </dl>
       </section>
       <section>
-        <h4>Forms and Input</h4>
+        <h2>Forms and Input</h2>
         <div class="summary summary-section">
           <p>form</p>
           <p>input</p>
@@ -990,14 +1087,14 @@
         </dl>
       </section>
       <section>
-        <h4>Frames</h4>
+        <h2>Frames</h2>
         <dl>
           <dt>iframe</dt>
           <dd>Defines an inline frame</dd>
         </dl>
       </section>
       <section>
-        <h4>Images</h4>
+        <h2>Images</h2>
         <div class="summary summary-section">
           <p>img</p>
           <p>map</p>
@@ -1028,7 +1125,7 @@
         </dl>
       </section>
       <section>
-        <h4>Audio / Video</h4>
+        <h2>Audio / Video</h2>
         <div class="summary summary-section">
           <p>audio</p>
           <p>source</p>
@@ -1048,7 +1145,7 @@
         </dl>
       </section>
       <section>
-        <h4>Links</h4>
+        <h2>Links</h2>
         <div class="summary summary-section">
           <p>a</p>
           <p>link</p>
@@ -1065,7 +1162,7 @@
         </dl>
       </section>
       <section>
-        <h4>Lists</h4>
+        <h2>Lists</h2>
         <div class="summary summary-section">
           <p>ul</p>
           <p>ol</p>
@@ -1090,7 +1187,7 @@
         </dl>
       </section>
       <section>
-        <h4>Tables</h4>
+        <h2>Tables</h2>
         <div class="summary summary-section">
           <p>table</p>
           <p>caption</p>
@@ -1136,7 +1233,7 @@
         </ul>
       </section>
       <section>
-        <h4>Styles and Semantics</h4>
+        <h2>Styles and Semantics</h2>
         <div class="summary summary-section">
           <p>style</p>
           <p>div</p>
@@ -1182,7 +1279,7 @@
         </dl>
       </section>
       <section>
-        <h4>Meta Info</h4>
+        <h2>Meta Info</h2>
         <div class="summary summary-section">
           <p>head</p>
           <p>meta</p>
@@ -1198,7 +1295,7 @@
         </dl>
       </section>
       <section>
-        <h4>Programming</h4>
+        <h2>Programming</h2>
         <div class="summary summary-section">
           <p>script</p>
           <p>noscript</p>
@@ -1221,7 +1318,7 @@
       </section>
 
       <section>
-        <h4>Global Attributes</h4>
+        <h2>Global Attributes</h2>
         <div class="summary summary-section">
           <p>accesskey</p>
           <p>class</p>
@@ -1279,7 +1376,7 @@
   <article id="css">
     <details>
       <summary>
-        <h3>CSS</h3>
+        <h1>CSS</h1>
       </summary>
 
       <div class="summary">
@@ -1289,7 +1386,7 @@
       </div>
 
       <section>
-        <h4>Functions</h4>
+        <h2>Functions</h2>
         <div class="summary summary-section">
           <p>attr()</p>
           <p>calc()</p>
@@ -1335,7 +1432,7 @@
       </section>
 
       <section>
-        <h4>Units</h4>
+        <h2>Units</h2>
         <div class="summary">
           <p class="summary-subtitle">Absolute Lengths</p>
           <div class="summary-section">
@@ -1402,7 +1499,7 @@
   <article id="javascript">
     <details>
       <summary>
-        <h3>JavaScript</h3>
+        <h1>JavaScript</h1>
       </summary>
 
       <div class="summary">
@@ -1419,10 +1516,10 @@
   <article id="typescript">
     <details>
       <summary>
-        <h3>TypeScript</h3>
+        <h1>TypeScript</h1>
       </summary>
       <section>
-        <h4>Internal types</h4>
+        <h2>Internal types</h2>
         <div class="summary summary-section">
           <p>Partial</p>
           <p>Required</p>
@@ -1494,7 +1591,7 @@
   <article id="react">
     <details>
       <summary>
-        <h3>React</h3>
+        <h1>React</h1>
       </summary>
 
       <div class="summary">
@@ -1514,7 +1611,7 @@
       </div>
 
       <section>
-        <h4></h4>
+        <h2></h2>
         <div class="summary summary-section">
           <p></p>
         </div>
@@ -1525,7 +1622,7 @@
       </section>
 
       <section>
-        <h4>Class component lifecycle</h4>
+        <h2>Class component lifecycle</h2>
         <div class="summary summary-section">
           <p>constructor</p>
           <p>render</p>
@@ -1545,8 +1642,8 @@
               <th></th>
               <th>Mounting</th>
               <th>Updating</th>
-              <th>Error boundaries</th>
               <th>Unmounting</th>
+              <th>Error boundaries</th>
             </tr>
           </thead>
           <tbody>
@@ -1556,6 +1653,7 @@
             </tr>
             <tr>
               <td colspan="2" class="border">static getDerivedStateFromProps(props, state)</td>
+              <td></td>
               <td class="border">static getDerivedStateFromError(error)</td>
             </tr>
             <tr>
@@ -1577,8 +1675,8 @@
             <tr>
               <td class="border">componentDidMount()</td>
               <td class="border">componentDidUpdate(prevProps, prevState, snapshot)</td>
-              <td class="border">componentDidCatch(error, info)</td>
               <td class="border">componentWillUnmount()</td>
+              <td class="border">componentDidCatch(error, info)</td>
             </tr>
           </tbody>
         </table>
@@ -1614,7 +1712,7 @@
       </section>
 
       <section>
-        <h4>React Hooks</h4>
+        <h2>React Hooks</h2>
         <div class="summary">
           <p class="summary-subtitle">Basic Hooks</p>
           <div class="summary-section">
@@ -1685,7 +1783,7 @@
   <article id="nodejs">
     <details>
       <summary>
-        <h3>Node.js</h3>
+        <h1>Node.js</h1>
       </summary>
 
       <div class="summary">
@@ -1718,10 +1816,414 @@
           <p>vm</p>
           <p>zlib</p>
         </div>
+        <p class="summary-subtitle">Assert Module</p>
+        <div class="summary-section">
+          <p>assert()</p>
+          <p>deepEqual()</p>
+          <p>deepStrictEqual()</p>
+          <p>equal()</p>
+          <p>fail()</p>
+          <p>ifError()</p>
+          <p>notDeepEqual()</p>
+          <p>notDeepStrictEqual()</p>
+          <p>notEqual()</p>
+          <p>notStrictEqual()</p>
+          <p>ok()</p>
+          <p>strictEqual()</p>
+        </div>
+        <p class="summary-subtitle">Buffer Module</p>
+        <div class="summary-section">
+          <p>alloc()</p>
+          <p>allocUnsafe()</p>
+          <p>allocUnsafeSlow </p>
+          <p>byteLength()</p>
+          <p>compare()</p>
+          <p>concat()</p>
+          <p>copy()</p>
+          <p>entries()</p>
+          <p>equals()</p>
+          <p>fill()</p>
+          <p>from()</p>
+          <p>includes()</p>
+          <p>indexOf()</p>
+          <p>isBuffer()</p>
+          <p>isEncoding()</p>
+          <p>keys()</p>
+          <p>lastIndexOf()</p>
+          <p>length </p>
+          <p>poolSize </p>
+          <p>readDoubleBE()</p>
+          <p>readDoubleLE()</p>
+          <p>readFloatBE()</p>
+          <p>readFloatLE()</p>
+          <p>readInt8()</p>
+          <p>readInt16BE()</p>
+          <p>readInt16LE()</p>
+          <p>readInt32BE()</p>
+          <p>readInt32LE()</p>
+          <p>readIntBE()</p>
+          <p>readIntLE()</p>
+          <p>readUInt8()</p>
+          <p>readUInt16BE()</p>
+          <p>readUInt16LE()</p>
+          <p>readUInt32BE()</p>
+          <p>readUInt32LE()</p>
+          <p>readUintBE()</p>
+          <p>readUIntLE()</p>
+          <p>slice()</p>
+          <p>swap16()</p>
+          <p>swap32()</p>
+          <p>swap64()</p>
+          <p>toString()</p>
+          <p>toJSON()</p>
+          <p>values()</p>
+          <p>write()</p>
+          <p>writeDoubleBE()</p>
+          <p>writeDoubleLE()</p>
+          <p>writeFloatBE()</p>
+          <p>writeFloatLE()</p>
+          <p>writeInt8()</p>
+          <p>writeInt16BE()</p>
+          <p>writeInt16LE()</p>
+          <p>writeInt32BE()</p>
+          <p>writeInt32LE()</p>
+          <p>writeIntBE()</p>
+          <p>writeIntLE()</p>
+          <p>writeUInt8()</p>
+          <p>writeUInt16BE()</p>
+          <p>writeUInt16LE()</p>
+          <p>writeUInt32BE()</p>
+          <p>writeUInt32LE()</p>
+          <p>writeUIntBE()</p>
+          <p>writeUIntLE()</p>
+        </div>
+        <p class="summary-subtitle">Cluster Module</p>
+        <div class="summary-section">
+          <p>disconnect()</p>
+          <p>exitedAfterDisconnect</p>
+          <p>fork()</p>
+          <p>id</p>
+          <p>isConnected</p>
+          <p>isDead</p>
+          <p>isMaster</p>
+          <p>isWorker</p>
+          <p>kill()</p>
+          <p>process</p>
+          <p>schedulingPolicy</p>
+          <p>send()</p>
+          <p>settings</p>
+          <p>setupMaster()</p>
+          <p>worker</p>
+          <p>workers</p>
+        </div>
+        <p class="summary-subtitle">Crypto Module</p>
+        <div class="summary-section">
+          <p>constants</p>
+          <p>fips</p>
+          <p>createCipher()</p>
+          <p>createCipheriv()</p>
+          <p>createDecipher()</p>
+          <p>createDecipheriv()</p>
+          <p>createDiffieHellman()</p>
+          <p>createECDH()</p>
+          <p>createHash()</p>
+          <p>createHmac()</p>
+          <p>createSign()</p>
+          <p>createVerify()</p>
+          <p>getCiphers</p>
+          <p>getCurves()</p>
+          <p>getDiffieHellman()</p>
+          <p>getHashes()</p>
+          <p>pbkdf2()</p>
+          <p>pbkdf2Sync()</p>
+          <p>privateDecrypt()</p>
+          <p>timingSafeEqual()</p>
+          <p>privateEncrypt()</p>
+          <p>publicDecrypt()</p>
+          <p>publicEncrypt()</p>
+          <p>randomBytes()</p>
+          <p>setEngine()</p>
+        </div>
+        <p class="summary-subtitle">Datagram Module (dgram)</p>
+        <div class="summary-section">
+          <p>createSocket()</p>
+        </div>
+        <p class="summary-subtitle">DNS Module</p>
+        <div class="summary-section">
+          <p>getServers()</p>
+          <p>lookup()</p>
+          <p>lookupService()</p>
+          <p>resolve()</p>
+          <p>resolve4()</p>
+          <p>resolve6()</p>
+          <p>resolveCname()</p>
+          <p>resolveMx()</p>
+          <p>resolveNaptr()</p>
+          <p>resolveNs()</p>
+          <p>resolveSoa()</p>
+          <p>resolveSrv()</p>
+          <p>resolvePtr()</p>
+          <p>resolveTxt()</p>
+          <p>reverse()</p>
+          <p>setServers()</p>
+        </div>
+        <p class="summary-subtitle">Events Module</p>
+        <div class="summary-section">
+          <p>addListener()</p>
+          <p>defaultMaxListeners</p>
+          <p>emit()</p>
+          <p>eventNames()</p>
+          <p>getMaxListeners()</p>
+          <p>listenerCount()</p>
+          <p>listeners()</p>
+          <p>on()</p>
+          <p>once()</p>
+          <p>prependListener()</p>
+          <p>prependOnceListener()</p>
+          <p>removeAllListeners()</p>
+          <p>removeListener()</p>
+          <p>setMaxListeners()</p>
+        </div>
+        <p class="summary-subtitle">File System Module (fs)</p>
+        <div class="summary-section">
+          <p>access()</p>
+          <p>accessSync()</p>
+          <p>appendFile()</p>
+          <p>appendFileSync()</p>
+          <p>chmod()</p>
+          <p>chmodSync()</p>
+          <p>chown()</p>
+          <p>chownSync()</p>
+          <p>close()</p>
+          <p>closeSync()</p>
+          <p>constants Returns</p>
+          <p>createReadStream()</p>
+          <p>createWriteStream()</p>
+          <p>exists()</p>
+          <p>existsSync()</p>
+          <p>fchmod()</p>
+          <p>fchmodSync()</p>
+          <p>fchown()</p>
+          <p>fchownSync()</p>
+          <p>fdatasync()</p>
+          <p>fdatasyncSync()</p>
+          <p>fstat()</p>
+          <p>fstatSync()</p>
+          <p>fsync()</p>
+          <p>fsyncSync()</p>
+          <p>ftruncated()</p>
+          <p>ftruncatedSync()</p>
+          <p>futimes()</p>
+          <p>futimesSync()</p>
+          <p>lchmod()</p>
+          <p>lchmodSync()</p>
+          <p>lchown()</p>
+          <p>lchownSync()</p>
+          <p>link()</p>
+          <p>linksync()</p>
+          <p>lstat()</p>
+          <p>lstatSync()</p>
+          <p>mkdir()</p>
+          <p>mkdirSync()</p>
+          <p>mkdtemp()</p>
+          <p>mkdtempSync()</p>
+          <p>open()</p>
+          <p>openSync()</p>
+          <p>read()</p>
+          <p>readdir()</p>
+          <p>readdirSync()</p>
+          <p>readFile()</p>
+          <p>readFileSync()</p>
+          <p>readlink()</p>
+          <p>readlinkSync()</p>
+          <p>realpath()</p>
+          <p>realpathSync()</p>
+          <p>rename()</p>
+          <p>renameSync()</p>
+          <p>rmdir()</p>
+          <p>rmdirSync()</p>
+          <p>stat()</p>
+          <p>statSync()</p>
+          <p>symlink()</p>
+          <p>symlinkSync()</p>
+          <p>truncate()</p>
+          <p>truncateSync()</p>
+          <p>unlink()</p>
+          <p>unlinkSync()</p>
+          <p>unwatchFile()</p>
+          <p>utimes()</p>
+          <p>utimesSync()</p>
+          <p>watch()</p>
+          <p>watchFile()</p>
+          <p>write()</p>
+          <p>write()</p>
+          <p>writeFile()</p>
+          <p>writeFileSync()</p>
+          <p>writeSync()</p>
+        </div>
+        <p class="summary-subtitle">HTTP Module</p>
+        <div class="summary-section">
+          <p>createClient()</p>
+          <p>createServer()</p>
+          <p>get()</p>
+          <p>globalAgent</p>
+          <p>request()</p>
+        </div>
+        <p class="summary-subtitle">HTTPS Module</p>
+        <div class="summary-section">
+          <p>createServer()</p>
+          <p>get()</p>
+          <p>globalAgent</p>
+          <p>request</p>
+        </div>
+        <p class="summary-subtitle">Net Module</p>
+        <div class="summary-section">
+          <p>connect()</p>
+          <p>createConnection()</p>
+          <p>createServer()</p>
+          <p>isIP</p>
+          <p>isIPv4</p>
+          <p>isIPv6</p>
+        </div>
+        <p class="summary-subtitle">OS Module</p>
+        <div class="summary-section">
+          <p>arch()</p>
+          <p>constants</p>
+          <p>cpus()</p>
+          <p>endiannes()</p>
+          <p>EOL</p>
+          <p>freemem()</p>
+          <p>hostname()</p>
+          <p>loadavg()</p>
+          <p>networkInterfaces()</p>
+          <p>platform()</p>
+          <p>release()</p>
+          <p>tmpdir()</p>
+          <p>totalmem()</p>
+          <p>type()</p>
+          <p>uptime()</p>
+          <p>userInfo()</p>
+        </div>
+        <p class="summary-subtitle">Path Module</p>
+        <div class="summary-section">
+          <p>basename()</p>
+          <p>delimiter</p>
+          <p>dirname()</p>
+          <p>extname()</p>
+          <p>format()</p>
+          <p>isAbsolute()</p>
+          <p>join()</p>
+          <p>normalize()</p>
+          <p>parse()</p>
+          <p>posix</p>
+          <p>relative()</p>
+          <p>resolve()</p>
+          <p>sep</p>
+          <p>win32</p>
+        </div>
+        <p class="summary-subtitle">Query String Module (querystring)</p>
+        <div class="summary-section">
+          <p>escape()</p>
+          <p>parse()</p>
+          <p>stringify()</p>
+          <p>unescape()</p>
+        </div>
+        <p class="summary-subtitle">Readline Module</p>
+        <div class="summary-section">
+          <p>clearLine()</p>
+          <p>clearScreenDown()</p>
+          <p>createInterface()</p>
+          <p>cursorTo()</p>
+          <p>emitKeypressEvents()</p>
+          <p>moveCursor()</p>
+        </div>
+        <p class="summary-subtitle">Stream Module</p>
+        <div class="summary-section">
+          <p>isPaused()</p>
+          <p>pause()</p>
+          <p>pipe()</p>
+          <p>read()</p>
+          <p>resume()</p>
+          <p>setEncoding()</p>
+          <p>unpipe()</p>
+          <p>unshift()</p>
+          <p>wrap()</p>
+        </div>
+        <p class="summary-subtitle">String Decoder Module (string_decoder)</p>
+        <div class="summary-section">
+          <p>end()</p>
+          <p>write()</p>
+        </div>
+        <p class="summary-subtitle">Timers Module</p>
+        <div class="summary-section">
+          <p>clearImmediate()</p>
+          <p>clearInterval()</p>
+          <p>clearTimeout()</p>
+          <p>ref()</p>
+          <p>setImmediate()</p>
+          <p>setInterval()</p>
+          <p>setTimeout()</p>
+          <p>unref()</p>
+        </div>
+        <p class="summary-subtitle">TLS Module</p>
+        <div class="summary-section">
+          <p>connect()</p>
+          <p>createSecureContext()</p>
+          <p>createServer()</p>
+          <p>getCiphers()</p>
+        </div>
+        <p class="summary-subtitle">URL Module</p>
+        <div class="summary-section">
+          <p>url.format()</p>
+          <p>url.parse()</p>
+          <p>url.resolve()</p>
+        </div>
+        <p class="summary-subtitle">Util Module</p>
+        <div class="summary-section">
+          <p>debuglog()</p>
+          <p>deprecate()</p>
+          <p>format()</p>
+          <p>inherits()</p>
+          <p>inspect()</p>
+        </div>
+        <p class="summary-subtitle">VM Module</p>
+        <div class="summary-section">
+          <p>createContext()</p>
+          <p>isContext()</p>
+          <p>runInContext()</p>
+          <p>runInDebug()</p>
+          <p>runInNewContext()</p>
+          <p>runInThisContext()</p>
+        </div>
+        <p class="summary-subtitle">Zlib Module</p>
+        <div class="summary-section">
+          <p>constants</p>
+          <p>createDeflate()</p>
+          <p>createDeflateRaw()</p>
+          <p>createGunzip()</p>
+          <p>createGzip()</p>
+          <p>createInflate()</p>
+          <p>createInflateRaw()</p>
+          <p>createUnzip()</p>
+          <p>deflate()</p>
+          <p>deflateSync()</p>
+          <p>deflateRaw()</p>
+          <p>deflateRawSync()</p>
+          <p>gunzip()</p>
+          <p>gunzipSync()</p>
+          <p>gzip()</p>
+          <p>gzipSync()</p>
+          <p>inflate()</p>
+          <p>inflateSync()</p>
+          <p>inflateRaw()</p>
+          <p>inflateRawSync()</p>
+          <p>unzip()</p>
+          <p>unzipSync()</p>
+        </div>
       </div>
 
       <section>
-        <h4>Built-in Modules</h4>
+        <h2>Built-in Modules</h2>
         <div class="summary summary-section">
           <p>assert</p>
           <p>buffer</p>
@@ -1807,7 +2309,7 @@
       </section>
 
       <section>
-        <h4>Assert Module</h4>
+        <h2>Assert Module</h2>
         <div class="summary summary-section">
           <p>assert()</p>
           <p>deepEqual()</p>
@@ -1821,7 +2323,6 @@
           <p>notStrictEqual()</p>
           <p>ok()</p>
           <p>strictEqual()</p>
-          <p></p>
         </div>
         <dl>
           <dt>assert()</dt>
@@ -1852,7 +2353,7 @@
       </section>
 
       <section>
-        <h4>Buffer Module</h4>
+        <h2>Buffer Module</h2>
         <div class="summary summary-section">
           <p>alloc()</p>
           <p>allocUnsafe()</p>
@@ -2056,7 +2557,7 @@
       </section>
 
       <section>
-        <h4>Cluster Module</h4>
+        <h2>Cluster Module</h2>
         <div class="summary summary-section">
           <p>disconnect()</p>
           <p>exitedAfterDisconnect</p>
@@ -2074,7 +2575,6 @@
           <p>setupMaster()</p>
           <p>worker</p>
           <p>workers</p>
-          <p></p>
         </div>
         <dl>
           <dt>disconnect()</dt>
@@ -2115,7 +2615,7 @@
       </section>
 
       <section>
-        <h4>Crypto Module</h4>
+        <h2>Crypto Module</h2>
         <div class="summary summary-section">
           <p>constants</p>
           <p>fips</p>
@@ -2142,7 +2642,6 @@
           <p>publicEncrypt()</p>
           <p>randomBytes()</p>
           <p>setEngine()</p>
-          <p></p>
         </div>
         <dl>
           <dt>constants</dt>
@@ -2201,7 +2700,7 @@
       </section>
 
       <section>
-        <h4>Datagram Module (dgram)</h4>
+        <h2>Datagram Module (dgram)</h2>
         <div class="summary summary-section">
           <p>createSocket()</p>
         </div>
@@ -2212,7 +2711,7 @@
       </section>
 
       <section>
-        <h4>DNS Module</h4>
+        <h2>DNS Module</h2>
         <div class="summary summary-section">
           <p>getServers()</p>
           <p>lookup()</p>
@@ -2271,7 +2770,7 @@
       </section>
 
       <section>
-        <h4>Events Module</h4>
+        <h2>Events Module</h2>
         <div class="summary summary-section">
           <p>addListener()</p>
           <p>defaultMaxListeners</p>
@@ -2287,7 +2786,6 @@
           <p>removeAllListeners()</p>
           <p>removeListener()</p>
           <p>setMaxListeners()</p>
-          <p></p>
         </div>
         <dl>
           <dt>addListener()</dt>
@@ -2324,7 +2822,7 @@
       </section>
 
       <section>
-        <h4>File System Module (fs)</h4>
+        <h2>File System Module (fs)</h2>
         <div class="summary summary-section">
           <p>access()</p>
           <p>accessSync()</p>
@@ -2399,7 +2897,6 @@
           <p>write()</p>
           <p>writeFile()</p>
           <p>writeFileSync()</p>
-          <p>writeSync()</p>
           <p>writeSync()</p>
         </div>
         <dl>
@@ -2550,13 +3047,11 @@
           <dd>Same as writeFile(), but synchronous instead of asynchronous</dd>
           <dt>writeSync()</dt>
           <dd>Same as write(); writes buffer to a file synchronous instead of asynchronous</dd>
-          <dt>writeSync()</dt>
-          <dd>Same as write(); writes data to a file synchronous instead of asynchronous</dd>
         </dl>
       </section>
 
       <section>
-        <h4>HTTP Module</h4>
+        <h2>HTTP Module</h2>
         <div class="summary summary-section">
           <p>createClient()</p>
           <p>createServer()</p>
@@ -2581,7 +3076,7 @@
       </section>
 
       <section>
-        <h4>HTTPS Module</h4>
+        <h2>HTTPS Module</h2>
         <div class="summary summary-section">
           <p>createServer()</p>
           <p>get()</p>
@@ -2601,7 +3096,7 @@
       </section>
 
       <section>
-        <h4>Net Module</h4>
+        <h2>Net Module</h2>
         <div class="summary summary-section">
           <p>connect()</p>
           <p>createConnection()</p>
@@ -2609,7 +3104,6 @@
           <p>isIP</p>
           <p>isIPv4</p>
           <p>isIPv6</p>
-          <p></p>
         </div>
         <dl>
           <dt>connect()</dt>
@@ -2628,7 +3122,7 @@
       </section>
 
       <section>
-        <h4>OS Module</h4>
+        <h2>OS Module</h2>
         <div class="summary summary-section">
           <p>arch()</p>
           <p>constants</p>
@@ -2684,7 +3178,7 @@
       </section>
 
       <section>
-        <h4>Path Module</h4>
+        <h2>Path Module</h2>
         <div class="summary summary-section">
           <p>basename()</p>
           <p>delimiter</p>
@@ -2733,9 +3227,8 @@
         </dl>
       </section>
 
-
       <section>
-        <h4>Query String Module (querystring)</h4>
+        <h2>Query String Module (querystring)</h2>
         <div class="summary summary-section">
           <p>escape()</p>
           <p>parse()</p>
@@ -2754,9 +3247,8 @@
         </dl>
       </section>
 
-
       <section>
-        <h4>Readline Module</h4>
+        <h2>Readline Module</h2>
         <div class="summary summary-section">
           <p>clearLine()</p>
           <p>clearScreenDown()</p>
@@ -2781,9 +3273,8 @@
         </dl>
       </section>
 
-
       <section>
-        <h4>Stream Module</h4>
+        <h2>Stream Module</h2>
         <div class="summary summary-section">
           <p>isPaused()</p>
           <p>pause()</p>
@@ -2817,9 +3308,8 @@
         </dl>
       </section>
 
-
       <section>
-        <h4>String Decoder Module (string_decoder)</h4>
+        <h2>String Decoder Module (string_decoder)</h2>
         <div class="summary summary-section">
           <p>end()</p>
           <p>write()</p>
@@ -2832,9 +3322,8 @@
         </dl>
       </section>
 
-
       <section>
-        <h4>Timers Module</h4>
+        <h2>Timers Module</h2>
         <div class="summary summary-section">
           <p>clearImmediate()</p>
           <p>clearInterval()</p>
@@ -2868,7 +3357,7 @@
 
 
       <section>
-        <h4>TLS Module</h4>
+        <h2>TLS Module</h2>
         <div class="summary summary-section">
           <p>connect()</p>
           <p>createSecureContext()</p>
@@ -2889,7 +3378,7 @@
 
 
       <section>
-        <h4>URL Module</h4>
+        <h2>URL Module</h2>
         <div class="summary summary-section">
           <p>url.format()</p>
           <p>url.parse()</p>
@@ -2906,7 +3395,7 @@
       </section>
 
       <section>
-        <h4>Util Module</h4>
+        <h2>Util Module</h2>
         <div class="summary summary-section">
           <p>debuglog()</p>
           <p>deprecate()</p>
@@ -2929,7 +3418,7 @@
       </section>
 
       <section>
-        <h4>VM Module</h4>
+        <h2>VM Module</h2>
         <div class="summary summary-section">
           <p>createContext()</p>
           <p>isContext()</p>
@@ -2955,7 +3444,7 @@
       </section>
 
       <section>
-        <h4>Zlib Module</h4>
+        <h2>Zlib Module</h2>
         <div class="summary summary-section">
           <p>constants</p>
           <p>createDeflate()</p>
@@ -2979,7 +3468,6 @@
           <p>inflateRawSync()</p>
           <p>unzip()</p>
           <p>unzipSync()</p>
-          <p></p>
         </div>
         <dl>
           <dt>constants</dt>
@@ -3069,7 +3557,7 @@
   <article id="">
     <details>
       <summary>
-        <h3></h3>
+        <h1></h1>
       </summary>
 
     <div class="summary">
@@ -3079,7 +3567,7 @@
     </div>
 
     <section>
-      <h4></h4>
+      <h2></h2>
       <div class="summary summary-section">
         <p></p>
       </div>
