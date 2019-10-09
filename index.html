@@ -310,7 +310,7 @@
           <p>Binary / Half-interval / Logarithmic / Binary chop search</p>
           <p>Jump search</p>
           <p>Interpolation search</p>
-          <p>Exponential /Doubling / Galloping / Struzik search</p>
+          <p>Exponential / Doubling / Galloping / Struzik search</p>
           <p>Fibonacci search</p>
         </div>
         <p class="summary-subtitle">Sort algorithms</p>
@@ -490,7 +490,7 @@
         <div class="summary-section">
           <p>Single responsibility principle</p>
           <p>Open/closed principle</p>
-          <p>Liskov substition principle</p>
+          <p>Liskov substitution principle</p>
           <p>Interface segregation principle</p>
           <p>Dependency inversion principle</p>
         </div>
@@ -502,16 +502,16 @@
           <p>Information expert</p>
           <p>Indirection</p>
           <p>Low coupling</p>
-          <p>Polimorphism</p>
+          <p>Polymorphism</p>
           <p>Protected variation</p>
           <p>Pure fabrication</p>
         </div>
         <p class="summary-subtitle">Other</p>
         <div class="summary-section">
-          <p>YARGNI</p>
+          <p>YAGNI</p>
           <p>KISS</p>
           <p>DRY</p>
-          <p>Ocam's razor</p>
+          <p>Occam's razor</p>
           <p>Hollywood Principle</p>
         </div>
       </div>
@@ -580,7 +580,7 @@
       </summary>
 
       <section>
-        <h2>Creatinal patterns</h2>
+        <h2>Creational patterns</h2>
         <dl>
           <dt>Abstract factory</dt>
           <dt>Builder</dt>
@@ -595,17 +595,17 @@
       </section>
 
       <section>
-        <h2>Behaviral patterns</h2>
+        <h2>Behavioral patterns</h2>
         <dl>
           <dt>Blackboard</dt>
           <dt>Chain of responsibility</dt>
           <dt>Command</dt>
           <dt>Interpreter</dt>
-          <dt>Interator</dt>
+          <dt>Iterator</dt>
           <dt>Mediator</dt>
           <dt>Memento</dt>
           <dt>Null object</dt>
-          <dt>Observer or Publish/Subscrube</dt>
+          <dt>Observer or Publish/Subscribe</dt>
           <dt>Servant</dt>
           <dt>Specification</dt>
           <dt>State</dt>
@@ -633,13 +633,13 @@
       </section>
 
       <section>
-        <h2>Concurency patterns</h2>
+        <h2>Concurrency patterns</h2>
         <dl>
           <dt>Active object</dt>
           <dt>Balking</dt>
           <dt>Binding properties</dt>
           <dt>Double-checked locking</dt>
-          <dt>Event-based asynchrones</dt>
+          <dt>Event-based asynchronous</dt>
           <dt>Guarded suspension</dt>
           <dt>Join</dt>
           <dt>Lock</dt>
@@ -682,13 +682,22 @@
         </div>
         <dl>
           <dt>Atomicity</dt>
-          <dd></dd>
+          <dd>Transactions are often composed of multiple statements. Atomicity guarantees that each transaction is
+            treated as a single "unit", which either succeeds completely, or fails completely: if any of the statements
+            constituting a transaction fails to complete, the entire transaction fails and the database is left
+            unchanged.</dd>
           <dt>Consistency</dt>
-          <dd></dd>
+          <dd>Consistency ensures that a transaction can only bring the database from one valid state to another,
+            maintaining database invariants: any data written to the database must be valid according to all defined
+            rules, including constraints, cascades, triggers, and any combination thereof.</dd>
           <dt>Isolation</dt>
-          <dd></dd>
+          <dd>Isolation ensures that concurrent execution of transactions leaves the database in the same state that
+            would have been obtained if the transactions were executed sequentially. Isolation is the main goal of
+            concurrency control; depending on the method used, the effects of an incomplete transaction might not even
+            be visible to other transactions.</dd>
           <dt>Durability</dt>
-          <dd></dd>
+          <dd>Durability guarantees that once a transaction has been committed, it will remain committed even in the
+            case of a system failure.</dd>
         </dl>
       </section>
 
@@ -729,6 +738,72 @@
           </tbody>
         </table>
       </section>
+
+      <section>
+        <h2>Normal forms</h2>
+        <div class="summary summary-section">
+          <p>UNF: Unnormalized form</p>
+          <p>1NF: First normal form</p>
+          <p>2NF: Second normal form</p>
+          <p>3NF: Third normal form</p>
+          <p>EKNF: Elementary key normal form</p>
+          <p>BCNF: Boyce–Codd normal form</p>
+          <p>4NF: Fourth normal form</p>
+          <p>ETNF: Essential tuple normal form</p>
+          <p>5NF: Fifth normal form</p>
+          <p>DKNF: Domain-key normal form</p>
+          <p>6NF: Sixth normal form</p>
+          <p></p>
+        </div>
+        <dl>
+          <dt>UNF: Unnormalized form</dt>
+          <dd></dd>
+          <dt>1NF: First normal form</dt>
+          <dd>To satisfy 1NF, the values in each column of a table must be atomic.</dd>
+          <dt>2NF: Second normal form</dt>
+          <dd>To conform to 2NF and remove duplicities, every non-key attribute must depend on the whole key, not just
+            part of it. </dd>
+          <dt>3NF: Third normal form</dt>
+          <dd>A table in third normal form (3NF) is a table in 2NF that has no transitive dependencies. No non-prime
+            (non-key) attribute is transitively dependent on any key i.e. no non-prime attribute depends on other
+            non-prime attributes. All the non-prime attributes must depend only on the keys.</dd>
+          <dt>EKNF: Elementary key normal form</dt>
+          <dd>The elementary key normal form (EKNF) falls strictly between 3NF and BCNF and is not much discussed in the
+            literature. It is intended “to capture the salient qualities of both 3NF and BCNF” while avoiding the
+            problems of both (namely, that 3NF is “too forgiving” and BCNF is “prone to computational complexity”).</dd>
+          <dt>BCNF: Boyce–Codd normal form</dt>
+          <dd>
+            A relational schema R is considered to be in Boyce–Codd normal form (BCNF) if, for every one of its
+            dependencies X → Y, one of the following conditions hold true:<br />
+            - X → Y is a trivial functional dependency (i.e., Y is a subset of X)<br />
+            - X is a superkey for schema R
+          </dd>
+          <dt>4NF: Fourth normal form</dt>
+          <dd> Whereas the second, third, and Boyce–Codd normal forms are concerned with functional dependencies, 4NF is
+            concerned with a more general type of dependency known as a multivalued dependency. A table is in 4NF if and
+            only if, for every one of its non-trivial multivalued dependencies X ↠ {\displaystyle \twoheadrightarrow }
+            \twoheadrightarrow Y, X is a superkey—that is, X is either a candidate key or a superset thereof.</dd>
+          <dt>ETNF: Essential tuple normal form</dt>
+          <dd></dd>
+          <dt>5NF: Fifth normal form</dt>
+          <dd>Fifth normal form (5NF), also known as project-join normal form (PJ/NF), is a level of database
+            normalization designed to reduce redundancy in relational databases recording multi-valued facts by
+            isolating semantically related multiple relationships. A table is said to be in the 5NF if and only if every
+            non-trivial join dependency in that table is implied by the candidate keys. A join dependency *{A, B, … Z}
+            on R is implied by the candidate key(s) of R if and only if each of A, B, …, Z is a superkey for R.[1] </dd>
+          <dt>DKNF: Domain-key normal form</dt>
+          <dd>Domain-key normal form (DK/NF) is a normal form used in database normalization which requires that the
+            database contains no constraints other than domain constraints and key constraints. A domain constraint
+            specifies the permissible values for a given attribute, while a key constraint specifies the attributes that
+            uniquely identify a row in a given table. The domain/key normal form is achieved when every constraint on
+            the relation is a logical consequence of the definition of keys and domains, and enforcing key and domain
+            restraints and conditions causes all constraints to be met. Thus, it avoids all non-temporal anomalies.</dd>
+          <dt>6NF: Sixth normal form</dt>
+          <dd>A simple and intuitive definition of the sixth normal form is that "a table is in 6NF when the row
+            contains the Primary Key, and at most one other attribute".</dd>
+        </dl>
+      </section>
+
     </details>
   </article>
 
@@ -1476,87 +1551,87 @@
             <p>srclang</p>
           </div>
 
-            <p class="summary-subtitle">Table</p>
-            <div class="summary-section">
-              <p>colspan</p>
-              <p>headers</p>
-              <p>rowspan</p>
-              <p>scope</p>
-              <p>span</p>
-            </div>
+          <p class="summary-subtitle">Table</p>
+          <div class="summary-section">
+            <p>colspan</p>
+            <p>headers</p>
+            <p>rowspan</p>
+            <p>scope</p>
+            <p>span</p>
+          </div>
 
 
-            <p class="summary-subtitle">All visible elements</p>
-            <div class="summary-section">
-              <p>onblur</p>
-              <p>onchange</p>
-              <p>onclick</p>
-              <p>oncontextmenu</p>
-              <p>oncopy</p>
-              <p>oncut</p>
-              <p>ondblclick</p>
-              <p>ondrag</p>
-              <p>ondragend</p>
-              <p>ondragenter</p>
-              <p>ondragleave</p>
-              <p>ondragover</p>
-              <p>ondragstart</p>
-              <p>ondrop</p>
-              <p>onfocus</p>
-              <p>oninput</p>
-              <p>oninvalid</p>
-              <p>onkeydown</p>
-              <p>onkeypress</p>
-              <p>onkeyup</p>
-              <p>onmousedown</p>
-              <p>onmousemove</p>
-              <p>onmouseout</p>
-              <p>onmouseover</p>
-              <p>onmouseup</p>
-              <p>onmousewheel</p>
-              <p>onpaste</p>
-              <p>onscroll</p>
-              <p>onselect</p>
-              <p>onwheel</p>
-            </div>
+          <p class="summary-subtitle">All visible elements</p>
+          <div class="summary-section">
+            <p>onblur</p>
+            <p>onchange</p>
+            <p>onclick</p>
+            <p>oncontextmenu</p>
+            <p>oncopy</p>
+            <p>oncut</p>
+            <p>ondblclick</p>
+            <p>ondrag</p>
+            <p>ondragend</p>
+            <p>ondragenter</p>
+            <p>ondragleave</p>
+            <p>ondragover</p>
+            <p>ondragstart</p>
+            <p>ondrop</p>
+            <p>onfocus</p>
+            <p>oninput</p>
+            <p>oninvalid</p>
+            <p>onkeydown</p>
+            <p>onkeypress</p>
+            <p>onkeyup</p>
+            <p>onmousedown</p>
+            <p>onmousemove</p>
+            <p>onmouseout</p>
+            <p>onmouseover</p>
+            <p>onmouseup</p>
+            <p>onmousewheel</p>
+            <p>onpaste</p>
+            <p>onscroll</p>
+            <p>onselect</p>
+            <p>onwheel</p>
+          </div>
 
 
-            <p class="summary-subtitle">Other</p>
-            <div class="summary-section">
-              <p>download</p>
-              <p>rel</p>
-              <p>coords</p>
-              <p>shape</p>
-              <p>ontoggle</p>
-              <p>open</p>
-              <p>reversed</p>
-              <p>start</p>
-              <p>cite</p>
-              <p>datetime</p>
-              <p>data</p>
-              <p>height</p>
-              <p>high</p>
-              <p>href</p>
-              <p>hreflang</p>
-              <p>ismap</p>
-              <p>max</p>
-              <p>label</p>
-              <p>low</p>
-              <p>media</p>
-              <p>min</p>
-              <p>optimum</p>
-              <p>sandbox</p>
-              <p>selected</p>
-              <p>sizes</p>
-              <p>src</p>
-              <p>srcdoc</p>
-              <p>srcset</p>
-              <p>target</p>
-              <p>type</p>
-              <p>usemap</p>
-              <p>value</p>
-              <p>width</p>
-            </div>
+          <p class="summary-subtitle">Other</p>
+          <div class="summary-section">
+            <p>download</p>
+            <p>rel</p>
+            <p>coords</p>
+            <p>shape</p>
+            <p>ontoggle</p>
+            <p>open</p>
+            <p>reversed</p>
+            <p>start</p>
+            <p>cite</p>
+            <p>datetime</p>
+            <p>data</p>
+            <p>height</p>
+            <p>high</p>
+            <p>href</p>
+            <p>hreflang</p>
+            <p>ismap</p>
+            <p>max</p>
+            <p>label</p>
+            <p>low</p>
+            <p>media</p>
+            <p>min</p>
+            <p>optimum</p>
+            <p>sandbox</p>
+            <p>selected</p>
+            <p>sizes</p>
+            <p>src</p>
+            <p>srcdoc</p>
+            <p>srcset</p>
+            <p>target</p>
+            <p>type</p>
+            <p>usemap</p>
+            <p>value</p>
+            <p>width</p>
+          </div>
         </div>
         <dl>
           <h3>Script&Meta</h3>
@@ -1945,6 +2020,68 @@
         <div class="summary-section">
         </div>
       </div>
+
+      <section>
+        <h2>CSS selectors</h2>
+        <div class="summary summary-section">
+          <p>Universal selector (* ns|* *|*)</p>
+          <p>Type selector (elemname)</p>
+          <p>Class selector (.classname)</p>
+          <p>ID selector (#idname)</p>
+          <p>Attribute selector ([attr] [attr=value] [attr~=value] [attr|=value] [attr^=value] [attr$=value]
+            [attr*=value])</p>
+          <p>Grouping Selectors (A, B)</p>
+          <p>Descendant combinator (A B)</p>
+          <p>Child combinator (A > B)</p>
+          <p>General sibling combinator (A ~ B)</p>
+          <p>Adjacent sibling combinator (A + B)</p>
+          <p>Pseudo classes (:)</p>
+          <p>Pseudo elements (::)</p>
+        </div>
+        <dl>
+          <dt>Universal selector (* ns|* *|*)</dt>
+          <dd>Selects all elements. Optionally, it may be restricted to a specific namespace or to all namespaces.</dd>
+
+          <dt>Type selector (elemname)</dt>
+          <dd>Selects all elements that have the given node name.</dd>
+
+          <dt>Class selector (.classname)</dt>
+          <dd>Selects all elements that have the given class attribute.</dd>
+
+          <dt>ID selector (#idname)</dt>
+          <dd>Selects an element based on the value of its id attribute. There should be only one element with a given
+            ID in a document.</dd>
+
+          <dt>Attribute selector ([attr] [attr=value] [attr~=value] [attr|=value] [attr^=value] [attr$=value]
+            [attr*=value])</dt>
+          <dd>Selects all elements that have the given attribute.</dd>
+
+          <dt>Grouping Selectors (A, B)</dt>
+          <dd>The , is a grouping method, it selects all the matching nodes.</dd>
+
+          <dt>Descendant combinator (A B)</dt>
+          <dd>The (space) combinator selects nodes that are descendants of the first element.</dd>
+
+          <dt>Child combinator (A > B)</dt>
+          <dd>The > combinator selects nodes that are direct children of the first element.</dd>
+
+          <dt>General sibling combinator (A ~ B)</dt>
+          <dd>The ~ combinator selects siblings. This means that the second element follows the first (though not
+            necessarily immediately), and both share the same parent.</dd>
+
+          <dt>Adjacent sibling combinator (A + B)</dt>
+          <dd>The + combinator selects adjacent siblings. This means that the second element directly follows the first,
+            and both share the same parent.</dd>
+
+          <dt>Pseudo classes (:)</dt>
+          <dd>The : pseudo allow the selection of elements based on state information that is not contained in the
+            document tree.</dd>
+
+          <dt>Pseudo elements (::)</dt>
+          <dd>The :: pseudo represent entities that are not included in HTML.</dd>
+
+        </dl>
+      </section>
 
       <section>
         <h2>Functions</h2>
