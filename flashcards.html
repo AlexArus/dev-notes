@@ -1338,11 +1338,12 @@
             let deckSummary;
 
             const createOnOffButton = (enableValue) => {
+                const deck = currentDeck;
                 const currentDeckCheckboxes = Array.from(deckCheckboxes);
                 const deckOnOff = document.createElement('a');
                 deckOnOff.onclick = (e) => {
                     flashcards.forEach((fc) => {
-                        if (fc.deck === currentDeck) {
+                        if (fc.deck === deck) {
                             fc.enable = enableValue;
                             localStorage.setItem(fc.id, enableValue);
                         }
