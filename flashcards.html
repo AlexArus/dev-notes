@@ -1334,9 +1334,25 @@
 
             let currentDeck;
             let deckBlockElement;
-            // let deckDisabledElements = [];
             let deckCheckboxes = [];
             let deckSummary;
+
+            const createOnOffButton = (enableValue) => {
+                const currentDeckCheckboxes = Array.from(deckCheckboxes);
+                const deckOnOff = document.createElement('a');
+                deckOnOff.onclick = (e) => {
+                    flashcards.forEach((fc) => {
+                        if (fc.deck === currentDeck) {
+                            fc.enable = enableValue;
+                            localStorage.setItem(fc.id, enableValue);
+                        }
+                    })
+                    currentDeckCheckboxes.forEach(ch => ch.checked = enableValue);
+                    e.preventDefault();
+                };
+                deckOnOff.textContent = enableValue ? 'On' : 'Off';
+                deckSummary.appendChild(deckOnOff);
+            }
 
             flashcards
                 .sort((f1, f2) => {
@@ -1351,33 +1367,8 @@
                 .forEach((flashcard) => {
                     if (flashcard.deck !== currentDeck) {
                         if (deckSummary) {
-                            const currentDeckCheckboxes = Array.from(deckCheckboxes);
-                            const deckOff = document.createElement('a');
-                            deckOff.onclick = (e) => {
-                                flashcards.forEach((fc) => {
-                                    if (fc.deck === currentDeck) {
-                                        fc.enable = false;
-                                        localStorage.setItem(fc.id, false);
-                                    }
-                                })
-                                currentDeckCheckboxes.forEach(ch => ch.checked = false);
-                                e.preventDefault();
-                            };
-                            deckOff.textContent = 'Off';
-                            deckSummary.appendChild(deckOff);
-                            const deckOn = document.createElement('a');
-                            deckOn.onclick = (e) => {
-                                flashcards.forEach((fc) => {
-                                    if (fc.deck === currentDeck) {
-                                        fc.enable = true;
-                                        localStorage.setItem(fc.id, true);
-                                    }
-                                })
-                                currentDeckCheckboxes.forEach(ch => ch.checked = true);
-                                e.preventDefault();
-                            };
-                            deckOn.textContent = 'On';
-                            deckSummary.appendChild(deckOn);
+                            createOnOffButton(false);
+                            createOnOffButton(true);
                         }
 
                         deckBlockElement = document.createElement('details');
@@ -1392,7 +1383,6 @@
                         deckCheckboxes = [];
                         currentDeck = flashcard.deck;
                     }
-
                     const block = document.createElement('div');
 
                     const checkbox = document.createElement('input');
@@ -1413,6 +1403,10 @@
 
                     deckBlockElement.appendChild(block);
                 });
+            if (deckSummary) {
+                createOnOffButton(false);
+                createOnOffButton(true);
+            }
             editFlashcardList.style.display = 'flex';
         }
 
@@ -1440,27 +1434,25 @@
             }
             showFlashcard();
 
-            const flashcard = getFlashcardElement();
             let startX, startY,
                 dist,
                 threshold = 50, //required min distance traveled to be considered swipe
                 allowedTime = 2000, // maximum time allowed to travel that distance
                 elapsedTime, startTime;
 
-            flashcard.addEventListener('touchstart', function (e) {
+            document.addEventListener('touchstart', function (e) {
                 const touchobj = e.changedTouches[0]
                 dist = 0;
                 startX = touchobj.pageX;
                 startY = touchobj.pageY;
                 startTime = new Date().getTime();
-                e.preventDefault()
             }, false)
 
-            flashcard.addEventListener('touchmove', function (e) {
-                e.preventDefault(); // prevent scrolling when inside
-            }, false)
+            // document.addEventListener('touchmove', function (e) {
+            //     e.preventDefault(); // prevent scrolling when inside
+            // }, false)
 
-            flashcard.addEventListener('touchend', function (e) {
+            document.addEventListener('touchend', function (e) {
                 const touchobj = e.changedTouches[0];
                 dist = touchobj.pageX - startX;
                 elapsedTime = new Date().getTime() - startTime;
@@ -1471,11 +1463,7 @@
                     } else {
                         nextFlashcard();
                     }
-                } else {
-                    toggleFlashcard();
                 }
-
-                e.preventDefault()
             }, false)
         })
     </script>
