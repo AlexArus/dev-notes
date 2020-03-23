@@ -1,0 +1,16 @@
+{
+}{
+    "terminal.integrated.fontFamily": "monospace",
+    "javascript.preferences.quoteStyle": "single",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "workbench.tree.indent": 20,
+    "editor.rulers": [
+      {
+        "column": 120,
+        "color": "#600000",
+      }
+    ],
+  }

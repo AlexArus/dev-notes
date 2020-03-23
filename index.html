@@ -11,87 +11,116 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="favicon.png" type="image/png" />
+
   <style>
     html,
     body {
-      margin: 10px;
-      padding: 0;
-      font-size: 16px;
-      font-family: 'Roboto', sans-serif;
-      min-width: 300px;
-    }
-
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    nav,
-    article {
+      height: 100%;
       width: 100%;
-      max-width: 800px;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    #root {
+      padding: 1cm;
+      margin: 0 auto;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+
+      word-break: break-word;
+    }
+
+    article {
+      page-break-before: always;
+      padding-right: 5px;
     }
 
     nav {
-      margin: 5px;
-      padding: 10px;
-      border-bottom: 1px solid lightgray;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
+      display: none;
     }
 
-    nav a {
-      margin: 3px 5px;
+    @supports (display: flex) {
+
+      .darkTheme {
+        background-color: black;
+        color: white;
+      }
+
+      .lightTheme {
+        background-color: white;
+        color: black;
+      }
+
+      .darkTheme a {
+        color: lightblue;
+      }
+
+      .lightTheme a {
+        color: darkblue;
+      }
+
+      .flex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-content: space-between;
+      }
+
+      .block {
+        display: block;
+      }
+
+      .flex article {
+        max-width: 450px;
+        min-width: 200px;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 100%;
+      }
+
+      nav a {
+        padding: 5px;
+      }
+
+      a:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
     }
 
-    article {
-      margin-top: 10px;
-      border-bottom: 1px solid lightgray;
+    @media print {
+      body {
+        background-color: white !important;
+        color: black !important;
+      }
+
+      a {
+        color: darkblue !important;
+      }
+
+      #root {
+        display: block;
+        padding: 5mm;
+      }
+
+      article {
+        max-width: unset !important;
+        min-width: unset !important;
+        padding-right: unset !important;
+      }
+
+      nav {
+        display: none;
+      }
     }
 
-    summary>h3 {
-      display: inline-block;
-    }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p {
-      margin: 5px;
-      padding: 0;
-    }
 
-    dt {
-      font-weight: bold;
-    }
-
-    .summary {
-      margin: 3px;
-      padding: 8px;
-      border: 1px solid lightgray;
-    }
-
-    .summary p {
-      margin: 3px 5px;
-    }
-
-    .summary-section {
-      column-count: 2;
-      column-gap: 5px;
-      column-fill: balance;
-    }
-
-    .summary-subtitle {
-      text-align: center;
-      font-style: italic;
-      column-span: all;
-      border-bottom: 1px solid lightgrey;
-    }
 
     table {
       width: 100%;
@@ -120,683 +149,635 @@
       font-size: 10px;
     }
 
-    .border-bottom {
-      border-bottom: 1px solid lightgray;
-    }
-
-    .border-top {
-      border-top: 1px solid lightgray;
-    }
-
-    @media print {
-      @page {
-        size: A5 portrait;
-      }
-
-      nav {
-        margin-top: 0;
-        padding-top: 0;
-      }
-
-      article {
-        max-width: 600px;
-      }
-
-      @page :left {
-        margin-left: 20px;
-      }
-
-      @page :right {
-        margin-left: 0;
-      }
-    }
-
-    /*
-      ##Device = Desktops
-      ##Screen = 1281px to higher resolution desktops
-    */
-    @media (min-width: 1281px) {
-      .summary-section {
-        column-count: 4;
-        column-gap: 10px;
-      }
-    }
-
-    /*
-      ##Device = Laptops, Desktops
-      ##Screen = B/w 1025px to 1280px
-    */
-    @media (min-width: 1025px) and (max-width: 1280px) {
-      .summary-section {
-        column-count: 4;
-        column-gap: 10px;
-      }
-    }
-
-    /*
-      ##Device = Tablets, Ipads (portrait)
-      ##Screen = B/w 768px to 1024px
-    */
-    @media (min-width: 768px) and (max-width: 1024px) {
-      .summary-section {
-        column-count: 3;
-        column-gap: 10px;
-      }
-    }
-
-    /*
-      ##Device = Tablets, Ipads (landscape)
-      ##Screen = B/w 768px to 1024px
-    */
-    @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-      .summary-section {
-        column-count: 3;
-        column-gap: 10px;
-      }
-    }
-
-    /*
-      ##Device = Low Resolution Tablets, Mobiles (Landscape)
-      ##Screen = B/w 481px to 767px
-    */
-    @media (min-width: 481px) and (max-width: 767px) {
-      .summary-section {
-        column-count: 2;
-        column-gap: 10px;
-      }
-    }
-
-    /*
-      ##Device = Most of the Smartphones Mobiles (Portrait)
-      ##Screen = B/w 320px to 479px
-    */
-    @media (min-width: 320px) and (max-width: 480px) {
-      .summary-section {
-        column-count: 2;
-        column-gap: 5px;
-      }
+    .page-break-before {
+      page-break-before: always;
     }
   </style>
+
+  <script>
+    document.addEventListener('keypress', function (e) {
+      if (e.keyCode === 13) {
+        toggleFullScreen();
+      }
+    }, false);
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    function toggleTheme() {
+      const body = document.querySelector('body');
+      const darkTheme = 'darkTheme';
+      const lightTheme = 'lightTheme';
+
+      if (Array.from(body.classList).some((cl) => cl === darkTheme)) {
+        body.classList.replace(darkTheme, lightTheme);
+      } else {
+        body.classList.replace(lightTheme, darkTheme);
+      }
+    }
+
+    function toggleLayout() {
+      const root = document.getElementById('root');
+
+      const blockClass = 'block';
+      const flexClass = 'flex';
+      if (Array.from(root.classList).some((cl) => cl === blockClass)) {
+        root.classList.replace(blockClass, flexClass);
+      } else {
+        root.classList.replace(flexClass, blockClass);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const topics = document.querySelectorAll('h1');
+      const nav = document.querySelector('nav')
+
+      if (!nav) {
+        return;
+      }
+
+      topics.forEach((topic) => {
+        const id = topic.textContent;
+        topic.id = id;
+        const topicLink = document.createElement('a');
+        topicLink.innerText = id;
+        topicLink.href = `#${id}`;
+
+        nav.appendChild(topicLink);
+      });
+
+    });
+  </script>
+
 </head>
 
-<body>
-  <nav>
-    <a href="#data-structures">Data structures</a>
-    <a href="#algirithms">Algorithms</a>
-    <a href="#sdlc">SDLC</a>
-    <a href="#principles">Principles</a>
-    <a href="#patterns">Patterns</a>
-    <a href="#database">DataBase</a>
-    <a href="#html">HTML</a>
-    <a href="#css">CSS</a>
-    <a href="#javascript">JavaScript</a>
-    <a href="#typescript">TypeScript</a>
-    <a href="#react">React</a>
-    <a href="#nodejs">Node.js</a>
-  </nav>
+<body class="darkTheme">
+  <div id="root" class="flex">
 
-  <article id="data-structures">
-    <details>
-      <summary>
-        <h3>Data structures</h3>
-      </summary>
-      <section>
-        <h4>Array&List</h4>
-        <ul>
-          <li>Array</li>
-          <li>Linked list</li>
-          <li>Double linked list</li>
-          <li>Stack</li>
-          <li>Queque</li>
-        </ul>
-      </section>
-      <section>
-        <h4>Graph&Tree</h4>
-        <ul>
-          <li>Graph</li>
-          <li>Tree</li>
-        </ul>
-      </section>
-      <section>
-        <h4>Set&Map</h4>
-        <ul>
-          <li>Set</li>
-          <li>Map</li>
-          <li>Hash Map</li>
-        </ul>
-      </section>
-      <section>
-        <h4>Matrix</h4>
-      </section>
-    </details>
-  </article>
+    <nav>
+      <a onclick="toggleFullScreen()">full screen on/off</a>
+      <a onclick="toggleTheme()">dark/light theme</a>
+      <a onclick="toggleLayout()">flex/box</a>
+      <a href="flashcards.html">flashcards</a>
+    </nav>
 
-  <article id="algirithms">
-    <details>
-      <summary>
-        <h3>Algorithms</h3>
-      </summary>
-      <section>
-        <h4>Search algorithms</h4>
-        <ul>
-          <li>Linear / Sequential search</li>
-          <li>Binary / Half-interval / Logarithmic / Binary chop search</li>
-          <li>Jump search</li>
-          <li>Interpolation search</li>
-          <li>Exponential /Doubling / Galloping / Struzik search</li>
-          <li>Fibonacci search</li>
-        </ul>
-      </section>
-      <section>
-        <h4>Sort algorithms</h4>
-        <section>
-          <p>Simple sort (n<sup>2</sup>)</p>
-          <ul>
-            <li>Insertion sort</li>
-            <li>Selection sort</li>
-          </ul>
-        </section>
-        <section>
-          <p>Bubble sort and variants</p>
-          <ul>
-            <li>Bubble sort (n<sup>2</sup>)</li>
-            <li>Shell sort</li>
-            <li>Comb sort (n<sup>2</sup>)</li>
-          </ul>
-        </section>
-        <section>
-          <p>Efficiant sort (n log n)</p>
-          <ul>
-            <li>Merge sort</li>
-            <li>Heap sort</li>
-            <li>Quick sort</li>
-          </ul>
-        </section>
-        <section>
-          <p>Distribution sort</p>
-          <ul>
-            <li>Counting sort (n+r)</li>
-            <li>Bucket sort (n+k)</li>
-            <li>Radix sort</li>
-          </ul>
-        </section>
-      </section>
-    </details>
-  </article>
-
-  <article id="sdlc">
-    <details>
-      <summary>
-        <h3>Software development life cicle (SDLC)</h3>
-      </summary>
-
-      <strong>Planning -> Analysis -> Design -> Development -> Intergration / Testing -> Implementation ->
-        Maintenance</strong>
+    <article>
+      <h1>Data structures</h1>
 
       <section>
-        <h4>Waterfall</h4>
-        <div class="summary summary-section">
-          <p></p>
-        </div>
+        <h2>Array&List</h2>
+
         <dl>
-          <dt></dt>
-          <dd></dd>
+          <dt>Array</dt>
+          <dt>Linked list</dt>
+          <dt>Double linked list</dt>
+          <dt>Stack</dt>
+          <dt>Queque</dt>
         </dl>
       </section>
 
       <section>
-        <h4>V model</h4>
-        <div class="summary summary-section">
-          <p></p>
-        </div>
+        <h2>Graph&Tree</h2>
+
         <dl>
-          <dt></dt>
-          <dd></dd>
+          <dt>Graph</dt>
+          <dt>Tree</dt>
+          <dt>Trie (digital/prefix tree)</dt>
+          <dd>
+            an ordered tree data structure used to store a dynamic set or associative array where
+            the keys are usually strings
+          </dd>
+          <dt>BST (binary search tree)</dt>
+          <dd>
+            <u>left child</u> of a node has value <u></u>less</u> than the parent and
+            <u>right child</u> has value <u>greater</u> than parent
+          </dd>
+          <dt>AVL (self-balancing binary search tree)</dt>
+          <dd>
+            <u>binary search tree</u> with additional property that <u>difference between height
+              of left sub-tree</u> of any node <u>can't be more than 1</u>
+            <p>named after inventors Adelson-Velsky and Landis</p>
+          </dd>
         </dl>
       </section>
 
       <section>
-        <h4>Iterative model</h4>
-        <div class="summary summary-section">
-          <p></p>
-        </div>
+        <h2>Set&Map</h2>
+
         <dl>
-          <dt></dt>
-          <dd></dd>
+          <dt>Set</dt>
+          <dt>Map</dt>
+          <dt>Hash Map</dt>
         </dl>
       </section>
 
       <section>
-        <h4>Spiral model</h4>
-        <div class="summary summary-section">
-          <p></p>
-        </div>
+        <h2>Matrix</h2>
+      </section>
+
+    </article>
+
+    <article>
+      <h1>Algorithms</h1>
+
+      <section>
+        <h2>Search algorithms</h2>
+
         <dl>
-          <dt></dt>
-          <dd></dd>
+          <dt>Linear / Sequential search</dt>
+          <dt>Binary / Half-interval / Logarithmic / Binary chop search</dt>
+          <dt>Jump search</dt>
+          <dt>Interpolation search</dt>
+          <dt>Exponential /Doubling / Galloping / Struzik search</dt>
+          <dt>Fibonacci search</dt>
         </dl>
       </section>
 
       <section>
-        <h4>Agile</h4>
-        <div class="summary summary-section">
-          <p></p>
-        </div>
+        <h2>Sort algorithms</h2>
+
+        <h3>Simple sort (n<sup>2</sup>)</h3>
         <dl>
-          <dt></dt>
-          <dd></dd>
+          <dt>Insertion sort</dt>
+          <dt>Selection sort</dt>
+        </dl>
+
+        <h3>Bubble sort and variants</h3>
+        <dl>
+          <dt>Bubble sort (n<sup>2</sup>)</dt>
+          <dt>Shell sort</dt>
+          <dt>Comb sort (n<sup>2</sup>)</dt>
+        </dl>
+
+        <h3>Efficiant sort (n log n)</h3>
+        <dl>
+          <dt>Merge sort</dt>
+          <dt>Heap sort</dt>
+          <dt>Quick sort</dt>
+        </dl>
+
+        <h3>Distribution sort</h3>
+        <dl>
+          <dt>Counting sort (n+r)</dt>
+          <dt>Bucket sort (n+k)</dt>
+          <dt>Radix sort</dt>
+        </dl>
+
+      </section>
+
+      <section>
+        <h2>Graph&Tree traversal</h2>
+
+        <dl>
+          <dt>BFS (Breadth-first search)</dt>
+          <dd>finding the shortest path (queue)</dd>
+
+          <dt>DFS (Depth-first search)</dt>
+          <dd>edge based technique (stack)</dd>
+
+          <p>BFS & DFS Worst-case performance: O(V+E), V - verices, E - edges</p>
+
+        </dl>
+      </section>
+
+    </article>
+
+    <article>
+      <h1>SDLC</h1>
+      <p>Software development life cycle</p>
+
+      <section>
+        <h2>SDLC stages</h2>
+
+        <dl>
+          <dt>Planning and Requirement Analysis</dt>
+          <dt>Defining Requirements</dt>
+          <dt>Designing the Product Architecture</dt>
+          <dt>Building or Developing the Product</dt>
+          <dt>Testing the Product</dt>
+          <dt>Deployment in the Market and Maintenance</dt>
         </dl>
       </section>
 
       <section>
-        <h4>Scrum</h4>
-        <div class="summary summary-section">
-          <p></p>
-        </div>
+        <h2>SDLC methodologies</h2>
+
         <dl>
-          <dt></dt>
-          <dd></dd>
+          <dt>Waterfall Model</dt>
+          <dt>V-Shaped Model</dt>
+          <dt>Iterative Model</dt>
+          <dt>Spiral Model</dt>
+          <dt>Big Bang Model</dt>
+          <dt>Agile Model</dt>
         </dl>
       </section>
 
+    </article>
+
+    <article>
+      <h1>Principles</h1>
+
       <section>
-        <h4>Kanban</h4>
-        <div class="summary summary-section">
-          <p></p>
-        </div>
+        <h2>SOLID</h2>
+
         <dl>
-          <dt></dt>
-          <dd></dd>
+          <dt>Single Responsibility Principle (SRP)</dt>
+          <dd>
+            class should have single responsibility<br />
+            class shoud have one, and only one, reason to change
+          </dd>
+
+          <dt>Open/Closed Principle (OCP)</dt>
+          <dd>class should be open for extension, but closed for modification</dd>
+
+          <dt>Liskov substition principle (LSP)</dt>
+          <dd>object should be replacable by instances of their subtypes without altering the correctness of that
+            programm</dd>
+
+          <dt>Interface Segregation Principle (ISP)</dt>
+          <dd>many client specific interfaces better then one general purpose interface</dd>
+
+          <dt>Dependency Inversion Principle (DIP)</dt>
+          <dd>one should depend upon asbtraction not conretion</dd>
         </dl>
+
       </section>
 
       <section>
-        <h4>XP</h4>
-        <div class="summary summary-section">
-          <p></p>
-        </div>
+        <h2>GRASP</h2>
+        <p>General responsibility assignment software patterns</p>
+
         <dl>
-          <dt></dt>
-          <dd></dd>
+          <dt>Controller</dt>
+          <dd>Controller is responsible for receiving or handling a system event</dd>
+
+          <dt>Creator</dt>
+          <dd>
+            Creator is responsible for creating objects<br />
+            - contain or compositely aggregate instances<br />
+            - record or closely use instances<br />
+            - have initializing information for instances<br />
+          </dd>
+
+          <dt>High cohesion</dt>
+          <dd>Responsibility are strongly related and highly focused</dd>
+
+          <dt>Indirection</dt>
+          <dd>Assign the responsibility of mediation between two elements to an intermediate object</dd>
+
+          <dt>Information expert</dt>
+          <dd>Assign the responsibility to the class which has the information neccessary to fulfill that responsibility
+          </dd>
+
+          <dt>Low coupling</dt>
+          <dd>Assign responsibilities to support lower dependency between classes, change in one class having lower
+            impact on other classes, higher reuse potential</dd>
+
+          <dt>Polimorphism</dt>
+          <dd>Assign a responsibility according to the type of variation of behaviors by polymorphic operations</dd>
+
+          <dt>Protected variation</dt>
+          <dd>Protects elements from variations on others by wrapping into interface and using polymorphism</dd>
+
+          <dt>Pure fabrication</dt>
+          <dd>Specially made class to archieve low coupling, high cohesion and reuse potential</dd>
+
         </dl>
+
       </section>
 
-    </details>
-  </article>
+      <section>
+        <h2>YARGNI</h2>
+        <p>You aren't gone need it`</p>
+      </section>
 
-  <article id="principles">
-    <details>
-      <summary>
-        <h3>Principles</h3>
-      </summary>
       <section>
-        <h4>SOLID</h4>
-        <ul>
-          <li>SRP - single responsibility principle</li>
-          <ul>
-            <li>class should have single responsibility</li>
-            <li>class should have one, and only one, reason to change</li>
-          </ul>
-          <li>OCP - open/closed principle</li>
-          <p>class should be open for extension, but closed for modification</p>
-          <li>LSP - Liskov substition principle</li>
-          <p>object should be replacable by instances of their subtypes without altering the correctness of that
-            programm
-          </p>
-          <li>ISP - interface segregation principle</li>
-          <p>many client specific interface better then one general purpose interface</p>
-          <li>DIP - dependency inversion principle</li>
-          <p>one should depend upon abstaction not concretion</p>
-        </ul>
-      </section>
-      <section>
-        <h4>GRASP</h4>
-        <p>General responsibility software patterns</p>
-        <ul>
-          <li>Controller</li>
-          <p>responsibil for recievin and handling a system event</p>
-          <li>Creator</li>
-          <p>respoinsible for creating objects</p>
-          <li>High cohesion</li>
-          <p>responsibility highly focused and ply related</p>
-          <li>Information expert</li>
-          <li>Indirection</li>
-          <li>Low coupling</li>
-          <li>Polimorphism</li>
-          <li>Protected variation</li>
-          <li>Pure fabrication</li>
-        </ul>
-      </section>
-      <section>
-        <h4>YARGNI</h4>
-        <p>You aren't gone need it</p>
-        <h4>KISS</h4>
+        <h2>KISS</h2>
         <p>Keep it short and simple</p>
-        <h4>DRY</h4>
+      </section>
+
+      <section>
+        <h2>DRY</h2>
         <p>Don't repeat your self</p>
-        <h4>Ocam's razor</h4>
+      </section>
+
+      <section>
+        <h2>Ocam's razor</h2>
         <p>Entities should not be multiplied without necessity. When presented with competing hypotheses that make the
           same predictions, one should select the solution with the fewest assumptions, and it is not meant to be a way
-          of choosing between hypotheses that make different predictions.</p>
-      </section>
-    </details>
-  </article>
-
-  <article id="patterns">
-    <details>
-      <summary>
-        <h3>Patterns</h3>
-      </summary>
-      <section>
-        <h4>Creatinal patterns</h4>
-        <ul>
-          <li>Abstract factory</li>
-          <li>Builder</li>
-          <li>Factory method</li>
-          <li>Lazy initialization (virtual proxy)</li>
-          <li>Multiton</li>
-          <li>Object library</li>
-          <li>Object pool</li>
-          <li>Prototype</li>
-          <li>Singleton</li>
-        </ul>
+          of choosing between hypotheses that make different predictions</p>
       </section>
 
-      <section>
-        <h4>Behaviral patterns</h4>
-        <ul>
-          <li>Blackboard</li>
-          <li>Chain of responsibility</li>
-          <li>Command</li>
-          <li>Interpreter</li>
-          <li>Interator</li>
-          <li>Mediator</li>
-          <li>Memento</li>
-          <li>Null object</li>
-          <li>Observer or Publish/Subscrube</li>
-          <li>Servant</li>
-          <li>Specification</li>
-          <li>State</li>
-          <li>Strategy</li>
-          <li>Template method</li>
-          <li>Visitor</li>
-        </ul>
-      </section>
+    </article>
+
+    <article>
+      <h1>Patterns</h1>
 
       <section>
-        <h4>Structural patterns</h4>
-        <ul>
-          <li>Adapter, Wrapper or Translator</li>
-          <li>Bridge</li>
-          <li>Composite</li>
-          <li>Decorator</li>
-          <li>Facade</li>
-          <li>Flyweight</li>
-          <li>Front controller</li>
-          <li>Marker</li>
-          <li>Module</li>
-          <li>Proxy</li>
-          <li>Twin</li>
-        </ul>
-      </section>
+        <h2>Creatinal patterns</h2>
 
-      <section>
-        <h4>Concurency patterns</h4>
-        <ul>
-          <li>Active object</li>
-          <li>Balking</li>
-          <li>Binding properties</li>
-          <li>Double-checked locking</li>
-          <li>Event-based asynchrones</li>
-          <li>Guarded suspension</li>
-          <li>Join</li>
-          <li>Lock</li>
-          <li>Messaging desing pattern (MDP)</li>
-          <li>Monitor object</li>
-          <li>Reactor</li>
-          <li>Read-write lock</li>
-          <li>Scheduler</li>
-          <li>Thread pool</li>
-          <li>Thread specific storage</li>
-        </ul>
-      </section>
-    </details>
-  </article>
-
-  <article id="database">
-    <details>
-      <summary>
-        <h3>Database</h3>
-      </summary>
-
-      <div class="summary">
-        <p class="summary-subtitle"></p>
-        <div class="summary-section">
-        </div>
-      </div>
-
-      <section>
-        <h4>ACID</h4>
-        <div class="summary summary-section">
-          <p></p>
-        </div>
         <dl>
-          <dt>Atomicity</dt>
-          <dd></dd>
-          <dt>Consistency</dt>
-          <dd></dd>
-          <dt>Isolation</dt>
-          <dd></dd>
-          <dt>Durability</dt>
-          <dd></dd>
+          <dt>Abstract factory</dt>
+          <dt>Builder</dt>
+          <dt>Factory method</dt>
+          <dt>Lazy initialization (virtual proxy)</dt>
+          <dt>Multiton</dt>
+          <dt>Object library</dt>
+          <dt>Object pool</dt>
+          <dt>Prototype</dt>
+          <dt>Singleton</dt>
         </dl>
       </section>
 
       <section>
-        <h4>Isolation</h4>
-        <table class="border">
+        <h2>Behaviral patterns</h2>
+
+        <dl>
+          <dt>Blackboard</dt>
+          <dt>Chain of responsibility</dt>
+          <dt>Command</dt>
+          <dt>Interpreter</dt>
+          <dt>Interator</dt>
+          <dt>Mediator</dt>
+          <dt>Memento</dt>
+          <dt>Null object</dt>
+          <dt>Observer or Publish/Subscrube</dt>
+          <dt>Servant</dt>
+          <dt>Specification</dt>
+          <dt>State</dt>
+          <dt>Strategy</dt>
+          <dt>Template method</dt>
+          <dt>Visitor</dt>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Structural patterns</h2>
+
+        <dl>
+          <dt>Adapter, Wrapper or Translator</dt>
+          <dt>Bridge</dt>
+          <dt>Composite</dt>
+          <dt>Decorator</dt>
+          <dt>Facade</dt>
+          <dt>Flyweight</dt>
+          <dt>Front controller</dt>
+          <dt>Marker</dt>
+          <dt>Module</dt>
+          <dt>Proxy</dt>
+          <dt>Twin</dt>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Concurency patterns</h2>
+
+        <dl>
+          <dt>Active object</dt>
+          <dt>Balking</dt>
+          <dt>Binding properties</dt>
+          <dt>Double-checked locking</dt>
+          <dt>Event-based asynchrones</dt>
+          <dt>Guarded suspension</dt>
+          <dt>Join</dt>
+          <dt>Lock</dt>
+          <dt>Messaging desing pattern (MDP)</dt>
+          <dt>Monitor object</dt>
+          <dt>Reactor</dt>
+          <dt>Read-write lock</dt>
+          <dt>Scheduler</dt>
+          <dt>Thread pool</dt>
+          <dt>Thread specific storage</dt>
+        </dl>
+      </section>
+
+    </article>
+
+    <article>
+      <h1>DataBase</h1>
+
+      <section>
+        <h2>ACID</h2>
+
+        <dl>
+          <dt>Atomicity</dt>
+          <dt>Consistency</dt>
+          <dt>Isolation</dt>
+          <dt>Durability</dt>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Isolation levels</h2>
+
+        <dl>
+          <dt>read uncommitted</dt>
+          <dd>dirty read</dd>
+          <dt>read committed</dt>
+          <dd>non repeatable read</dd>
+          <dt>repeatable read</dt>
+          <dd>phantom read</dd>
+          <dt>serializable</dt>
+        </dl>
+      </section>
+    </article>
+
+    <article>
+      <h1>TypeScript</h1>
+
+      <section>
+        <h2>Utility Types</h2>
+        <dl>
+          <dt>type Partial&lt;T&gt; = { [P in keyof T]?: T[P]; };</dt>
+          <dd>Make all properties in T optional</dd>
+
+          <dt>type Required&lt;T&gt; = { [P in keyof T]-?: T[P]; };</dt>
+          <dd>Make all properties in T required</dd>
+
+          <dt>type Readonly&lt;T&gt; = { readonly [P in keyof T]: T[P]; };</dt>
+          <dd>Make all properties in T readonly</dd>
+
+          <dt>type Pick&lt;T, K extends keyof T&gt; = { [P in K]: T[P]; };</dt>
+          <dd>From T, pick a set of properties whose keys are in the union K</dd>
+
+          <dt>type Record&lt;K extends keyof any, T&gt; = { [P in K]: T; };</dt>
+          <dd>Construct a type with a set of properties K of type T</dd>
+
+          <dt>type Exclude&lt;T, U&gt; = T extends U ? never : T;</dt>
+          <dd>Exclude from T those types that are assignable to U</dd>
+
+          <dt>type Extract&lt;T, U&gt; = T extends U ? T : never;</dt>
+          <dd>Extract from T those types that are assignable to U</dd>
+
+          <dt>type Omit&lt;T, K extends keyof any&gt; = Pick&lt;T, Exclude&lt;keyof T, K&gt;&gt;;</dt>
+          <dd>Construct a type with the properties of T except for those in type K.</dd>
+
+          <dt>type NonNullable&lt;T&gt; = T extends null | undefined ? never : T;</dt>
+          <dd>Exclude null and undefined from T</dd>
+
+          <dt>type Parameters&lt;T extends (...args: any) =&gt; any&gt; = T extends (...args: infer P) =&gt; any ? P :
+            never;</dt>
+          <dd>Obtain the parameters of a function type in a tuple</dd>
+
+          <dt>type ConstructorParameters&lt;T extends new (...args: any) =&gt; any&gt; = T extends new (...args: infer
+            P)
+            =&gt; any ? P : never;</dt>
+          <dd>Obtain the parameters of a constructor function type in a tuple</dd>
+
+          <dt>type ReturnType&lt;T extends (...args: any) =&gt; any&gt; = T extends (...args: any) =&gt; infer R ? R :
+            any;</dt>
+          <dd>Obtain the return type of a function type</dd>
+
+          <dt>type InstanceType&lt;T extends new (...args: any) =&gt; any&gt; = T extends new (...args: any) =&gt; infer
+            R
+            ? R : any;</dt>
+          <dd>Obtain the return type of a constructor function type</dd>
+        </dl>
+      </section>
+
+    </article>
+
+    <article>
+      <h1>React</h1>
+
+      <section>
+        <h2>Hooks</h2>
+
+        <dl>
+          <dt>useState</dt>
+          <dd>Returns a stateful value, and a function to update it.</dd>
+          <dt>useEffect</dt>
+          <dd>Accepts a function that contains imperative, possibly effectful code. The function passed to useEffect
+            will
+            run after the render is committed to the screen. By default, effects run after every completed render, but
+            you
+            can choose to fire it only when certain values have changed.</dd>
+          <dt>useContext</dt>
+          <dd>Accepts a context object (the value returned from React.createContext) and returns the current context
+            value
+            for that context. The current context value is determined by the value prop of the nearest
+            &lt;MyContext.Provider>&gt; above the calling component in the tree. When the nearest
+            &lt;MyContext.Provider&gt; above the component updates, this Hook will trigger a rerender with the latest
+            context value passed to that MyContext provider.</dd>
+          <dt>useReducer</dt>
+          <dd>Accepts a reducer of type (state, action) => newState, and returns the current state paired with a
+            dispatch method.</dd>
+          <dt>useCallback</dt>
+          <dd>Returns a memoized callback. Pass an inline callback and an array of dependencies. useCallback will return
+            a
+            memoized version of the callback that only changes if one of the dependencies has changed. useCallback(fn,
+            deps) is equivalent to useMemo(() => fn, deps).</dd>
+          <dt>useMemo</dt>
+          <dd>Returns a memoized value. Pass a “create” function and an array of dependencies. useMemo will only
+            recompute
+            the memoized value when one of the dependencies has changed. This optimization helps to avoid expensive
+            calculations on every render. If no array is provided, a new value will be computed on every render.</dd>
+          <dt>useRef</dt>
+          <dd>Returns a mutable ref object whose .current property is initialized to the passed argument (initialValue).
+            The returned object will persist for the full lifetime of the component.</dd>
+          <dt>useImperativeHandle</dt>
+          <dd>Customizes the instance value that is exposed to parent components when using ref.</dd>
+          <dt>useLayoutEffect</dt>
+          <dd>The signature is identical to useEffect, but it fires synchronously after all DOM mutations. Use this to
+            read layout from the DOM and synchronously re-render. Updates scheduled inside useLayoutEffect will be
+            flushed
+            synchronously, before the browser has a chance to paint.</dd>
+          <dt>useDebugValue</dt>
+          <dd>Can be used to display a label for custom hooks in React DevTools</dd>
+        </dl>
+      </section>
+
+      <section class="page-break-before">
+        <h2>React Component Lifecycle</h2>
+
+        <table class="border text-center small-font">
           <thead>
             <tr>
-              <th style="width: 50%;">Isolation levels</th>
-              <th style="width: 50%;">Phenomena</th>
+              <th></th>
+              <th>Mounting</th>
+              <th>Updating</th>
+              <th>Error boundaries</th>
+              <th>Unmounting</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="border">read uncommitted</td>
+              <td rowspan="4" class="strong border-top border-bottom">Render phase</td>
+              <td class="border">constructor</td>
+            </tr>
+            <tr>
+              <td colspan="2" class="border">getDerivedStateFromProps</td>
+              <td class="border">getDerivedStateFromError</td>
             </tr>
             <tr>
               <td></td>
-              <td class="border">dirty read</td>
+              <td class="border">shoulComponentUpdate</td>
             </tr>
             <tr>
-              <td class="border">read committed</td>
+              <td colspan="2" class="border">render</td>
             </tr>
             <tr>
+              <td class="strong border-top border-bottom">Pre-commit phase</td>
               <td></td>
-              <td class="border">non repeatable read</td>
+              <td class="border" class="border">getSnapshotBeforeUpdate</td>
             </tr>
             <tr>
-              <td class="border">repeatable read</td>
+              <td rowspan="2" class="strong border-top border-bottom">Commit phase</td>
+              <td colspan="2">React updates DOM and refs</td>
             </tr>
             <tr>
-              <td></td>
-              <td class="border">phantom read</td>
-            </tr>
-            <tr>
-              <td class="border">serializable</td>
+              <td class="border">componentDidMount</td>
+              <td class="border">componentDidUpdate</td>
+              <td class="border">componentDidCatch</td>
+              <td class="border">componentWillUnmount</td>
             </tr>
           </tbody>
         </table>
-      </section>
-    </details>
-  </article>
 
-  <article id="html">
-    <details>
-      <summary>
-        <h3>HTML</h3>
-      </summary>
-      <div class="summary">
-        <p class="summary-subtitle">Basic</p>
-        <div class="summary-section">
-          <p>!DOCTYPE</p>
-          <p>html</p>
-          <p>head</p>
-          <p>title</p>
-          <p>body</p>
-          <p>h1 to h6</p>
-          <p>p</p>
-          <p>br</p>
-          <p>hr</p>
-          <p>&lt;!--...--&gt;</p>
-        </div>
-        <p class="summary-subtitle">Formatting</p>
-        <div class="summary-section">
-          <p>abbr</p>
-          <p>address</p>
-          <p>b</p>
-          <p>bdi</p>
-          <p>bdo</p>
-          <p>blockquote</p>
-          <p>cite</p>
-          <p>code</p>
-          <p>del</p>
-          <p>dfn</p>
-          <p>em</p>
-          <p>i</p>
-          <p>ins</p>
-          <p>kbd</p>
-          <p>mark</p>
-          <p>meter</p>
-          <p>pre</p>
-          <p>progress</p>
-          <p>q</p>
-          <p>rp</p>
-          <p>rt</p>
-          <p>ruby</p>
-          <p>s</p>
-          <p>samp</p>
-          <p>small</p>
-          <p>strong</p>
-          <p>sub</p>
-          <p>sup</p>
-          <p>template</p>
-          <p>time</p>
-          <p>u</p>
-          <p>var</p>
-          <p>wbr</p>
-        </div>
-        <p class="summary-subtitle">Forms and Input</p>
-        <div class="summary-section">
-          <p>form</p>
-          <p>input</p>
-          <p>textarea</p>
-          <p>button</p>
-          <p>select</p>
-          <p>optgroup</p>
-          <p>option</p>
-          <p>label</p>
-          <p>fieldset</p>
-          <p>legend</p>
-          <p>datalist</p>
-          <p>output</p>
-        </div>
-        <p class="summary-subtitle">Frames</p>
-        <div class="summary-section">
-          <p>iframe</p>
-        </div>
-        <p class="summary-subtitle">Images</p>
-        <div class="summary-section">
-          <p>img</p>
-          <p>map</p>
-          <p>area</p>
-          <p>canvas</p>
-          <p>figcaption</p>
-          <p>figure</p>
-          <p>picture</p>
-          <p>svg</p>
-        </div>
-        <p class="summary-subtitle">Audio / Video</p>
-        <div class="summary-section">
-          <p>audio</p>
-          <p>source</p>
-          <p>track</p>
-          <p>video</p>
-        </div>
-        <p class="summary-subtitle">Links</p>
-        <div class="summary-section">
-          <p>a</p>
-          <p>link</p>
-          <p>nav</p>
-        </div>
-        <p class="summary-subtitle">Lists</p>
-        <div class="summary-section">
-          <p>ul</p>
-          <p>ol</p>
-          <p>li</p>
-          <p>dl</p>
-          <p>dt</p>
-          <p>dd</p>
-        </div>
-        <p class="summary-subtitle">Tables</p>
-        <div class="summary-section">
-          <p>table</p>
-          <p>caption</p>
-          <p>th</p>
-          <p>tr</p>
-          <p>td</p>
-          <p>thead</p>
-          <p>tbody</p>
-          <p>tfoot</p>
-          <p>col</p>
-          <p>colgroup</p>
-        </div>
-        <p class="summary-subtitle">Styles and Semantics</p>
-        <div class="summary-section">
-          <p>style</p>
-          <p>div</p>
-          <p>span</p>
-          <p>header</p>
-          <p>footer</p>
-          <p>main</p>
-          <p>section</p>
-          <p>article</p>
-          <p>aside</p>
-          <p>details</p>
-          <p>dialog</p>
-          <p>summary</p>
-          <p>data</p>
-        </div>
-        <p class="summary-subtitle">Meta Info</p>
-        <div class="summary-section">
-          <p>head</p>
-          <p>meta</p>
-          <p>base</p>
-        </div>
-        <p class="summary-subtitle">Programming</p>
-        <div class="summary-section">
-          <p>script</p>
-          <p>noscript</p>
-          <p>embed</p>
-          <p>object</p>
-          <p>param</p>
-        </div>
-      </div>
+        <dl>
+          <dt>Render phase</dt>
+          <dd>Pure and has no side effects. May be paused, aborted or restarted by React.</dd>
+          <dt>Pre-commit phase</dt>
+          <dd>Can read the DOM.</dd>
+          <dt>Commit phase</dt>
+          <dd>Can work with DOM, run side effects, schedule updates.</dd>
+          <dt>constructor(props)</dt>
+          <dd></dd>
+          <dt>render()</dt>
+          <dd></dd>
+          <dt>static getDerivedStateFromProps(props, state)</dt>
+          <dd></dd>
+          <dt>static getDerivedStateFromError(error)</dt>
+          <dd></dd>
+          <dt>shoulComponentUpdate(nextProps, nextState)</dt>
+          <dd></dd>
+          <dt>getSnapshotBeforeUpdate(prevProps, prevState)</dt>
+          <dd></dd>
+          <dt>componentDidMount()</dt>
+          <dd></dd>
+          <dt>componentDidUpdate(prevProps, prevState, snapshot)</dt>
+          <dd></dd>
+          <dt>componentDidCatch(error, info)</dt>
+          <dd></dd>
+          <dt>componentWillUnmount()</dt>
+          <dd></dd>
+        </dl>
+      </section>
+
+    </article>
+
+    <article>
+      <h1>HTML</h1>
+
       <section>
-        <h4>Basic</h4>
-        <div class="summary summary-section">
-          <p>!DOCTYPE</p>
-          <p>html</p>
-          <p>head</p>
-          <p>title</p>
-          <p>body</p>
-          <p>h1 to h6</p>
-          <p>p</p>
-          <p>br</p>
-          <p>hr</p>
-          <p>&lt!--...--&gt</p>
-        </div>
+        <h2>Basic</h2>
         <dl>
           <dt>!DOCTYPE</dt>
           <dd>Defines the document type</dd>
@@ -820,43 +801,10 @@
           <dd>Defines a comment</dd>
         </dl>
       </section>
+
       <section>
-        <h4>Formatting</h4>
-        <div class="summary summary-section">
-          <p>abbr</p>
-          <p>address</p>
-          <p>b</p>
-          <p>bdi</p>
-          <p>bdo</p>
-          <p>blockquote</p>
-          <p>cite</p>
-          <p>code</p>
-          <p>del</p>
-          <p>dfn</p>
-          <p>em</p>
-          <p>i</p>
-          <p>ins</p>
-          <p>kbd</p>
-          <p>mark</p>
-          <p>meter</p>
-          <p>pre</p>
-          <p>progress</p>
-          <p>q</p>
-          <p>rp</p>
-          <p>rt</p>
-          <p>ruby</p>
-          <p>s</p>
-          <p>samp</p>
-          <p>small</p>
-          <p>strong</p>
-          <p>sub</p>
-          <p>sup</p>
-          <p>template</p>
-          <p>time</p>
-          <p>u</p>
-          <p>var</p>
-          <p>wbr</p>
-        </div>
+        <h2>Formating</h2>
+
         <dl>
           <dt>abbr</dt>
           <dd>Defines an abbreviation or an acronym</dd>
@@ -926,22 +874,10 @@
           <dd>Defines a possible line-break</dd>
         </dl>
       </section>
+
       <section>
-        <h4>Forms and Input</h4>
-        <div class="summary summary-section">
-          <p>form</p>
-          <p>input</p>
-          <p>textarea</p>
-          <p>button</p>
-          <p>select</p>
-          <p>optgroup</p>
-          <p>option</p>
-          <p>label</p>
-          <p>fieldset</p>
-          <p>legend</p>
-          <p>datalist</p>
-          <p>output</p>
-        </div>
+        <h2>Forms and input</h2>
+
         <dl>
           <dt>form</dt>
           <dd>Defines an HTML form for user input</dd>
@@ -969,25 +905,19 @@
           <dd>Defines the result of a calculation</dd>
         </dl>
       </section>
+
       <section>
-        <h4>Frames</h4>
+        <h2>Frames</h2>
+
         <dl>
           <dt>iframe</dt>
           <dd>Defines an inline frame</dd>
         </dl>
       </section>
+
       <section>
-        <h4>Images</h4>
-        <div class="summary summary-section">
-          <p>img</p>
-          <p>map</p>
-          <p>area</p>
-          <p>canvas</p>
-          <p>figcaption</p>
-          <p>figure</p>
-          <p>picture</p>
-          <p>svg</p>
-        </div>
+        <h2>Images</h2>
+
         <dl>
           <dt>img</dt>
           <dd>Defines an image</dd>
@@ -1007,14 +937,10 @@
           <dd>Defines a container for SVG graphics</dd>
         </dl>
       </section>
+
       <section>
-        <h4>Audio / Video</h4>
-        <div class="summary summary-section">
-          <p>audio</p>
-          <p>source</p>
-          <p>track</p>
-          <p>video</p>
-        </div>
+        <h2>Audio&Video</h2>
+
         <dl>
           <dt>audio</dt>
           <dd>Defines sound content</dd>
@@ -1027,13 +953,10 @@
           <dd>Defines a video or movie</dd>
         </dl>
       </section>
+
       <section>
-        <h4>Links</h4>
-        <div class="summary summary-section">
-          <p>a</p>
-          <p>link</p>
-          <p>nav</p>
-        </div>
+        <h2>Links</h2>
+
         <dl>
           <dt>a</dt>
           <dd>Defines a hyperlink</dd>
@@ -1044,16 +967,10 @@
           <dd>Defines navigation links</dd>
         </dl>
       </section>
+
       <section>
-        <h4>Lists</h4>
-        <div class="summary summary-section">
-          <p>ul</p>
-          <p>ol</p>
-          <p>li</p>
-          <p>dl</p>
-          <p>dt</p>
-          <p>dd</p>
-        </div>
+        <h2>Lists</h2>
+
         <dl>
           <dt>ul</dt>
           <dd>Defines an unordered list</dd>
@@ -1069,20 +986,10 @@
           <dd>Defines a description of a term/name in a description list</dd>
         </dl>
       </section>
+
       <section>
-        <h4>Tables</h4>
-        <div class="summary summary-section">
-          <p>table</p>
-          <p>caption</p>
-          <p>th</p>
-          <p>tr</p>
-          <p>td</p>
-          <p>thead</p>
-          <p>tbody</p>
-          <p>tfoot</p>
-          <p>col</p>
-          <p>colgroup</p>
-        </div>
+        <h2>Tables</h2>
+
         <dl>
           <dt>table</dt>
           <dd>Defines a table</dd>
@@ -1105,7 +1012,8 @@
           <dt>colgroup</dt>
           <dd>Specifies a group of one or more columns in a table for formatting</dd>
         </dl>
-        <h5>Tips:</h5>
+
+        <h3>Tips:</h3>
         <ul>
           <li>Use the CSS border property to define a border</li>
           <li>Use the CSS border-collapse property to collapse cell borders</li>
@@ -1114,24 +1022,12 @@
           <li>Use the colspan attribute to make a cell span many columns</li>
           <li>Use the rowspan attribute to make a cell span many rows</li>
         </ul>
+
       </section>
+
       <section>
-        <h4>Styles and Semantics</h4>
-        <div class="summary summary-section">
-          <p>style</p>
-          <p>div</p>
-          <p>span</p>
-          <p>header</p>
-          <p>footer</p>
-          <p>main</p>
-          <p>section</p>
-          <p>article</p>
-          <p>aside</p>
-          <p>details</p>
-          <p>dialog</p>
-          <p>summary</p>
-          <p>data</p>
-        </div>
+        <h2>Styles&Semantics</h2>
+
         <dl>
           <dt>style</dt>
           <dd>Defines style information for a document</dd>
@@ -1161,13 +1057,10 @@
           <dd>Links the given content with a machine-readable translation</dd>
         </dl>
       </section>
+
       <section>
-        <h4>Meta Info</h4>
-        <div class="summary summary-section">
-          <p>head</p>
-          <p>meta</p>
-          <p>base</p>
-        </div>
+        <h2>Meta Info</h2>
+
         <dl>
           <dt>head</dt>
           <dd>Defines information about the document</dd>
@@ -1177,15 +1070,10 @@
           <dd>Specifies the base URL/target for all relative URLs in a document</dd>
         </dl>
       </section>
+
       <section>
-        <h4>Programming</h4>
-        <div class="summary summary-section">
-          <p>script</p>
-          <p>noscript</p>
-          <p>embed</p>
-          <p>object</p>
-          <p>param</p>
-        </div>
+        <h2>Programming</h2>
+
         <dl>
           <dt>script</dt>
           <dd>Defines a client-side script</dd>
@@ -1199,37 +1087,15 @@
           <dd>Defines a parameter for an object</dd>
         </dl>
       </section>
-    </details>
-  </article>
 
-  <article id="css">
-    <details>
-      <summary>
-        <h3>CSS</h3>
-      </summary>
+    </article>
 
-      <div class="summary">
-        <p class="summary-subtitle"></p>
-        <div class="summary-section">
-        </div>
-      </div>
+    <article>
+      <h1>CSS</h1>
 
       <section>
-        <h4>Functions</h4>
-        <div class="summary summary-section">
-          <p>attr()</p>
-          <p>calc()</p>
-          <p>cubic-bezier()</p>
-          <p>hsl()</p>
-          <p>hsla()</p>
-          <p>linear-gradient()</p>
-          <p>radial-gradient()</p>
-          <p>repeating-linear-gradient()</p>
-          <p>repeating-radial-gradient()</p>
-          <p>rgb()</p>
-          <p>rgba()</p>
-          <p>var()</p>
-        </div>
+        <h2>Functions</h2>
+
         <dl>
           <dt>attr()</dt>
           <dd>Returns the value of an attribute of the selected element</dd>
@@ -1255,36 +1121,11 @@
           <dd>Defines colors using the Red-Green-Blue-Alpha model (RGBA)</dd>
           <dt>var()</dt>
           <dd>Inserts the value of a custom property</dd>
-          <dt></dt>
-          <dd></dd>
         </dl>
       </section>
 
       <section>
-        <h4>Units</h4>
-        <div class="summary">
-          <p class="summary-subtitle">Absolute Lengths</p>
-          <div class="summary-section">
-            <p>cm</p>
-            <p>mm</p>
-            <p>in</p>
-            <p>px</p>
-            <p>pt</p>
-            <p>pc</p>
-          </div>
-          <p class="summary-subtitle">Relative Lengths</p>
-          <div class="summary-section">
-            <p>em</p>
-            <p>ex</p>
-            <p>ch</p>
-            <p>rem</p>
-            <p>vw</p>
-            <p>vh</p>
-            <p>vmin</p>
-            <p>vmax</p>
-            <p>%</p>
-          </div>
-        </div>
+        <h2>Units</h2>
 
         <dl>
           <dt>cm</dt>
@@ -1322,371 +1163,102 @@
         </dl>
       </section>
 
-    </details>
-  </article>
-
-  <article id="javascript">
-    <details>
-      <summary>
-        <h3>JavaScript</h3>
-      </summary>
-
-      <div class="summary">
-        <p class="summary-subtitle"></p>
-        <div class="summary-section">
-        </div>
-      </div>
-
-      <p>Primitive types: null, undefined, string, number, boolean, Symbol</p>
-      <p>Reference types: Object, Function, Array</p>
-    </details>
-  </article>
-
-  <article id="typescript">
-    <details>
-      <summary>
-        <h3>TypeScript</h3>
-      </summary>
       <section>
-        <h4>Internal types</h4>
-        <div class="summary summary-section">
-          <p>Partial</p>
-          <p>Required</p>
-          <p>Readonly</p>
-          <p>Pick</p>
-          <p>Record</p>
-          <p>Exclude</p>
-          <p>Extract</p>
-          <p>Omit</p>
-          <p>NonNullable</p>
-          <p>Parameters</p>
-          <p>ConstructorParameters</p>
-          <p>ReturnType</p>
-          <p>InstanceType</p>
-        </div>
-      </section>
-      <dl>
-        <dt>type Partial&lt;T&gt; = { [P in keyof T]?: T[P]; };</dt>
-        <dd>Make all properties in T optional</dd>
+        <h2>Selectors</h2>
 
-        <dt>type Required&lt;T&gt; = { [P in keyof T]-?: T[P]; };</dt>
-        <dd>Make all properties in T required</dd>
-
-        <dt>type Readonly&lt;T&gt; = { readonly [P in keyof T]: T[P]; };</dt>
-        <dd>Make all properties in T readonly</dd>
-
-        <dt>type Pick&lt;T, K extends keyof T&gt; = { [P in K]: T[P]; };</dt>
-        <dd>From T, pick a set of properties whose keys are in the union K</dd>
-
-        <dt>type Record&lt;K extends keyof any, T&gt; = { [P in K]: T; };</dt>
-        <dd>Construct a type with a set of properties K of type T</dd>
-
-        <dt>type Exclude&lt;T, U&gt; = T extends U ? never : T;</dt>
-        <dd>Exclude from T those types that are assignable to U</dd>
-
-        <dt>type Extract&lt;T, U&gt; = T extends U ? T : never;</dt>
-        <dd>Extract from T those types that are assignable to U</dd>
-
-        <dt>type Omit&lt;T, K extends keyof any&gt; = Pick&lt;T, Exclude&lt;keyof T, K&gt;&gt;;</dt>
-        <dd>Construct a type with the properties of T except for those in type K.</dd>
-
-        <dt>type NonNullable&lt;T&gt; = T extends null | undefined ? never : T;</dt>
-        <dd>Exclude null and undefined from T</dd>
-
-        <dt>type Parameters&lt;T extends (...args: any) =&gt; any&gt; = T extends (...args: infer P) =&gt; any ? P :
-          never;</dt>
-        <dd>Obtain the parameters of a function type in a tuple</dd>
-
-        <dt>type ConstructorParameters&lt;T extends new (...args: any) =&gt; any&gt; = T extends new (...args: infer P)
-          =&gt; any ? P : never;</dt>
-        <dd>Obtain the parameters of a constructor function type in a tuple</dd>
-
-        <dt>type ReturnType&lt;T extends (...args: any) =&gt; any&gt; = T extends (...args: any) =&gt; infer R ? R :
-          any;</dt>
-        <dd>Obtain the return type of a function type</dd>
-
-        <dt>type InstanceType&lt;T extends new (...args: any) =&gt; any&gt; = T extends new (...args: any) =&gt; infer R
-          ? R : any;</dt>
-        <dd>Obtain the return type of a constructor function type</dd>
-
-      </dl>
-    </details>
-  </article>
-
-  <article id="react">
-    <details>
-      <summary>
-        <h3>React</h3>
-      </summary>
-
-      <div class="summary">
-        <p class="summary-subtitle">Hooks</p>
-        <div class="summary-section">
-          <p>useState</p>
-          <p>useEffect</p>
-          <p>useContext</p>
-          <p>useReducer</p>
-          <p>useCallback</p>
-          <p>useMemo</p>
-          <p>useRef</p>
-          <p>useImperativeHandle</p>
-          <p>useLayoutEffect</p>
-          <p>useDebugValue</p>
-        </div>
-      </div>
-
-      <section>
-        <h4></h4>
-        <div class="summary summary-section">
-          <p></p>
-        </div>
         <dl>
-          <dt></dt>
-          <dd></dd>
+          <dt>descendant selector (space)</dt>
+          <dd>The descendant selector matches all elements that are descendants of a specified element</dd>
+
+          <dt>child selector (>)</dt>
+          <dd>The child selector selects all elements that are the children of a specified element</dd>
+
+          <dt>adjacent sibling selector (+)</dt>
+          <dd>
+            The adjacent sibling selector selects all elements that are the adjacent siblings of a specified element.
+            Sibling elements must have the same parent element, and "adjacent" means "immediately following".
+          </dd>
+
+          <dt>general sibling selector (~)</dt>
+          <dd>The general sibling selector selects all elements that are siblings of a specified element.</dd>
+
         </dl>
       </section>
 
       <section>
-        <h4>Class component lifecycle</h4>
-        <div class="summary summary-section">
-          <p>constructor</p>
-          <p>render</p>
-          <p>getDerivedStateFromProps</p>
-          <p>getDerivedStateFromError</p>
-          <p>shoulComponentUpdate</p>
-          <p>getSnapshotBeforeUpdate</p>
-          <p>componentDidMount</p>
-          <p>componentDidUpdate</p>
-          <p>componentDidCatch</p>
-          <p>componentWillUnmount</p>
-        </div>
-
-        <table class="border text-center small-font">
-          <thead>
-            <tr>
-              <th></th>
-              <th>Mounting</th>
-              <th>Updating</th>
-              <th>Error boundaries</th>
-              <th>Unmounting</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td rowspan="4" class="strong border-top border-bottom">Render phase</td>
-              <td class="border">constructor(props)</td>
-            </tr>
-            <tr>
-              <td colspan="2" class="border">static getDerivedStateFromProps(props, state)</td>
-              <td class="border">static getDerivedStateFromError(error)</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td class="border">shoulComponentUpdate(nextProps, nextState)</td>
-            </tr>
-            <tr>
-              <td colspan="2" class="border">render()</td>
-            </tr>
-            <tr>
-              <td class="strong border-top border-bottom">Pre-commit phase</td>
-              <td></td>
-              <td class="border" class="border">getSnapshotBeforeUpdate(prevProps, prevState)</td>
-            </tr>
-            <tr>
-              <td rowspan="2" class="strong border-top border-bottom">Commit phase</td>
-              <td colspan="2">React updates DOM and refs</td>
-            </tr>
-            <tr>
-              <td class="border">componentDidMount()</td>
-              <td class="border">componentDidUpdate(prevProps, prevState, snapshot)</td>
-              <td class="border">componentDidCatch(error, info)</td>
-              <td class="border">componentWillUnmount()</td>
-            </tr>
-          </tbody>
-        </table>
+        <h2>Pseudo-classes</h2>
+        <p>A pseudo-class is used to define a special state of an element.</p>
 
         <dl>
-          <dt>Render phase</dt>
-          <dd>Pure and has no side effects. May be paused, aborted or restarted by React.</dd>
-          <dt>Pre-commit phase</dt>
-          <dd>Can read the DOM.</dd>
-          <dt>Commit phase</dt>
-          <dd>Can work with DOM, run side effects, schedule updates.</dd>
-          <dt>constructor</dt>
-          <dd></dd>
-          <dt>render</dt>
-          <dd></dd>
-          <dt>getDerivedStateFromProps</dt>
-          <dd></dd>
-          <dt>getDerivedStateFromError</dt>
-          <dd></dd>
-          <dt>shoulComponentUpdate</dt>
-          <dd></dd>
-          <dt>getSnapshotBeforeUpdate</dt>
-          <dd></dd>
-          <dt>componentDidMount</dt>
-          <dd></dd>
-          <dt>componentDidUpdate</dt>
-          <dd></dd>
-          <dt>componentDidCatch</dt>
-          <dd></dd>
-          <dt>componentWillUnmount</dt>
-          <dd></dd>
+          <dt>:active</dt>
+          <dt>:checked</dt>
+          <dt>:disabled</dt>
+          <dt>:empty</dt>
+          <dt>:enabled</dt>
+          <dt>:first-child</dt>
+          <dt>:first-of-type</dt>
+          <dt>:focus</dt>
+          <dt>:hover</dt>
+          <dt>:in-range</dt>
+          <dt>:invalid</dt>
+          <dt>:lang(language)</dt>
+          <dt>:last-child</dt>
+          <dt>:last-of-type</dt>
+          <dt>:link</dt>
+          <dt>:not(selector)</dt>
+          <dt>:nth-child(n)</dt>
+          <dt>:nth-last-child(n)</dt>
+          <dt>:nth-last-of-type(n)</dt>
+          <dt>:nth-of-type(n)</dt>
+          <dt>:only-of-type</dt>
+          <dt>:only-child</dt>
+          <dt>:optional</dt>
+          <dt>:out-of-range</dt>
+          <dt>:read-only</dt>
+          <dt>:read-write</dt>
+          <dt>:required</dt>
+          <dt>:root</dt>
+          <dt>:target</dt>
+          <dt>:valid</dt>
+          <dt>:visited</dt>
         </dl>
+
+
       </section>
 
       <section>
-        <h4>React Hooks</h4>
-        <div class="summary">
-          <p class="summary-subtitle">Basic Hooks</p>
-          <div class="summary-section">
-            <p>useState</p>
-            <p>useEffect</p>
-            <p>useContext</p>
-          </div>
-          <p class="summary-subtitle">Additional Hooks</p>
-          <div class="summary-section">
-            <p>useReducer</p>
-            <p>useCallback</p>
-            <p>useMemo</p>
-            <p>useRef</p>
-            <p>useImperativeHandle</p>
-            <p>useLayoutEffect</p>
-            <p>useDebugValue</p>
-          </div>
-        </div>
+        <h2>Pseudo-elements</h2>
+        <p>A CSS pseudo-element is used to style specified parts of an element.</p>
 
         <dl>
-          <dt>useState</dt>
-          <dd>Returns a stateful value, and a function to update it.</dd>
-          <dt>useEffect</dt>
-          <dd>Accepts a function that contains imperative, possibly effectful code. The function passed to useEffect
-            will
-            run after the render is committed to the screen. By default, effects run after every completed render, but
-            you
-            can choose to fire it only when certain values have changed.</dd>
-          <dt>useContext</dt>
-          <dd>Accepts a context object (the value returned from React.createContext) and returns the current context
-            value
-            for that context. The current context value is determined by the value prop of the nearest
-            &lt;MyContext.Provider>&gt; above the calling component in the tree. When the nearest
-            &lt;MyContext.Provider&gt; above the component updates, this Hook will trigger a rerender with the latest
-            context value passed to that MyContext provider.</dd>
-          <dt>useReducer</dt>
-          <dd>Accepts a reducer of type (state, action) => newState, and returns the current state paired with a
-            dispatch
-            method.</dd>
-          <dt>useCallback</dt>
-          <dd>Returns a memoized callback. Pass an inline callback and an array of dependencies. useCallback will return
-            a
-            memoized version of the callback that only changes if one of the dependencies has changed. useCallback(fn,
-            deps) is equivalent to useMemo(() => fn, deps).</dd>
-          <dt>useMemo</dt>
-          <dd>Returns a memoized value. Pass a “create” function and an array of dependencies. useMemo will only
-            recompute
-            the memoized value when one of the dependencies has changed. This optimization helps to avoid expensive
-            calculations on every render. If no array is provided, a new value will be computed on every render.</dd>
-          <dt>useRef</dt>
-          <dd>Returns a mutable ref object whose .current property is initialized to the passed argument (initialValue).
-            The returned object will persist for the full lifetime of the component.</dd>
-          <dt>useImperativeHandle</dt>
-          <dd>Customizes the instance value that is exposed to parent components when using ref.</dd>
-          <dt>useLayoutEffect</dt>
-          <dd>The signature is identical to useEffect, but it fires synchronously after all DOM mutations. Use this to
-            read layout from the DOM and synchronously re-render. Updates scheduled inside useLayoutEffect will be
-            flushed
-            synchronously, before the browser has a chance to paint.</dd>
-          <dt>useDebugValue</dt>
-          <dd>Can be used to display a label for custom hooks in React DevTools</dd>
-        </dl>
-      </section>
-    </details>
-
-  </article>
-
-  <article id="nodejs">
-    <details>
-      <summary>
-        <h3>Node.js</h3>
-      </summary>
-
-      <div class="summary">
-        <p class="summary-subtitle"></p>
-        <div class="summary-section">
-        </div>
-      </div>
-
-      <section>
-        <h4></h4>
-        <div class="summary summary-section">
-          <p></p>
-        </div>
-        <dl>
-          <dt></dt>
-          <dd></dd>
+          <dt>::after</dt>
+          <dt>::before</dt>
+          <dt>::first-letter</dt>
+          <dt>::first-line</dt>
+          <dt>::selection</dt>
         </dl>
       </section>
 
-    </details>
-  </article>
+    </article>
+
+  </div>
 </body>
-
-<script lang="javascript">
-  var beforePrint = function () {
-    const detailsElements = document.getElementsByTagName("details")
-    for (const elem of detailsElements)
-      elem.setAttribute('open', '')
-  };
-  var afterPrint = function () {
-    const detailsElements = document.getElementsByTagName("details")
-    for (const elem of detailsElements)
-      elem.removeAttribute('open')
-  };
-
-  // Webkit
-  if (window.matchMedia) {
-    var mediaQueryList = window.matchMedia('print');
-    mediaQueryList.addListener(function (mql) {
-      if (mql.matches) {
-        beforePrint();
-      } else {
-        afterPrint();
-      }
-    });
-  }
-
-  // IE, Firefox
-  window.onbeforeprint = beforePrint;
-  window.onafterprint = afterPrint;
-</script>
 
 </html>
 
-<!-- Article Template
+<!--
+		<article>
+      <h1></h1>
+      
+      <section>
+        <h2></h2>
 
-  <article id="">
-    <details>
-      <summary>
-        <h3></h3>
-      </summary>
-
-    <div class="summary">
-      <p class="summary-subtitle"></p>
-      <div class="summary-section">
-      </div>
-    </div>
-
-    <section>
-      <h4></h4>
-      <div class="summary summary-section">
-        <p></p>
-      </div>
-      <dl>
-        <dt></dt>
-        <dd></dd>
-      </dl>
-    </section>
-    </details>
-  </article>
-
+      </section>
+      
+    </article>
+    
+        <dl>
+          <dt></dt>
+          <dd></dd>
+        </dl>
 -->

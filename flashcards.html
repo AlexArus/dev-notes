@@ -1,0 +1,955 @@
+<!--
+    TODO: 
+        PWA - https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0
+-->
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Alex Arus" />
+    <meta name="subject" content="Dev Notes Flashcards" />
+    <meta name="keywords" content="programming" />
+    <title>dev-notes flashcards</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+
+            --base-font-size: 10px;
+            font-size: var(--base-font-size);
+
+            min-width: 300px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav,
+        article {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            word-break: normal;
+            text-align: justify;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: var(--base-font-size);
+        }
+
+        nav a {
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+
+        a:hover {
+            cursor: pointer;
+        }
+
+        article {
+            flex-grow: 1;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .question {
+            font-size: calc(var(--base-font-size) * 4);
+        }
+
+        .answer {
+            font-size: calc(var(--base-font-size) * 2);
+        }
+
+        .darkTheme {
+            background-color: black;
+            color: white;
+        }
+
+        .darkTheme nav {
+            border-top: 1px solid darkgray;
+        }
+
+        .darkTheme a:hover {
+            background-color: darkgray;
+        }
+
+        .lightTheme {
+            background-color: white;
+            color: black;
+        }
+
+        .lightTheme nav {
+            border-top: 1px solid lightgray;
+        }
+
+        .lightTheme a:hover {
+            background-color: lightgray;
+        }
+
+        .darkTheme #editFlashcardList {
+            background-color: black;
+        }
+
+        .lightTheme #editFlashcardList {
+            background-color: white;
+        }
+
+        .darkTheme #flashcardTitle {
+            color: lightgray;
+        }
+
+        .lightTheme #flashcardTitle {
+            color: darkgray;
+        }
+
+        #flashcard {
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 100%;
+            word-break: break-word;
+        }
+
+        #flashcardTitle {
+            text-align: end;
+            width: 95%;
+            font-size: var(--base-font-size);
+        }
+
+        #editFlashcardList {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        #editFlashcardList nav a {
+            flex-grow: 1;
+            font-size: calc(var(--base-font-size) * 3);
+            text-align: center;
+        }
+
+        #flashcardList {
+            align-items: unset;
+        }
+
+        label {
+            font-size: var(--base-font-size);
+        }
+
+        details div {
+            margin-left: 25px;
+            padding: 5px 15px;
+        }
+
+        summary {
+            font-size: var(--base-font-size);
+        }
+
+        summary a {
+            float: right;
+            margin-right: 10px;
+            padding: 2px 15px;
+            border-radius: 5px;
+        }
+
+        .darkTheme summary a {
+            color: lightgray;
+        }
+
+        .lightTheme summary a {
+            color: darkgray;
+        }
+
+        input[type=checkbox] {
+            transform: scale(2);
+            padding: 10px;
+            margin: 5px 15px;
+        }
+
+        /*
+        ##Device = Desktops
+        ##Screen = 1281px to higher resolution desktops
+        */
+        @media (min-width: 1281px) {
+
+            html,
+            body {
+                --base-font-size: 22px;
+            }
+        }
+
+        /*
+        ##Device = Laptops, Desktops
+        ##Screen = B/w 1025px to 1280px
+        */
+        @media (min-width: 1025px) and (max-width: 1280px) {
+
+            html,
+            body {
+                --base-font-size: 20px;
+            }
+        }
+
+        /*
+        ##Device = Tablets, Ipads (portrait)
+        ##Screen = B/w 768px to 1024px
+        */
+        @media (min-width: 768px) and (max-width: 1024px) {
+
+            html,
+            body {
+                --base-font-size: 18px;
+            }
+        }
+
+        /*
+        ##Device = Tablets, Ipads (landscape)
+        ##Screen = B/w 768px to 1024px
+        */
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+            html,
+            body {
+                --base-font-size: 16px;
+            }
+        }
+
+        /*
+        ##Device = Low Resolution Tablets, Mobiles (Landscape)
+        ##Screen = B/w 481px to 767px
+        */
+        @media (min-width: 481px) and (max-width: 767px) {
+
+            html,
+            body {
+                --base-font-size: 14px;
+            }
+        }
+
+        /*
+        ##Device = Most of the Smartphones Mobiles (Portrait)
+        ##Screen = B/w 320px to 479px
+        */
+        @media (min-width: 320px) and (max-width: 480px) {
+
+            html,
+            body {
+                --base-font-size: 12px;
+            }
+        }
+    </style>
+
+    <script>
+        window.data = {
+            SOLID: {
+                SOLID: [
+                    'SRP - single responsibility principle',
+                    'OCP - open/closed principle',
+                    'LSP - Liskov substition principle',
+                    'ISP - interface segregation principle',
+                    'DIP - dependency inversion principle',
+                ],
+                SRP: [
+                    '- class should have single responsibility',
+                    '- class shoud have one, and only one, reason to change',
+                ],
+                OCP: 'class should be open for extension, but closed for modification',
+                LSP: 'object should be replacable by instances of their subtypes without altering the correctness of that programm',
+                ISP: 'many client specific interfaces better then one general purpose interface',
+                DIP: 'one should depend upon asbtraction not conretion',
+            },
+            GRASP: {
+                ['General Responsibility Assignment Software Patterns']: [
+                    'Controller',
+                    'Creator',
+                    'High cohesion',
+                    'Indirection',
+                    'Information expert',
+                    'Low coupling',
+                    'Polimorphism',
+                    'Protected variation',
+                    'Pure fabrication',
+                ],
+                Controller: 'Controller is responsible for receiving or handling a system event',
+                Creator: [
+                    'Creator is responsible for creating objects',
+                    '- contain or compositely aggregate instances',
+                    '- record or closely use instances',
+                    '- have initializing information for instances',
+                ],
+                ['High cohesion']: 'Responsibility are strongly related and highly focused',
+                Indirection: 'Assign the responsibility of mediation between two elements to an intermediate object',
+                ['Information expert']: 'Assign the responsibility to the class which has the information neccessary to fulfill that responsibility',
+                ['Low coupling']: 'Assign responsibilities to support lower dependency between classes, change in one class having lower impact on other classes, higher reuse potential',
+                Polimorphism: 'Assign a responsibility according to the type of variation of behaviors by polymorphic operations',
+                ['Protected variation']: 'Protects elements from variations on others by wrapping into interface and using polymorphism',
+                ['Pure fabrication']: 'Specially made class to archieve low coupling, high cohesion and reuse potential',
+            },
+            Principles: {
+                YARGNI: `You aren't gone need it`,
+                KISS: 'Keep it short and simple',
+                DRY: `Don't repeat your self`,
+                [`Ocam's razor`]: `Entities should not be multiplied without necessity. When presented with competing hypotheses that make the
+                    same predictions, one should select the solution with the fewest assumptions, and it is not meant to be a way
+                    of choosing between hypotheses that make different predictions`,
+            },
+            ['OOP Patterns']: {
+                ['Creatinal patterns']: [
+                    'Abstract factory',
+                    'Builder',
+                    'Factory method',
+                    'Lazy initialization (virtual proxy)',
+                    'Multiton',
+                    'Object library',
+                    'Object pool',
+                    'Prototype',
+                    'Singleton',
+                ],
+                ['Behaviral patterns']: [
+                    'Blackboard',
+                    'Chain of responsibility',
+                    'Command',
+                    'Interpreter',
+                    'Interator',
+                    'Mediator',
+                    'Memento',
+                    'Null object',
+                    'Observer or Publish/Subscrube',
+                    'Servant',
+                    'Specification',
+                    'State',
+                    'Strategy',
+                    'Template method',
+                    'Visitor',
+                ],
+                ['Structural patterns']: [
+                    'Adapter, Wrapper or Translator',
+                    'Bridge',
+                    'Composite',
+                    'Decorator',
+                    'Facade',
+                    'Flyweight',
+                    'Front controller',
+                    'Marker',
+                    'Module',
+                    'Proxy',
+                    'Twin',
+                ],
+                ['Concurency patterns']: [
+                    'Active object',
+                    'Balking',
+                    'Binding properties',
+                    'Double-checked locking',
+                    'Event-based asynchrones',
+                    'Guarded suspension',
+                    'Join',
+                    'Lock',
+                    'Messaging desing pattern (MDP)',
+                    'Monitor object',
+                    'Reactor',
+                    'Read-write lock',
+                    'Scheduler',
+                    'Thread pool',
+                    'Thread specific storage',
+                ],
+            },
+            TypeScript: {
+                ['TypeScript Utility types']: [
+                    'Partial',
+                    'Required',
+                    'Readonly',
+                    'Pick',
+                    'Record',
+                    'Exclude',
+                    'Extract',
+                    'Omit',
+                    'NonNullable',
+                    'Parameters',
+                    'ConstructorParameters',
+                    'ReturnType',
+                    'InstanceType',
+                ],
+            },
+            DataBase: {
+                ACID: [
+                    'Atomicity',
+                    'Consistency',
+                    'Isolation',
+                    'Durability',
+                ],
+                ['Isolation levels']: [
+                    'read uncommitted',
+                    'read committed (dirty read)',
+                    'repeatable read (non repeatable read)',
+                    'serializable (phantom read)'
+                ],
+            },
+            SDLC: {
+                Stages: [
+                    'Planning and Requirement Analysis',
+                    'Defining Requirements',
+                    'Designing the Product Architecture',
+                    'Building or Developing the Product',
+                    'Testing the Product',
+                    'Deployment in the Market and Maintenance',
+                ],
+                Methodologies: [
+                    'Waterfall Model',
+                    'V-Shaped Model',
+                    'Iterative Model',
+                    'Spiral Model',
+                    'Big Bang Model',
+                    'Agile Model',
+                ],
+            },
+            React: {
+                ['React Hooks']: [
+                    'useState',
+                    'useEffect',
+                    'useContext',
+                    'useReducer',
+                    'useCallback',
+                    'useMemo',
+                    'useRef',
+                    'useImperativeHandle',
+                    'useLayoutEffect',
+                    'useDebugValue',
+                ],
+                ['React Component Lifecycle']: [
+                    'Render phase',
+                    'Pre-commit phase',
+                    'Commit phase',
+                    'constructor',
+                    'render',
+                    'getDerivedStateFromProps',
+                    'getDerivedStateFromError',
+                    'shoulComponentUpdate',
+                    'getSnapshotBeforeUpdate',
+                    'componentDidMount',
+                    'componentDidUpdate',
+                    'componentDidCatch',
+                    'componentWillUnmount',
+                ],
+            },
+            HTML: {
+                ['HTML Basic']: [
+                    '!DOCTYPE',
+                    'html',
+                    'head',
+                    'title',
+                    'body',
+                    'h1 to h6',
+                    'p',
+                    'br',
+                    'hr',
+                    '&lt;!--...--&gt;',
+                    'iframe',
+                    'a',
+                    'link',
+                    'style',
+                ],
+                ['HTML Formating']: [
+                    'abbr',
+                    'address',
+                    'b',
+                    'bdi',
+                    'bdo',
+                    'blockquote',
+                    'cite',
+                    'code',
+                    'del',
+                    'dfn',
+                    'em',
+                    'i',
+                    'ins',
+                    'kbd',
+                    'mark',
+                    'meter',
+                    'pre',
+                    'progress',
+                    'q',
+                    'rp',
+                    'rt',
+                    'ruby',
+                    's',
+                    'samp',
+                    'small',
+                    'strong',
+                    'sub',
+                    'sup',
+                    'template',
+                    'time',
+                    'u',
+                    'var',
+                    'wbr',
+                ],
+                ['HTML Forms and input']: [
+                    'form',
+                    'input',
+                    'textarea',
+                    'button',
+                    'select',
+                    'optgroup',
+                    'option',
+                    'label',
+                    'fieldset',
+                    'legend',
+                    'datalist',
+                    'output',
+                ],
+                ['HTML Images']: [
+                    'img',
+                    'map',
+                    'area',
+                    'canvas',
+                    'figcaption',
+                    'figure',
+                    'picture',
+                    'svg',
+                ],
+                ['HTML Audio&Video']: [
+                    'audio',
+                    'source',
+                    'track',
+                    'video',
+                ],
+                ['HTML Lists']: [
+                    'ul',
+                    'ol',
+                    'li',
+                    'dl',
+                    'dt',
+                    'dd',
+                ],
+                ['HTML Tables']: [
+                    'table',
+                    'caption',
+                    'th',
+                    'tr',
+                    'td',
+                    'thead',
+                    'tbody',
+                    'tfoot',
+                    'col',
+                    'colgroup',
+                ],
+                ['HTML Semantics']: [
+                    'div',
+                    'span',
+                    'header',
+                    'footer',
+                    'main',
+                    'section',
+                    'article',
+                    'aside',
+                    'details',
+                    'dialog',
+                    'summary',
+                    'data',
+                    'nav',
+                ],
+                ['HTML Meta info']: [
+                    'head',
+                    'meta',
+                    'base',
+                ],
+                ['HTML Programming']: [
+                    'script',
+                    'noscript',
+                    'embed',
+                    'object',
+                    'param',
+                ],
+            },
+            CSS: {
+                ['CSS Functions']: [
+                    'attr',
+                    'calc',
+                    'cubic-bezier',
+                    'hsl',
+                    'hsla',
+                    'linear-gradient',
+                    'radial-gradient',
+                    'repeating-linear-gradient',
+                    'repeating-radial-gradient',
+                    'rgb',
+                    'rgba',
+                    'var',
+                ],
+                ['CSS Absolute Lengths']: [
+                    'cm',
+                    'mm',
+                    'in',
+                    'px',
+                    'pt',
+                    'pc',
+                ],
+                ['CSS Relative Lengths']: [
+                    'em',
+                    'ex',
+                    'ch',
+                    'rem',
+                    'vw',
+                    'vh',
+                    'vmin',
+                    'vmax',
+                    '%',
+                ],
+                ['CSS Selectors']: [
+                    'descendant selector (space)',
+                    'child selector (>)',
+                    'adjacent sibling selector (+)',
+                    'general sibling selector (~)',
+                ],
+                ['CSS Pseudo-classes']: [
+                    ':active',
+                    ':checked',
+                    ':disabled',
+                    ':empty',
+                    ':enabled',
+                    ':first-child',
+                    ':first-of-type',
+                    ':focus',
+                    ':hover',
+                    ':in-range',
+                    ':invalid',
+                    ':lang(language)',
+                    ':last-child',
+                    ':last-of-type',
+                    ':link',
+                    ':not(selector)',
+                    ':nth-child(n)',
+                    ':nth-last-child(n)',
+                    ':nth-last-of-type(n)',
+                    ':nth-of-type(n)',
+                    ':only-of-type',
+                    ':only-child',
+                    ':optional',
+                    ':out-of-range',
+                    ':read-only',
+                    ':read-write',
+                    ':required',
+                    ':root',
+                    ':target',
+                    ':valid',
+                    ':visited',
+                ],
+                ['CSS Pseudo-elements']: [
+                    '::after',
+                    '::before',
+                    '::first-letter',
+                    '::first-line',
+                    '::selection',
+                ],
+            },
+        };
+    </script>
+
+    <script>
+        const flashcards = [];
+        Object.keys(window.data).forEach((deckName) => {
+            const deck = window.data[deckName];
+            Object.keys(deck).forEach((question) => {
+                const answer = deck[question];
+                const id = deckName + ' - ' + question
+                const storageFlashcardEnableValue = localStorage.getItem(id);
+                const enable = !storageFlashcardEnableValue || storageFlashcardEnableValue === 'true';
+                flashcards.push({
+                    id,
+                    deck: deckName,
+                    question,
+                    answer,
+                    enable,
+                });
+            })
+        });
+
+        const themes = { light: 'lightTheme', dark: 'darkTheme' };
+        const sides = { question: 0, answer: 1 }
+
+        let flashcardIndex = 0;
+        let side = sides.question;
+
+        const getActiveFlashcards = () => flashcards.filter((card) => card.enable);
+
+        const getFlashcardElement = () => document.getElementById('flashcard');
+        const getFlashcardTitleElement = () => document.getElementById('flashcardTitle');
+
+        const buildHtmlList = (list, space) => list.join(space);
+
+        const showFlashcard = () => {
+            const flashcard = getActiveFlashcards()[flashcardIndex];
+            const flashcardElement = getFlashcardElement();
+            const flashcardTitleElement = getFlashcardTitleElement();
+
+            let content = side === sides.question ? flashcard.question : flashcard.answer;
+
+            flashcardElement.style.columnCount = null;
+            if (content instanceof Array) {
+                if (content.length > 8) {
+                    flashcardElement.style.columnCount = 2;
+                }
+
+                content = buildHtmlList(content, '<br/><br/>');
+            }
+
+            flashcardElement.innerHTML = content;
+            flashcardTitleElement.innerHTML = 'Deck: ' + flashcard.deck + ' Question: ' + flashcard.question;
+
+            flashcardElement.classList = [side === sides.question ? 'question' : 'answer'];
+        }
+
+        const themeStorageKey = '#THEME'
+        const toggleTheme = () => {
+            const body = document.querySelector('body');
+
+            if (Array.from(body.classList).some((cl) => cl === themes.dark)) {
+                body.classList.replace(themes.dark, themes.light);
+                localStorage.setItem(themeStorageKey, themes.light);
+            } else {
+                body.classList.replace(themes.light, themes.dark);
+                localStorage.setItem(themeStorageKey, themes.dark);
+            }
+        }
+
+        const toggleFlashcard = () => {
+            side = side === sides.question ? sides.answer : sides.question;
+            showFlashcard();
+        }
+
+        const prevFlashcard = () => {
+            const activeFlashCards = getActiveFlashcards();
+            if (activeFlashCards.length === 0) {
+                return;
+            }
+
+            const flashcardCount = activeFlashCards.length;
+            if (flashcardIndex === 0) {
+                flashcardIndex = flashcardCount - 1;
+            } else {
+                flashcardIndex--;
+            }
+            side = sides.question;
+            showFlashcard();
+        }
+
+        const nextFlashcard = () => {
+            const activeFlashCards = getActiveFlashcards();
+            if (activeFlashCards.length === 0) {
+                return;
+            }
+
+            const flashcardCount = activeFlashCards.length;
+            if (flashcardIndex === flashcardCount - 1) {
+                flashcardIndex = 0;
+            } else {
+                flashcardIndex++;
+            }
+            side = sides.question;
+            showFlashcard();
+        }
+
+        const showFlashcardList = () => {
+            const editFlashcardList = document.getElementById('editFlashcardList');
+            const flashcardList = document.getElementById('flashcardList');
+            flashcardList.innerHTML = '';
+
+            let currentDeck;
+            let deckBlockElement;
+            // let deckDisabledElements = [];
+            let deckCheckboxes = [];
+            let deckSummary;
+
+            flashcards
+                .sort((f1, f2) => {
+                    if(f1.deck === f2.deck){
+                        if (f1.enable === f2.enable){
+                            return 0;                        
+                        }
+                        return f1.enable ? -1 : 1;   
+                    }
+                    return 1;
+                })
+                .forEach((flashcard) => {
+                    if (flashcard.deck !== currentDeck) {
+                        if (deckSummary) {
+                            const currentDeckCheckboxes = Array.from(deckCheckboxes);
+                            const deckOff = document.createElement('a');
+                            deckOff.onclick = (e) => {
+                                flashcards.forEach((fc) => {
+                                    if(fc.deck === currentDeck){
+                                        fc.enable = false;
+                                        localStorage.setItem(fc.id, false);
+                                    }
+                                })
+                                currentDeckCheckboxes.forEach(ch => ch.checked = false);
+                                e.preventDefault();
+                            };
+                            deckOff.textContent = 'Off';
+                            deckSummary.appendChild(deckOff);
+                            const deckOn = document.createElement('a');
+                            deckOn.onclick = (e) => {
+                                flashcards.forEach((fc) => {
+                                    if(fc.deck === currentDeck){
+                                        fc.enable = true;
+                                        localStorage.setItem(fc.id, true);
+                                    }
+                                })
+                                currentDeckCheckboxes.forEach(ch => ch.checked = true);
+                                e.preventDefault();
+                            };
+                            deckOn.textContent = 'On';
+                            deckSummary.appendChild(deckOn);
+                        }
+
+                        deckBlockElement = document.createElement('details');
+                        deckBlockElement.open = true;
+
+                        deckSummary = document.createElement('summary');
+                        deckSummary.innerHTML = flashcard.deck;
+
+                        deckBlockElement.appendChild(deckSummary);
+
+                        flashcardList.appendChild(deckBlockElement);
+                        deckCheckboxes = [];
+                        currentDeck = flashcard.deck;
+                    }
+
+                    const block = document.createElement('div');
+
+                    const checkbox = document.createElement('input');
+                    checkbox.id = flashcard.id;
+                    checkbox.type = 'checkbox';
+                    checkbox.checked = flashcard.enable;
+                    checkbox.onchange = (e) => {
+                        flashcard.enable = e.target.checked;
+                        localStorage.setItem(flashcard.id, flashcard.enable);
+                    }
+                    block.appendChild(checkbox);
+                    deckCheckboxes.push(checkbox);
+
+                    const label = document.createElement('label');
+                    label.htmlFor = flashcard.id;
+                    label.textContent = flashcard.question;
+                    block.appendChild(label);
+
+                    deckBlockElement.appendChild(block);
+                });
+            editFlashcardList.style.display = 'flex';
+        }
+
+        const closeFlashcardList = () => {
+            const editFlashcardList = document.getElementById('editFlashcardList');
+            editFlashcardList.style.display = 'none';
+
+            const activeFlashcards = getActiveFlashcards();
+
+            const buttonDisplay = activeFlashcards.length > 1 ? 'inline' : 'none';
+            const backButton = document.getElementById('backButton');
+            backButton.style.display = buttonDisplay;
+            const nextButton = document.getElementById('nextButton');
+            nextButton.style.display = buttonDisplay;
+
+            if (activeFlashcards.length > 0) {
+                flashcardIndex = 0;
+                showFlashcard();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem(themeStorageKey) === themes.dark) {
+                toggleTheme();
+            }
+            showFlashcard();
+
+            const flashcard = getFlashcardElement();
+            let startX, startY,
+                dist,
+                threshold = 50, //required min distance traveled to be considered swipe
+                allowedTime = 2000, // maximum time allowed to travel that distance
+                elapsedTime, startTime;
+
+            flashcard.addEventListener('touchstart', function (e) {
+                const touchobj = e.changedTouches[0]
+                dist = 0;
+                startX = touchobj.pageX;
+                startY = touchobj.pageY;
+                startTime = new Date().getTime();
+                e.preventDefault()
+            }, false)
+
+            flashcard.addEventListener('touchmove', function (e) {
+                e.preventDefault(); // prevent scrolling when inside
+            }, false)
+
+            flashcard.addEventListener('touchend', function (e) {
+                const touchobj = e.changedTouches[0];
+                dist = touchobj.pageX - startX;
+                elapsedTime = new Date().getTime() - startTime;
+
+                if (elapsedTime <= allowedTime && Math.abs(dist) >= threshold && Math.abs(touchobj.pageY - startY) <= 100) {
+                    if (dist > 0) {
+                        prevFlashcard();
+                    } else {
+                        nextFlashcard();
+                    }
+                } else {
+                    toggleFlashcard();
+                }
+
+                e.preventDefault()
+            }, false)
+        })
+    </script>
+</head>
+
+<body class="lightTheme">
+    <article class="question" onclick="toggleFlashcard()">
+        <div id="flashcard"></div>
+        <div id="flashcardTitle"></div>
+    </article>
+
+    <nav>
+        <div>
+            <a onclick="prevFlashcard()" id="backButton">Back</a>
+        </div>
+        <div>
+            <a onclick="showFlashcardList()">flashcards</a>
+        </div>
+        <div>
+            <a onclick="toggleTheme()">dark/light</a>
+        </div>
+        <div>
+            <a onclick="nextFlashcard()" id="nextButton">Next</a>
+        </div>
+    </nav>
+
+    <section id="editFlashcardList">
+        <article id="flashcardList"></article>
+        <nav>
+            <a onclick="closeFlashcardList()">Close</a>
+        </nav>
+
+    </section>
+</body>
+
+</html>
