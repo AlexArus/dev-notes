@@ -15,14 +15,13 @@
   <style>
     html,
     body {
-      height: 100%;
-      width: 100%;
       margin: 0;
+      padding: 0;
       font-family: 'Roboto', sans-serif;
     }
 
     #root {
-      padding: 1cm;
+      padding: 5px;
       margin: 0 auto;
       height: 100%;
       width: 100%;
@@ -57,11 +56,19 @@
       }
 
       .darkTheme a {
-        color: lightblue;
+        color: white;
       }
 
       .lightTheme a {
-        color: darkblue;
+        color: black;
+      }
+
+      .darkTheme nav {
+        background-color: rgba(100, 100, 100, 0.7);
+      }
+
+      .lightTheme nav {
+        background-color: rgba(150, 150, 150, 0.7);
       }
 
       .flex {
@@ -81,10 +88,24 @@
       }
 
       nav {
+        display: block;
+        position: sticky;
+        top: 3px;
+        width: 100%;
+        padding: 5px;
+        border-radius: 5px;
+        font-weight: bolder;
+      }
+
+      #index {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        width: 100%;
+      }
+
+      #settings {
+        text-align: center;
+        font-size: 12px;
       }
 
       nav a {
@@ -94,6 +115,20 @@
       a:hover {
         text-decoration: underline;
         cursor: pointer;
+      }
+
+      #scrollToTop {
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+        background-color: darkgray;
+        color: black;
+        border-radius: 25px;
+        padding: 10px;
+      }
+
+      #scrollToTop:hover {
+        text-decoration: none;
       }
     }
 
@@ -109,7 +144,6 @@
 
       #root {
         display: block;
-        padding: 5mm;
       }
 
       article {
@@ -122,9 +156,6 @@
         display: none;
       }
     }
-
-
-
 
     table {
       width: 100%;
@@ -199,11 +230,15 @@
       }
     }
 
+    function scrollToTop() {
+      window.scrollTo(0, 0);
+    };
+
     document.addEventListener("DOMContentLoaded", () => {
       const topics = document.querySelectorAll('h1');
-      const nav = document.querySelector('nav')
+      const index = document.getElementById('index');
 
-      if (!nav) {
+      if (!index) {
         return;
       }
 
@@ -214,7 +249,7 @@
         topicLink.innerText = id;
         topicLink.href = `#${id}`;
 
-        nav.appendChild(topicLink);
+        index.appendChild(topicLink);
       });
 
     });
@@ -223,13 +258,18 @@
 </head>
 
 <body class="darkTheme">
-  <div id="root" class="flex">
 
+  <div id="root" class="flex">
+    
     <nav>
-      <a onclick="toggleFullScreen()">full screen on/off</a>
-      <a onclick="toggleTheme()">dark/light theme</a>
-      <a onclick="toggleLayout()">flex/box</a>
-      <a href="flashcards.html">flashcards</a>
+      <a id="scrollToTop" onclick="scrollToTop()">Up</a>
+      <div id="settings">
+        <a onclick="toggleFullScreen()">full screen on/off</a>
+        <a onclick="toggleTheme()">dark/light theme</a>
+        <a onclick="toggleLayout()">flex/box</a>
+        <a href="flashcards.html">flashcards</a>
+      </div>
+      <div id="index"></div>
     </nav>
 
     <article>
@@ -1115,8 +1155,9 @@
             fired. We intentionally do not use the existing browser behavior because onChange is a misnomer for its
             behavior and React relies on this event to handle user input in real time.</dd>
           <dt>selected</dt>
-          <dd>The selected attribute is supported by &lt;option&gt; components. You can use it to set whether the component is
-              selected. This is useful for building controlled components.</dd>
+          <dd>The selected attribute is supported by &lt;option&gt; components. You can use it to set whether the
+            component is
+            selected. This is useful for building controlled components.</dd>
           <dt>style</dt>
           <dd>The style attribute accepts a JavaScript object with camelCased properties rather than a CSS string. This
             is consistent with the DOM style JavaScript property, is more efficient, and prevents XSS security holes.
