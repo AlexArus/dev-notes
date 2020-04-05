@@ -74,7 +74,7 @@
         }
 
         .answer {
-            font-size: calc(var(--base-font-size) * 2);
+            font-size: calc(var(--base-font-size) * 1.3);
         }
 
         .darkTheme {
@@ -125,6 +125,7 @@
             text-align: center;
             width: 100%;
             word-break: break-word;
+            line-height: 1.7;
         }
 
         #flashcardTitle {
@@ -483,7 +484,7 @@
                     'render',
                     'getDerivedStateFromProps',
                     'getDerivedStateFromError',
-                    'shoulComponentUpdate',
+                    'shouldComponentUpdate',
                     'getSnapshotBeforeUpdate',
                     'componentDidMount',
                     'componentDidUpdate',
@@ -1250,7 +1251,7 @@
         });
 
         const themes = { light: 'lightTheme', dark: 'darkTheme' };
-        const sides = { question: 0, answer: 1 }
+        const sides = { question: 0, answer: 1 };
 
         let flashcardIndex = 0;
         let side = sides.question;
@@ -1275,7 +1276,7 @@
                     flashcardElement.style.columnCount = 2;
                 }
 
-                content = buildHtmlList(content, '<br/><br/>');
+                content = buildHtmlList(content, '<br/>');
             }
 
             flashcardElement.innerHTML = content;
@@ -1308,12 +1309,7 @@
                 return;
             }
 
-            const flashcardCount = activeFlashCards.length;
-            if (flashcardIndex === 0) {
-                flashcardIndex = flashcardCount - 1;
-            } else {
-                flashcardIndex--;
-            }
+            flashcardIndex = flashcardIndex === 0 ? activeFlashCards.length - 1 : flashcardIndex - 1;
             side = sides.question;
             showFlashcard();
         }
@@ -1324,12 +1320,7 @@
                 return;
             }
 
-            const flashcardCount = activeFlashCards.length;
-            if (flashcardIndex === flashcardCount - 1) {
-                flashcardIndex = 0;
-            } else {
-                flashcardIndex++;
-            }
+            flashcardIndex = flashcardIndex === activeFlashCards.length - 1 ? 0 : flashcardIndex + 1;
             side = sides.question;
             showFlashcard();
         }
@@ -1448,7 +1439,7 @@
                 allowedTime = 2000, // maximum time allowed to travel that distance
                 elapsedTime, startTime;
 
-            document.addEventListener('touchstart', function (e) {
+            document.addEventListener('touchstart', (e) => {
                 const touchobj = e.changedTouches[0]
                 dist = 0;
                 startX = touchobj.pageX;
@@ -1456,11 +1447,11 @@
                 startTime = new Date().getTime();
             }, false)
 
-            // document.addEventListener('touchmove', function (e) {
+            // document.addEventListener('touchmove', (e) => {
             //     e.preventDefault(); // prevent scrolling when inside
             // }, false)
 
-            document.addEventListener('touchend', function (e) {
+            document.addEventListener('touchend', (e) => {
                 const touchobj = e.changedTouches[0];
                 dist = touchobj.pageX - startX;
                 elapsedTime = new Date().getTime() - startTime;
@@ -1473,6 +1464,23 @@
                     }
                 }
             }, false)
+
+            document.addEventListener('keydown', (e) => {
+                switch (e.keyCode) {
+                    case 13:    // enter
+                    case 32:    // space
+                        toggleFlashcard();
+                        break;
+                    case 37:    // left
+                    case 74:    // J
+                        prevFlashcard();
+                        break;
+                    case 39:    // right
+                    case 76:    // L
+                        nextFlashcard();
+                        break;
+                }
+            })
         })
     </script>
 </head>
@@ -1503,7 +1511,6 @@
         <nav>
             <a onclick="closeFlashcardList()">Close</a>
         </nav>
-
     </section>
 </body>
 
