@@ -260,7 +260,7 @@
 <body class="darkTheme">
 
   <div id="root" class="flex">
-    
+
     <nav>
       <a id="scrollToTop" onclick="scrollToTop()">Up</a>
       <div id="settings">
@@ -643,6 +643,30 @@
       </section>
 
       <section>
+        <h2></h2>
+
+        <dl>
+          <dt>Multiversion concurrency control (MCC or MVCC)</dt>
+          <dd>
+            Without concurrency control, if someone is reading from a database at the same time as someone else is
+            writing to it, it is possible that the reader will see a half-written or inconsistent piece of data.
+            MVCC aims at solving the problem by keeping multiple copies of each data item. In this way, each user
+            connected to the database sees a snapshot of the database at a particular instant in time. Any changes made
+            by a writer will not be seen by other users of the database until the changes have been completed (or, in
+            database terms: until the transaction has been committed.)
+            When an MVCC database needs to update a piece of data, it will not overwrite the original data item with new
+            data, but instead creates a newer version of the data item. Thus there are multiple versions stored. The
+            version that each transaction sees depends on the isolation level implemented. The most common isolation
+            level implemented with MVCC is snapshot isolation. With snapshot isolation, a transaction observes a state
+            of the data as when the transaction started. MVCC introduces the challenge of how to remove versions that
+            become obsolete and will never be read. In some cases, a process to periodically sweep through and delete
+            the obsolete versions is implemented. This is often a stop-the-world process that traverses a whole table
+            and rewrites it with the last version of each data item.
+          </dd>
+        </dl>
+      </section>
+
+      <section>
         <h2>Isolation levels</h2>
 
         <dl>
@@ -706,6 +730,188 @@
           <dd>A simple and intuitive definition of the sixth normal form is that "a table is in 6NF when the row
             contains the Primary Key, and at most one other attribute".</dd>
         </dl>
+      </section>
+
+    </article>
+
+    <article>
+      <h1>JavaScript</h1>
+
+      <section>
+        <h2>Object</h2>
+
+        <h3>Property descriptors</h3>
+        <dl>
+          <dt>configurable</dt>
+          <dd>If false, the property cannot be deleted, cannot be changed to an accessor property, and attributes other
+            than [[Value]] and [[Writable]] cannot be changed (false).</dd>
+          <dt>enumerable</dt>
+          <dd>If true, the property will be enumerated in for...in loops (false)</dd>
+          <dt>Data descriptor</dt>
+          <dd>
+            <dl>
+              <dt>value</dt>
+              <dd>The value retrieved by a get access of the property (undefined)</dd>
+              <dt>writable</dt>
+              <dd>If false, the property's value cannot be changed (false)</dd>
+            </dl>
+          </dd>
+          <dt>Accessor descriptor</dt>
+          <dd>
+            <dl>
+              <dt>get</dt>
+              <dd>The function is called with an empty argument list and retrieves the property value whenever a get
+                access to the value is performed (undefined)</dd>
+              <dt>set</dt>
+              <dd>The function is called with an argument that contains the assigned value and is executed whenever a
+                specified property is attempted to be changed (undefined)</dd>
+            </dl>
+          </dd>
+        </dl>
+
+        <h3>Object</h3>
+        <dl>
+          <dt>Object.assign()</dt>
+          <dd>Copies the values of all enumerable own properties from one or more source objects to a target object.
+          </dd>
+          <dt>Object.create()</dt>
+          <dd>Creates a new object with the specified prototype object and properties.</dd>
+          <dt>Object.defineProperty()</dt>
+          <dd>Adds the named property described by a given descriptor to an object.</dd>
+          <dt>Object.defineProperties()</dt>
+          <dd>Adds the named properties described by the given descriptors to an object.</dd>
+          <dt>Object.entries()</dt>
+          <dd>Returns an array containing all of the [key, value] pairs of a given object's own enumerable string
+            properties.</dd>
+          <dt>Object.freeze()</dt>
+          <dd>Freezes an object. Other code cannot delete or change its properties.</dd>
+          <dt>Object.fromEntries()</dt>
+          <dd>Returns a new object from an iterable of [key, value] pairs. (This is the reverse of Object.entries).</dd>
+          <dt>Object.getOwnPropertyDescriptor()</dt>
+          <dd>Returns a property descriptor for a named property on an object.</dd>
+          <dt>Object.getOwnPropertyDescriptors()</dt>
+          <dd>Returns an object containing all own property descriptors for an object.</dd>
+          <dt>Object.getOwnPropertyNames()</dt>
+          <dd>Returns an array containing the names of all of the given object's own enumerable and non-enumerable
+            properties.</dd>
+          <dt>Object.getOwnPropertySymbols()</dt>
+          <dd>Returns an array of all symbol properties found directly upon a given object.</dd>
+          <dt>Object.getPrototypeOf()</dt>
+          <dd>Returns the prototype(internal [[Prototype]] property) of the specified object.</dd>
+          <dt>Object.is()</dt>
+          <dd>Compares if two values are the same value. Equates all NaN values (which differs from both Abstract
+            Equality Comparison and Strict Equality Comparison).</dd>
+          <dt>Object.isExtensible()</dt>
+          <dd>Determines if extending of an object is allowed.</dd>
+          <dt>Object.isFrozen()</dt>
+          <dd>Determines if an object was frozen.</dd>
+          <dt>Object.isSealed()</dt>
+          <dd>Determines if an object is sealed.</dd>
+          <dt>Object.keys()</dt>
+          <dd>Returns an array containing the names of all of the given object's own enumerable string properties.</dd>
+          <dt>Object.preventExtensions()</dt>
+          <dd>Prevents any extensions of an object.</dd>
+          <dt>Object.seal()</dt>
+          <dd>Prevents other code from deleting properties of an object.</dd>
+          <dt>Object.setPrototypeOf()</dt>
+          <dd>Sets the object's prototype (its internal [[Prototype]] property).</dd>
+          <dt>Object.values()</dt>
+          <dd>Returns an array containing the values that correspond to all of a given object's own enumerable string
+            properties.</dd>
+        </dl>
+
+        <h3>Object prototoype</h3>
+        <dl>
+          <dt>hasOwnProperty()</dt>
+          <dd>Returns a boolean indicating whether an object contains the specified property as a direct property of
+            that object and not inherited through the prototype chain.</dd>
+          <dt>isPrototypeOf()</dt>
+          <dd>Returns a boolean indicating whether the object this method is called upon is in the prototype chain of
+            the specified object.</dd>
+          <dt>propertyIsEnumerable()</dt>
+          <dd>Returns a boolean indicating if the internal ECMAScript [[Enumerable]] attribute is set.</dd>
+          <dt>toLocaleString()</dt>
+          <dd>Returns a string representing the object. This method is meant to be overridden by derived objects for
+            locale-specific purposes.</dd>
+          <dt>valueOf()</dt>
+          <dd>Returns the primitive value of the specified object</dd>
+          <dt>toString()</dt>
+          <dd>Returns a string representation of the object</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Function</h2>
+
+        <dl>
+          <dt>lenght</dt>
+          <dd>Specifies the number of arguments expected by the function</dd>
+          <dt>name</dt>
+          <dd>The name of the function (readonly)</dd>
+
+          <dt>apply(thisArg [, argsArray])</dt>
+          <dd>Calls a function and sets its this to the provided thisArg. Arguments can be passed as an Array object.
+          </dd>
+          <dt>bind(thisArg[, arg1[, arg2[, ...argN]]])</dt>
+          <dd>Creates a new function which, when called, has its this set to the provided thisArg. Optionally, a given
+            sequence of arguments will be prepended to arguments provided the newly-bound function is called.</dd>
+          <dt>call()</dt>
+          <dd>Calls a function and sets its this to the provided value. Arguments can be passed as they are.</dd>
+        </dl>
+
+      </section>
+
+      <section>
+        <h2>Array</h2>
+
+        <dl>
+          <dt>length</dt>
+          <dd>Sets or returns the number of elements in an array</dd>
+
+
+
+        </dl>
+
+      </section>
+
+      <section>
+        <h2></h2>
+
+        <dl>
+          <dt></dt>
+          <dd></dd>
+        </dl>
+
+      </section>
+
+      <section>
+        <h2></h2>
+
+        <dl>
+          <dt></dt>
+          <dd></dd>
+        </dl>
+
+      </section>
+
+      <section>
+        <h2></h2>
+
+        <dl>
+          <dt></dt>
+          <dd></dd>
+        </dl>
+
+      </section>
+
+      <section>
+        <h2></h2>
+
+        <dl>
+          <dt></dt>
+          <dd></dd>
+        </dl>
+
       </section>
 
     </article>
@@ -2036,6 +2242,132 @@
       <h1>CSS</h1>
 
       <section>
+        <h2>Selectors</h2>
+        <dl>
+          <dt>Universal selector (* ns|* *|*)</dt>
+          <dd>Selects all elements. Optionally, it may be restricted to a specific namespace or to all namespaces.</dd>
+
+          <dt>Type selector (elemname)</dt>
+          <dd>Selects all elements that have the given node name.</dd>
+
+          <dt>Class selector (.classname)</dt>
+          <dd>Selects all elements that have the given class attribute.</dd>
+
+          <dt>ID selector (#idname)</dt>
+          <dd>Selects an element based on the value of its id attribute. There should be only one element with a given
+            ID in a document.</dd>
+
+          <dt>Attribute selector ([attr])</dt>
+          <dd>
+            Selects all elements that have the given attribute.
+            <dl>
+              <dt>[attr=value]</dt>
+              <dd>attribute value equal to</dd>
+              <dt>[attr~=value]</dt>
+              <dd>attribute value contains the word</dd>
+              <dt>[attr|=value]</dt>
+              <dd>attribute value starting with</dd>
+              <dt>[attr^=value]</dt>
+              <dd>attribute value begins with</dd>
+              <dt>[attr$=value]</dt>
+              <dd>attribute value ends with</dd>
+              <dt>[attr*=value]</dt>
+              <dd>attribute value contains the substring</dd>
+            </dl>
+          </dd>
+
+          <dt>Grouping Selectors (A, B)</dt>
+          <dd>The , is a grouping method, it selects all the matching nodes.</dd>
+
+          <dt>Descendant combinator (A B)</dt>
+          <dd>The (space) combinator selects nodes that are descendants of the first element.</dd>
+
+          <dt>Child combinator (A > B)</dt>
+          <dd>The > combinator selects nodes that are direct children of the first element.</dd>
+
+          <dt>General sibling combinator (A ~ B)</dt>
+          <dd>The ~ combinator selects siblings. This means that the second element follows the first (though not
+            necessarily immediately), and both share the same parent.</dd>
+
+          <dt>Adjacent sibling combinator (A + B)</dt>
+          <dd>The + combinator selects adjacent siblings. This means that the second element directly follows the first,
+            and both share the same parent.</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Pseudo-classes</h2>
+        <p>
+          A pseudo-class is used to define a special state of an element.
+          The : pseudo allow the selection of elements based on state information that is not contained in the document
+          tree.
+        </p>
+
+        <dl>
+          <dt>:active</dt>
+          <dt>:checked</dt>
+          <dt>:default</dt>
+          <dt>:defined</dt>
+          <dt>:disabled</dt>
+          <dt>:empty</dt>
+          <dt>:enabled</dt>
+          <dt>:first</dt>
+          <dt>:first-child</dt>
+          <dt>:first-of-type</dt>
+          <dt>:focus</dt>
+          <dt>:focus-within</dt>
+          <dt>:host</dt>
+          <dt>:hover</dt>
+          <dt>:indeterminate</dt>
+          <dt>:in-range</dt>
+          <dt>:invadtd</dt>
+          <dt>:lang()</dt>
+          <dt>:last-child</dt>
+          <dt>:last-of-type</dt>
+          <dt>:left</dt>
+          <dt>:dtnk</dt>
+          <dt>:not()</dt>
+          <dt>:nth-child()</dt>
+          <dt>:nth-last-child()</dt>
+          <dt>:nth-last-of-type()</dt>
+          <dt>:nth-of-type()</dt>
+          <dt>:only-child</dt>
+          <dt>:only-of-type</dt>
+          <dt>:optional</dt>
+          <dt>:out-of-range</dt>
+          <dt>:read-only</dt>
+          <dt>:read-write</dt>
+          <dt>:required</dt>
+          <dt>:right</dt>
+          <dt>:root</dt>
+          <dt>:scope</dt>
+          <dt>:target</dt>
+          <dt>:vadtd</dt>
+          <dt>:visited</dt>
+        </dl>
+
+      </section>
+
+      <section>
+        <h2>Pseudo-elements</h2>
+        <p>
+          A CSS pseudo-element is used to style specified parts of an element.
+          The :: pseudo represent entities that are not included in HTML.
+        </p>
+
+        <dl>
+          <dt>::after</dt>
+          <dt>::before</dt>
+          <dt>::cue</dt>
+          <dt>::cue-region</dt>
+          <dt>::first-letter</dt>
+          <dt>::first-line</dt>
+          <dt>::selection</dt>
+          <dt>::slotted()</dt>
+        </dl>
+      </section>
+
+      <section>
         <h2>Functions</h2>
 
         <dl>
@@ -2591,121 +2923,10 @@
         </dl>
       </section>
 
-      <section>
-        <h2>Selectors</h2>
-        <dl>
-          <dt>Universal selector (* ns|* *|*)</dt>
-          <dd>Selects all elements. Optionally, it may be restricted to a specific namespace or to all namespaces.</dd>
-
-          <dt>Type selector (elemname)</dt>
-          <dd>Selects all elements that have the given node name.</dd>
-
-          <dt>Class selector (.classname)</dt>
-          <dd>Selects all elements that have the given class attribute.</dd>
-
-          <dt>ID selector (#idname)</dt>
-          <dd>Selects an element based on the value of its id attribute. There should be only one element with a given
-            ID in a document.</dd>
-
-          <dt>Attribute selector ([attr] [attr=value] [attr~=value] [attr|=value] [attr^=value] [attr$=value]
-            [attr*=value])</dt>
-          <dd>Selects all elements that have the given attribute.</dd>
-
-          <dt>Grouping Selectors (A, B)</dt>
-          <dd>The , is a grouping method, it selects all the matching nodes.</dd>
-
-          <dt>Descendant combinator (A B)</dt>
-          <dd>The (space) combinator selects nodes that are descendants of the first element.</dd>
-
-          <dt>Child combinator (A > B)</dt>
-          <dd>The > combinator selects nodes that are direct children of the first element.</dd>
-
-          <dt>General sibling combinator (A ~ B)</dt>
-          <dd>The ~ combinator selects siblings. This means that the second element follows the first (though not
-            necessarily immediately), and both share the same parent.</dd>
-
-          <dt>Adjacent sibling combinator (A + B)</dt>
-          <dd>The + combinator selects adjacent siblings. This means that the second element directly follows the first,
-            and both share the same parent.</dd>
-        </dl>
-      </section>
-
-      <section>
-        <h2>Pseudo-classes</h2>
-        <p>
-          A pseudo-class is used to define a special state of an element.
-          The : pseudo allow the selection of elements based on state information that is not contained in the document
-          tree.
-        </p>
-
-        <dl>
-          <dt>:active</dt>
-          <dt>:checked</dt>
-          <dt>:default</dt>
-          <dt>:defined</dt>
-          <dt>:disabled</dt>
-          <dt>:empty</dt>
-          <dt>:enabled</dt>
-          <dt>:first</dt>
-          <dt>:first-child</dt>
-          <dt>:first-of-type</dt>
-          <dt>:focus</dt>
-          <dt>:focus-within</dt>
-          <dt>:host</dt>
-          <dt>:hover</dt>
-          <dt>:indeterminate</dt>
-          <dt>:in-range</dt>
-          <dt>:invadtd</dt>
-          <dt>:lang()</dt>
-          <dt>:last-child</dt>
-          <dt>:last-of-type</dt>
-          <dt>:left</dt>
-          <dt>:dtnk</dt>
-          <dt>:not()</dt>
-          <dt>:nth-child()</dt>
-          <dt>:nth-last-child()</dt>
-          <dt>:nth-last-of-type()</dt>
-          <dt>:nth-of-type()</dt>
-          <dt>:only-child</dt>
-          <dt>:only-of-type</dt>
-          <dt>:optional</dt>
-          <dt>:out-of-range</dt>
-          <dt>:read-only</dt>
-          <dt>:read-write</dt>
-          <dt>:required</dt>
-          <dt>:right</dt>
-          <dt>:root</dt>
-          <dt>:scope</dt>
-          <dt>:target</dt>
-          <dt>:vadtd</dt>
-          <dt>:visited</dt>
-        </dl>
-
-      </section>
-
-      <section>
-        <h2>Pseudo-elements</h2>
-        <p>
-          A CSS pseudo-element is used to style specified parts of an element.
-          The :: pseudo represent entities that are not included in HTML.
-        </p>
-
-        <dl>
-          <dt>::after</dt>
-          <dt>::before</dt>
-          <dt>::cue</dt>
-          <dt>::cue-region</dt>
-          <dt>::first-letter</dt>
-          <dt>::first-line</dt>
-          <dt>::selection</dt>
-          <dt>::slotted()</dt>
-        </dl>
-      </section>
-
     </article>
 
     <article>
-      <h1></h1>
+      <h1>Node.js</h1>
 
       <section>
         <h2>Built-in Modules</h2>
@@ -3610,7 +3831,6 @@
           <dd>Decompress a string or buffer, syncronously, using Unzip</dd>
         </dl>
       </section>
-
 
     </article>
 
