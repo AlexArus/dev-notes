@@ -427,6 +427,82 @@
         </dl>
       </section>
 
+      <section>
+        <h2>Anti-Patterns</h2>
+
+        <h3>Organizational</h3>
+        <dl>
+          <dt>Analysis paralysis</dt>
+          <dd>A project stalled in the analysis phase, unable to achieve support for any of the potential plans of
+            approach</dd>
+          <dt>Bicycle shed</dt>
+          <dd>Giving disproportionate weight to trivial issues</dd>
+          <dt>Bleeding edge</dt>
+          <dd>Operating with cutting-edge technologies that are still untested or unstable leading to cost overruns,
+            under-performance or delayed delivery</dd>
+          <dt>Bystander apathy</dt>
+          <dd>The phenomenon in which people are less likely to or do not offer help to a person in need when others are
+            present</dd>
+          <dt>Cash cow</dt>
+          <dd>A profitable legacy product that often leads to complacency about new products</dd>
+          <dt>Design by committee</dt>
+          <dd>The result of having many contributors to a design, but no unifying vision</dd>
+          <dt>Escalation of commitment</dt>
+          <dd>Failing to revoke a decision when it proves wrong</dd>
+          <dt>Groupthink</dt>
+          <dd>A collective state where group members begin to (often unknowingly) think alike and reject differing
+            viewpoints</dd>
+          <dt>Management by objectives</dt>
+          <dd>Management by numbers, focus exclusively on quantitative management criteria, when these are non-essential
+            or cost too much to acquire</dd>
+          <dt>Micromanagement</dt>
+          <dd>Ineffectiveness from excessive observation, supervision, or other hands-on involvement from management
+          </dd>
+          <dt>Moral hazard</dt>
+          <dd>Insulating a decision-maker from the consequences of their decision</dd>
+          <dt>Mushroom management</dt>
+          <dd>Keeping employees "in the dark and fed manure" (also "left to stew and finally canned")</dd>
+          <dt>Peter principle</dt>
+          <dd>Continually promoting otherwise well-performing employees up to their level of incompetence, where they
+            remain indefinitely[4]</dd>
+          <dt>Seagull management</dt>
+          <dd>Management in which managers only interact with employees when a problem arises, when they "fly in, make a
+            lot of noise, dump on everyone, do not solve the problem, then fly out"</dd>
+          <dt>Stovepipe or Silos</dt>
+          <dd>An organizational structure of isolated or semi-isolated teams, in which too many communications take
+            place
+            up and down the hierarchy, rather than directly with other teams across the organization</dd>
+          <dt>Typecasting</dt>
+          <dd>Locking successful employees into overly safe, narrowly defined, predictable roles based on their past
+            successes rather than their potential</dd>
+          <dt>Vendor lock-in</dt>
+          <dd>Making a system excessively dependent on an externally supplied component</dd>
+        </dl>
+
+        <h3>Project management</h3>
+        <dl>
+          <dt>Cart before the horse</dt>
+          <dd>Focusing too many resources on a stage of a project out of its sequence</dd>
+          <dt>Death march</dt>
+          <dd>A project whose staff, while expecting it to fail, are compelled to continue, often with much overwork, by
+            management which is in denial[5]</dd>
+          <dt>Ninety-ninety rule</dt>
+          <dd>Tendency to underestimate the amount of time to complete a project when it is "nearly done"</dd>
+          <dt>Overengineering</dt>
+          <dd>Spending resources making a project more robust and complex than is needed</dd>
+          <dt>Scope creep</dt>
+          <dd>Uncontrolled changes or continuous growth in a project's scope, or adding new features to the project
+            after
+            the original requirements have been drafted and accepted (also known as requirement creep and feature creep)
+          </dd>
+          <dt>Smoke and mirrors</dt>
+          <dd>Demonstrating unimplemented functions as if they were already implemented</dd>
+          <dt>Brooks's law</dt>
+          <dd>Adding more resources to a project to increase velocity, when the project is already slowed down by
+            coordination overhead.</dd>
+        </dl>
+      </section>
+
     </article>
 
     <article>
@@ -437,10 +513,8 @@
 
         <dl>
           <dt>Single Responsibility Principle (SRP)</dt>
-          <dd>
-            class should have single responsibility<br />
-            class shoud have one, and only one, reason to change
-          </dd>
+          <dd>class should have single responsibility</dd>
+          <dd>class shoud have one, and only one, reason to change</dd>
 
           <dt>Open/Closed Principle (OCP)</dt>
           <dd>class should be open for extension, but closed for modification</dd>
@@ -467,12 +541,10 @@
           <dd>Controller is responsible for receiving or handling a system event</dd>
 
           <dt>Creator</dt>
-          <dd>
-            Creator is responsible for creating objects<br />
-            - contain or compositely aggregate instances<br />
-            - record or closely use instances<br />
-            - have initializing information for instances<br />
-          </dd>
+          <dd>Creator is responsible for creating objects</dd>
+          <dd>- contain or compositely aggregate instances</dd>
+          <dd>- record or closely use instances</dd>
+          <dd>- have initializing information for instances</dd>
 
           <dt>High cohesion</dt>
           <dd>Responsibility are strongly related and highly focused</dd>
@@ -521,6 +593,12 @@
         <p>Entities should not be multiplied without necessity. When presented with competing hypotheses that make the
           same predictions, one should select the solution with the fewest assumptions, and it is not meant to be a way
           of choosing between hypotheses that make different predictions</p>
+      </section>
+
+      <section>
+        <h2>SSOT (single source of truth)</h2>
+        <p>Single source of truth (SSOT) is the practice of structuring information models and associated data schema
+          such that every data element is mastered (or edited) in only one place</p>
       </section>
 
     </article>
@@ -608,8 +686,151 @@
 
       <section>
         <h2>Anti-Patterns</h2>
+
+        <h3>Software design</h3>
+
         <dl>
-          <dt></dt>
+          <dt>Abstraction inversion</dt>
+          <dd>Not exposing implemented functionality required by callers of a function/method/constructor, so that the
+            calling code awkwardly re-implements the same functionality in terms of those calls</dd>
+          <dt>Ambiguous viewpoint</dt>
+          <dd>Presenting a model (usually Object-oriented analysis and design (OOAD)) without specifying its viewpoint
+          </dd>
+          <dt>Big ball of mud</dt>
+          <dd>A system with no recognizable structure</dd>
+          <dt>Database-as-IPC</dt>
+          <dd>Using a database as the message queue for routine interprocess communication where a much more lightweight
+            mechanism would be suitable</dd>
+          <dt>Gold plating</dt>
+          <dd>Continuing to work on a task or project well past the point at which extra effort is not adding value</dd>
+          <dt>Inner-platform effect</dt>
+          <dd>A system so customizable as to become a poor replica of the software development platform</dd>
+          <dt>Input kludge</dt>
+          <dd>Failing to specify and implement the handling of possibly invalid input</dd>
+          <dt>Interface bloat</dt>
+          <dd>Making an interface so powerful that it is extremely difficult to implement</dd>
+          <dt>Magic pushbutton</dt>
+          <dd>A form with no dynamic validation or input assistance, such as dropdowns</dd>
+          <dt>Race hazard</dt>
+          <dd>Failing to see the consequences of events that can sometimes interfere with each other</dd>
+          <dt>Stovepipe system</dt>
+          <dd>A barely maintainable assemblage of ill-related components</dd>
+        </dl>
+
+        <h3>Object-oriented programming</h3>
+        <dl>
+          <dt>Anemic domain model</dt>
+          <dd>The use of the domain model without any business logic. The domain model's objects cannot guarantee their
+            correctness at any moment, because their validation and mutation logic is placed somewhere outside (most
+            likely in multiple places). Martin Fowler considers this to be an anti-pattern, but some disagree that it is
+            always an anti-pattern.[6]</dd>
+          <dt>Call super</dt>
+          <dd>Requiring subclasses to call a superclass's overridden method</dd>
+          <dt>Circle–ellipse problem</dt>
+          <dd>Subtyping variable-types on the basis of value-subtypes</dd>
+          <dt>Circular dependency</dt>
+          <dd>Introducing unnecessary direct or indirect mutual dependencies between objects or software modules</dd>
+          <dt>Constant interface</dt>
+          <dd>Using interfaces to define constants</dd>
+          <dt>God object</dt>
+          <dd>Concentrating too many functions in a single part of the design (class)</dd>
+          <dt>Object cesspool</dt>
+          <dd>Reusing objects whose state does not conform to the (possibly implicit) contract for re-use</dd>
+          <dt>Object orgy</dt>
+          <dd>Failing to properly encapsulate objects permitting unrestricted access to their internals</dd>
+          <dt>Poltergeists</dt>
+          <dd>Objects whose sole purpose is to pass information to another object</dd>
+          <dt>Sequential coupling</dt>
+          <dd>A class that requires its methods to be called in a particular order</dd>
+          <dt>Yo-yo problem</dt>
+          <dd>A structure (e.g., of inheritance) that is hard to understand due to excessive fragmentation</dd>
+        </dl>
+
+        <h3>Programming</h3>
+        <dl>
+          <dt>Accidental complexity</dt>
+          <dd>Programming tasks which could be eliminated with better tools (as opposed to essential complexity inherent
+            in the problem being solved)</dd>
+          <dt>Action at a distance</dt>
+          <dd>Unexpected interaction between widely separated parts of a system</dd>
+          <dt>Boat anchor</dt>
+          <dd>Retaining a part of a system that no longer has any use</dd>
+          <dt>Busy waiting</dt>
+          <dd>Consuming CPU while waiting for something to happen, usually by repeated checking instead of messaging
+          </dd>
+          <dt>Caching failure</dt>
+          <dd>Forgetting to clear a cache that holds a negative result (error) after the error condition has been
+            corrected</dd>
+          <dt>Cargo cult programming</dt>
+          <dd>Using patterns and methods without understanding why</dd>
+          <dt>Coding by exception</dt>
+          <dd>Adding new code to handle each special case as it is recognized</dd>
+          <dt>Design pattern</dt>
+          <dd>The use of patterns has itself been called an anti-pattern, a sign that a system is not employing enough
+            abstraction[7]</dd>
+          <dt>Error hiding</dt>
+          <dd>Catching an error message before it can be shown to the user and either showing nothing or showing a
+            meaningless message. This anti-pattern is also named Diaper Pattern. Also can refer to erasing the Stack
+            trace
+            during exception handling, which can hamper debugging.</dd>
+          <dt>Hard code</dt>
+          <dd>Embedding assumptions about the environment of a system in its implementation</dd>
+          <dt>Lasagna code</dt>
+          <dd>Programs whose structure consists of too many layers of inheritance</dd>
+          <dt>Lava flow</dt>
+          <dd>Retaining undesirable (redundant or low-quality) code because removing it is too expensive or has
+            unpredictable consequences[8][9]</dd>
+          <dt>Loop-switch sequence</dt>
+          <dd>Encoding a set of sequential steps using a switch within a loop statement</dd>
+          <dt>Magic numbers</dt>
+          <dd>Including unexplained numbers in algorithms</dd>
+          <dt>Magic strings</dt>
+          <dd>Implementing presumably unlikely input scenarios, such as comparisons with very specific strings, to mask
+            functionality.</dd>
+          <dt>Repeating yourself</dt>
+          <dd>Writing code which contains repetitive patterns and substrings over again; avoid with once and only once
+            (abstraction principle)</dd>
+          <dt>Shooting the messenger</dt>
+          <dd>Throwing exceptions from the scope of a plugin or subscriber in response to legitimate input, especially
+            when this causes the outer scope to fail.</dd>
+          <dt>Shotgun surgery</dt>
+          <dd>Developer adds features to an application codebase which span a multiplicity of implementors or
+            implementations in a single change</dd>
+          <dt>Soft code</dt>
+          <dd>Storing business logic in configuration files rather than source code[10]</dd>
+          <dt>Spaghetti code</dt>
+          <dd>Programs whose structure is barely comprehensible, especially because of misuse of code structures</dd>
+        </dl>
+
+        <h3>Methodological</h3>
+        <dl>
+          <dt>Copy and paste programming</dt>
+          <dd>Copying (and modifying) existing code rather than creating generic solutions</dd>
+          <dt>Every Fool Their Own Tool</dt>
+          <dd>Failing to use proper software development principles when creating tools to facilitate the software
+            development process itself.[11][original research?]</dd>
+          <dt>Golden hammer</dt>
+          <dd>Assuming that a favorite solution is universally applicable (See Silver bullet)</dd>
+          <dt>Improbability factor</dt>
+          <dd>Assuming that it is improbable that a known error will occur</dd>
+          <dt>Invented here</dt>
+          <dd>The tendency towards dismissing any innovation or less than trivial solution originating from inside the
+            organization, usually because of lack of confidence in the staff</dd>
+          <dt>Not Invented Here (NIH) syndrome</dt>
+          <dd>The tendency towards reinventing the wheel (failing to adopt an existing, adequate solution)</dd>
+          <dt>Premature optimization</dt>
+          <dd>Coding early-on for perceived efficiency, sacrificing good design, maintainability, and sometimes even
+            real-world efficiency</dd>
+          <dt>Programming by permutation / accident / coincidence</dt>
+          <dd>Trying to approach a solution by successively modifying the code to see if it works</dd>
+          <dt>Reinventing the square wheel</dt>
+          <dd>Failing to adopt an existing solution and instead adopting a custom solution which performs much worse
+            than the existing one</dd>
+          <dt>Silver bullet</dt>
+          <dd>Assuming that a favorite technical solution can solve a larger process or problem</dd>
+          <dt>Tester Driven Development</dt>
+          <dd>Software projects in which new requirements are specified in bug reports</dd>
+
         </dl>
       </section>
 
@@ -1043,6 +1264,54 @@
 
       </section>
 
+      <section>
+        <h2>Promise</h2>
+        <dl>
+          <dt>catch()</dt>
+          <dd>Appends a rejection handler callback to the promise, and returns a new promise resolving to the return
+            value
+            of the callback if it is called, or to its original fulfillment value if the promise is instead fulfilled.
+          </dd>
+          <dt>then()</dt>
+          <dd>Appends fulfillment and rejection handlers to the promise, and returns a new promise resolving to the
+            return
+            value of the called handler, or to its original settled value if the promise was not handled (i.e. if the
+            relevant handler onFulfilled or onRejected is not a function).</dd>
+          <dt>finally()</dt>
+          <dd>Appends a handler to the promise, and returns a new promise which is resolved when the original promise is
+            resolved. The handler is called when the promise is settled, whether fulfilled or rejected.</dd>
+
+          <dt>Promise.all(iterable)</dt>
+          <dd>Wait for all promises to be resolved, or for any to be rejected.</dd>
+          <dd>If the returned promise resolves, it is resolved with an aggregating array of the values from the resolved
+            promises ,in the same order as defined in the iterable of multiple promises.</dd>
+          <dd>If it rejects, it is rejected with the reason from the first promise in the iterable that was rejected.
+          </dd>
+
+          <dt>Promise.allSettled(iterable)</dt>
+          <dd>Wait until all promises have settled (each may resolve or reject).</dd>
+          <dd>Returns a promise that resolves after all of the given promises have either resolved or rejected, with an
+            array of objects that each describe the outcome of each promise.</dd>
+
+          <dt>Promise.race(iterable)</dt>
+          <dd>Wait until any of the promises is resolved or rejected.</dd>
+          <dd>If the returned promise resolves, it is resolved with the value of the first promise in the iterable that
+            resolved.</dd>
+          <dd>If it rejects, it is rejected with the reason from the first promise that was rejected.</dd>
+
+          <dt>Promise.reject(reason)</dt>
+          <dd>Returns a new Promise object that is rejected with the given reason.</dd>
+
+          <dt>Promise.resolve(value)</dt>
+          <dd>Returns a new Promise object that is resolved with the given value. If the value is a thenable (i.e. has a
+            then method), the returned promise will "follow" that thenable, adopting its eventual state; otherwise the
+            returned promise will be fulfilled with the value.</dd>
+          <dd>Generally, if you don't know if a value is a promise or not, Promise.resolve(value) it instead and work
+            with
+            the return value as a promise.</dd>
+
+        </dl>
+      </section>
     </article>
 
     <article>
@@ -3175,7 +3444,7 @@
           <dt>document</dt>
           <dd>Returns the document object for the window</dd>
           <dt>frames</dt>
-          <dd>Returns all <iframe> elements in the current window</dd>
+          <dd>Returns all &lt;iframe&gt; elements in the current window</dd>
           <dt>history</dt>
           <dd>Provides the History object for the window</dd>
           <dt>innerHeight</dt>
@@ -3183,7 +3452,7 @@
           <dt>innerWidth</dt>
           <dd>The inner width of the content area</dd>
           <dt>length</dt>
-          <dd>Find out the number of <iframe> elements in the window</dd>
+          <dd>Find out the number of &lt;iframe&gt; elements in the window</dd>
           <dt>location</dt>
           <dd>Returns the location object for the window</dd>
           <dt>name</dt>
