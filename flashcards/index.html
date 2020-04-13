@@ -11,9 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Alex Arus" />
     <meta name="subject" content="Dev Notes Flashcards" />
-    <meta name="keywords" content="programming" />
+    <meta name="keywords" content="programming, web development, flashcard" />
+
+    <meta name="description" content="Flashcards for full stack web developers">
+    <meta name="theme-color" content="#2F3BA2" />
+
     <title>dev-notes flashcards</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="favicon.png" type="image/png" />
     <style>
@@ -22,7 +26,7 @@
             height: 100%;
             width: 100%;
             margin: 0;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Courier', 'Courier New', serif;
 
             --base-font-size: 10px;
             font-size: var(--base-font-size);
@@ -276,7 +280,7 @@
                 OCP: 'class should be open for extension, but closed for modification',
                 LSP: 'object should be replacable by instances of their subtypes without altering the correctness of that programm',
                 ISP: 'many client specific interfaces better then one general purpose interface',
-                DIP: 'one should depend upon asbtraction not conretion',
+                DIP: 'one should depend upon abstraction not conretion',
             },
             GRASP: {
                 ['General Responsibility Assignment Software Patterns']: [
@@ -1585,12 +1589,23 @@
             let content = side === sides.question ? flashcard.question : flashcard.answer;
 
             flashcardElement.style.columnCount = null;
+            flashcardElement.style.fontSize = null;
+            flashcardElement.style.lineHeight = null;
             if (content instanceof Array) {
-                if (content.length > 15) {
-                    flashcardElement.style.columnCount = 2;
+                const itemPerColumn = Math.floor((window.innerHeight - 100) / 55);
+                const columns = Math.floor(window.innerWidth / 400) || 1;
+
+                if (content.length > itemPerColumn) {
+                    flashcardElement.style.columnCount = columns;
                 }
 
                 content = buildHtmlList(content, '<br/>');
+            } else if (content.length < 12) {
+                const fontSize = Math.floor(window.innerWidth / (content.length / 1.3));
+                if (fontSize > 30) {
+                    flashcardElement.style.fontSize = fontSize + 'px';
+                    flashcardElement.style.lineHeight = 1;
+                }
             }
 
             flashcardElement.innerHTML = content;
@@ -1796,6 +1811,15 @@
                 }
             })
         })
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then((reg) => {
+                        console.log('Service worker registered.', reg);
+                    });
+            });
+        }
     </script>
 </head>
 
