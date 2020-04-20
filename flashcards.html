@@ -1,0 +1,1767 @@
+<!--
+    TODO: 
+        PWA - https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0
+-->
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Alex Arus" />
+    <meta name="subject" content="Dev Notes Flashcards" />
+    <meta name="keywords" content="programming" />
+    <title>dev-notes flashcards</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+
+            --base-font-size: 10px;
+            font-size: var(--base-font-size);
+
+            min-width: 300px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav,
+        article {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            word-break: normal;
+            text-align: justify;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: var(--base-font-size);
+        }
+
+        nav a {
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+
+        a:hover {
+            cursor: pointer;
+        }
+
+        article {
+            flex-grow: 1;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .question {
+            font-size: calc(var(--base-font-size) * 4);
+        }
+
+        .answer {
+            font-size: calc(var(--base-font-size) * 1.3);
+        }
+
+        .darkTheme {
+            background-color: black;
+            color: white;
+        }
+
+        .darkTheme nav {
+            border-top: 1px solid darkgray;
+        }
+
+        .darkTheme a:hover {
+            background-color: darkgray;
+        }
+
+        .lightTheme {
+            background-color: white;
+            color: black;
+        }
+
+        .lightTheme nav {
+            border-top: 1px solid lightgray;
+        }
+
+        .lightTheme a:hover {
+            background-color: lightgray;
+        }
+
+        .darkTheme #editFlashcardList {
+            background-color: black;
+        }
+
+        .lightTheme #editFlashcardList {
+            background-color: white;
+        }
+
+        .darkTheme #flashcardTitle {
+            color: lightgray;
+        }
+
+        .lightTheme #flashcardTitle {
+            color: darkgray;
+        }
+
+        #flashcard {
+            margin-top: auto;
+            margin-bottom: auto;
+            text-align: center;
+            width: 100%;
+            word-break: break-word;
+            line-height: 1.7;
+        }
+
+        #flashcardTitle {
+            text-align: end;
+            width: 95%;
+            font-size: var(--base-font-size);
+        }
+
+        #editFlashcardList {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        #editFlashcardList nav a {
+            flex-grow: 1;
+            font-size: calc(var(--base-font-size) * 3);
+            text-align: center;
+        }
+
+        #flashcardList {
+            align-items: unset;
+        }
+
+        label {
+            font-size: var(--base-font-size);
+        }
+
+        details div {
+            margin-left: 25px;
+            padding: 5px 15px;
+        }
+
+        summary {
+            font-size: var(--base-font-size);
+        }
+
+        summary a {
+            float: right;
+            margin-right: 10px;
+            padding: 2px 15px;
+            border-radius: 5px;
+        }
+
+        .darkTheme summary a {
+            color: lightgray;
+        }
+
+        .lightTheme summary a {
+            color: darkgray;
+        }
+
+        input[type=checkbox] {
+            transform: scale(2);
+            padding: 10px;
+            margin: 5px 15px;
+        }
+
+        /*
+        ##Device = Desktops
+        ##Screen = 1281px to higher resolution desktops
+        */
+        @media (min-width: 1281px) {
+
+            html,
+            body {
+                --base-font-size: 22px;
+            }
+        }
+
+        /*
+        ##Device = Laptops, Desktops
+        ##Screen = B/w 1025px to 1280px
+        */
+        @media (min-width: 1025px) and (max-width: 1280px) {
+
+            html,
+            body {
+                --base-font-size: 20px;
+            }
+        }
+
+        /*
+        ##Device = Tablets, Ipads (portrait)
+        ##Screen = B/w 768px to 1024px
+        */
+        @media (min-width: 768px) and (max-width: 1024px) {
+
+            html,
+            body {
+                --base-font-size: 18px;
+            }
+        }
+
+        /*
+        ##Device = Tablets, Ipads (landscape)
+        ##Screen = B/w 768px to 1024px
+        */
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+            html,
+            body {
+                --base-font-size: 16px;
+            }
+        }
+
+        /*
+        ##Device = Low Resolution Tablets, Mobiles (Landscape)
+        ##Screen = B/w 481px to 767px
+        */
+        @media (min-width: 481px) and (max-width: 767px) {
+
+            html,
+            body {
+                --base-font-size: 14px;
+            }
+        }
+
+        /*
+        ##Device = Most of the Smartphones Mobiles (Portrait)
+        ##Screen = B/w 320px to 479px
+        */
+        @media (min-width: 320px) and (max-width: 480px) {
+
+            html,
+            body {
+                --base-font-size: 12px;
+            }
+        }
+    </style>
+
+    <script>
+        window.data = {
+            SOLID: {
+                SOLID: [
+                    'SRP - single responsibility principle',
+                    'OCP - open/closed principle',
+                    'LSP - Liskov substition principle',
+                    'ISP - interface segregation principle',
+                    'DIP - dependency inversion principle',
+                ],
+                SRP: [
+                    '- class should have single responsibility',
+                    '- class shoud have one, and only one, reason to change',
+                ],
+                OCP: 'class should be open for extension, but closed for modification',
+                LSP: 'object should be replacable by instances of their subtypes without altering the correctness of that programm',
+                ISP: 'many client specific interfaces better then one general purpose interface',
+                DIP: 'one should depend upon asbtraction not conretion',
+            },
+            GRASP: {
+                ['General Responsibility Assignment Software Patterns']: [
+                    'Controller',
+                    'Creator',
+                    'High cohesion',
+                    'Indirection',
+                    'Information expert',
+                    'Low coupling',
+                    'Polimorphism',
+                    'Protected variation',
+                    'Pure fabrication',
+                ],
+                Controller: 'Controller is responsible for receiving or handling a system event',
+                Creator: [
+                    'Creator is responsible for creating objects',
+                    '- contain or compositely aggregate instances',
+                    '- record or closely use instances',
+                    '- have initializing information for instances',
+                ],
+                ['High cohesion']: 'Responsibility are strongly related and highly focused',
+                Indirection: 'Assign the responsibility of mediation between two elements to an intermediate object',
+                ['Information expert']: 'Assign the responsibility to the class which has the information neccessary to fulfill that responsibility',
+                ['Low coupling']: 'Assign responsibilities to support lower dependency between classes, change in one class having lower impact on other classes, higher reuse potential',
+                Polimorphism: 'Assign a responsibility according to the type of variation of behaviors by polymorphic operations',
+                ['Protected variation']: 'Protects elements from variations on others by wrapping into interface and using polymorphism',
+                ['Pure fabrication']: 'Specially made class to archieve low coupling, high cohesion and reuse potential',
+            },
+            Principles: {
+                YARGNI: `You aren't gone need it`,
+                KISS: 'Keep it short and simple',
+                DRY: `Don't repeat your self`,
+                [`Ocam's razor`]: `Entities should not be multiplied without necessity. When presented with competing hypotheses that make the
+                    same predictions, one should select the solution with the fewest assumptions, and it is not meant to be a way
+                    of choosing between hypotheses that make different predictions`,
+            },
+            ['OOP Patterns']: {
+                ['Creatinal patterns']: [
+                    'Abstract factory',
+                    'Builder',
+                    'Factory method',
+                    'Lazy initialization (virtual proxy)',
+                    'Multiton',
+                    'Object library',
+                    'Object pool',
+                    'Prototype',
+                    'Singleton',
+                ],
+                ['Behaviral patterns']: [
+                    'Blackboard',
+                    'Chain of responsibility',
+                    'Command',
+                    'Interpreter',
+                    'Interator',
+                    'Mediator',
+                    'Memento',
+                    'Null object',
+                    'Observer or Publish/Subscrube',
+                    'Servant',
+                    'Specification',
+                    'State',
+                    'Strategy',
+                    'Template method',
+                    'Visitor',
+                ],
+                ['Structural patterns']: [
+                    'Adapter, Wrapper or Translator',
+                    'Bridge',
+                    'Composite',
+                    'Decorator',
+                    'Facade',
+                    'Flyweight',
+                    'Front controller',
+                    'Marker',
+                    'Module',
+                    'Proxy',
+                    'Twin',
+                ],
+                ['Concurency patterns']: [
+                    'Active object',
+                    'Balking',
+                    'Binding properties',
+                    'Double-checked locking',
+                    'Event-based asynchrones',
+                    'Guarded suspension',
+                    'Join',
+                    'Lock',
+                    'Messaging desing pattern (MDP)',
+                    'Monitor object',
+                    'Reactor',
+                    'Read-write lock',
+                    'Scheduler',
+                    'Thread pool',
+                    'Thread specific storage',
+                ],
+            },
+            JavaScript: {
+                Statement: [
+                    'break',
+                    'const',
+                    'continue',
+                    'debugger',
+                    'do ... while',
+                    'for',
+                    'for ... in',
+                    'for ... of',
+                    'function',
+                    'if ... else ... else if',
+                    'let',
+                    'return',
+                    'switch',
+                    'throw',
+                    'try ... catch ... finally',
+                    'var',
+                    'while',
+                ],
+                ['Primitive Data Types']: [
+                    'undefined',
+                    'null',
+                    'number',
+                    'bigint',
+                    'string',
+                    'Symbol',
+                ],
+                ['JS Property descriptors']: [
+                    'configurable',
+                    'enumerable',
+                    'value',
+                    'writable',
+                    'get',
+                    'set',
+                ],
+                Object: [
+                    'assign()',
+                    'create()',
+                    'defineProperty()',
+                    'defineProperties()',
+                    'entries()',
+                    'freeze()',
+                    'fromEntries()',
+                    'getOwnPropertyDescriptor()',
+                    'getOwnPropertyDescriptors()',
+                    'getOwnPropertyNames()',
+                    'getOwnPropertySymbols()',
+                    'getPrototypeOf()',
+                    'is()',
+                    'isExtensible()',
+                    'isFrozen()',
+                    'isSealed()',
+                    'keys()',
+                    'preventExtensions()',
+                    'seal()',
+                    'setPrototypeOf()',
+                    'values()',
+                ],
+                ['Object prototoype']: [
+                    'hasOwnProperty()',
+                    'isPrototypeOf()',
+                    'propertyIsEnumerable()',
+                    'toLocaleString()',
+                    'toString()',
+                    'valueOf()',
+                ],
+                Function: [
+                    'lenght',
+                    'name',
+                    'apply(thisArg [, argsArray])',
+                    'call()',
+                    'bind(thisArg[, arg1[, arg2[, ...argN]]])',
+                ],
+                Array: [
+                    'length',
+                    'concat()',
+                    'indexOf()',
+                    'join()',
+                    'lastIndexOf()',
+                    'pop()',
+                    'push()',
+                    'reverse()',
+                    'shift()',
+                    'slice()',
+                    'sort()',
+                    'splice()',
+                    'unshift()',
+                ],
+                String: [
+                    'charAt()',
+                    'charCodeAt()',
+                    'concat()',
+                    'fromCharCode()',
+                    'indexOf()',
+                    'lastIndexOf()',
+                    'match()',
+                    'replace()',
+                    'search()',
+                    'slice()',
+                    'split()',
+                    'substr()',
+                    'substring()',
+                    'toLowerCase()',
+                    'toUpperCase()',
+                ],
+                Math: [
+                    'E',
+                    'LN2',
+                    'LN10',
+                    'LOG2E',
+                    'LOG10E',
+                    'PI',
+                    'SQRT1_2',
+                    'SQRT2',
+                    'abs(x)',
+                    'acos(x)',
+                    'asin(x)',
+                    'atan(x)',
+                    'atan2(y,)',
+                    'ceil(x)',
+                    'cos(x)',
+                    'exp(x)',
+                    'floor(x)',
+                    'log(x)',
+                    'max(x,...,n)',
+                    'min(x,...,n)',
+                    'pow(x,y)',
+                    'random() )',
+                    'round(x)',
+                    'sin(x)',
+                    'sqrt(x)',
+                    'tan(x)',
+                ],
+                Date: [
+                    'getDay()',
+                    '[get|set]Date()',
+                    '[get|set]FullYear()',
+                    '[get|set]Hours()',
+                    '[get|set]Milliseconds()',
+                    '[get|set]Minutes()',
+                    '[get|set]Month()',
+                    '[get|set]Seconds()',
+                    '[get|set]Time()',
+                    '[get|set]UTCDate()',
+                    'parse',
+                ],
+            },
+            TypeScript: {
+                ['TypeScript Utility types']: [
+                    'Partial',
+                    'Required',
+                    'Readonly',
+                    'Pick',
+                    'Record',
+                    'Exclude',
+                    'Extract',
+                    'Omit',
+                    'NonNullable',
+                    'Parameters',
+                    'ConstructorParameters',
+                    'ReturnType',
+                    'InstanceType',
+                    'ThisType',
+                ],
+            },
+            DataBase: {
+                ACID: [
+                    'Atomicity',
+                    'Consistency',
+                    'Isolation',
+                    'Durability',
+                ],
+                MVCC: 'Multiversion concurrency control. To update a piece of data a DB creates a newer version of the data item.',
+                ['Isolation levels']: [
+                    'read uncommitted',
+                    'read committed (dirty read)',
+                    'repeatable read (non repeatable read)',
+                    'serializable (phantom read)'
+                ],
+                ['Normal forms']: [
+                    'UNF: Unnormalized form',
+                    '1NF: First normal form',
+                    '2NF: Second normal form',
+                    '3NF: Third normal form',
+                    'EKNF: Elementary key normal form',
+                    'BCNF: Boyce–Codd normal form',
+                    '4NF: Fourth normal form',
+                    'ETNF: Essential tuple normal form',
+                    '5NF: Fifth normal form',
+                    'DKNF: Domain-key normal form',
+                    '6NF: Sixth normal form',
+                ],
+                ['CAP theorem']: 'It is imposible for distributed data store to simultaneously provide more than two of the: <strong>Consistency, Availability, Partition tolerance</strong>'
+            },
+            SDLC: {
+                Stages: [
+                    'Planning and Requirement Analysis',
+                    'Defining Requirements',
+                    'Designing the Product Architecture',
+                    'Building or Developing the Product',
+                    'Testing the Product',
+                    'Deployment in the Market and Maintenance',
+                ],
+                Methodologies: [
+                    'Waterfall Model',
+                    'V-Shaped Model',
+                    'Iterative Model',
+                    'Spiral Model',
+                    'Big Bang Model',
+                    'Agile Model',
+                ],
+                ['Manifesto for Agile Software Development']: [
+                    '<strong>Individuals and interactions</strong> over processes and tools',
+                    '<strong>Working software</strong> over comprehensive documentation',
+                    '<strong>Customer collaboration</strong> over contract negotiation',
+                    '<strong>Responding to change</strong> over following a plan',
+                ],
+            },
+            React: {
+                React: [
+                    'React.Component',
+                    'React.PureComponent',
+                    'React.memo',
+                    'createElement()',
+                    'cloneElement()',
+                    'createFactory()',
+                    'isValidElement()',
+                    'React.Fragment',
+                    'React.createRef',
+                    'React.forwardRef',
+                    'React.lazy',
+                    'React.Suspense',
+                ],
+                ['React.Component']: [
+                    'constructor',
+                    'render',
+                    'getDerivedStateFromProps',
+                    'getDerivedStateFromError',
+                    'shouldComponentUpdate',
+                    'getSnapshotBeforeUpdate',
+                    'componentDidMount',
+                    'componentDidUpdate',
+                    'componentDidCatch',
+                    'componentWillUnmount',
+                    'setState()',
+                    'forceUpdate()',
+                    'defaultProps',
+                    'displayName',
+                    'props',
+                    'state',
+                ],
+                ['React.Children']: [
+                    'React.Children.map',
+                    'React.Children.forEach',
+                    'React.Children.count',
+                    'React.Children.only',
+                    'React.Children.toArray',
+                ],
+                ReactDOM: [
+                    'render()',
+                    'hydrate()',
+                    'unmountComponentAtNode()',
+                    'findDOMNode()',
+                    'createPortal()',
+                ],
+                ReactDOMServer: [
+                    'renderToString()',
+                    'renderToStaticMarkup()',
+                    'renderToNodeStream()',
+                    'renderToStaticNodeStream()',
+                ],
+                ['DOM Elements']: [
+                    'checked',
+                    'className',
+                    'dangerouslySetInnerHTML',
+                    'htmlFor',
+                    'onChange',
+                    'selected',
+                    'style',
+                    'suppressContentEditableWarning',
+                    'suppressHydrationWarning',
+                    'value',
+                ],
+                ['Test Utilities']: [
+                    'act()',
+                    'mockComponent()',
+                    'isElement()',
+                    'isElementOfType()',
+                    'isDOMComponent()',
+                    'isCompositeComponent()',
+                    'isCompositeComponentWithType()',
+                    'findAllInRenderedTree()',
+                    'scryRenderedDOMComponentsWithClass()',
+                    'findRenderedDOMComponentWithClass()',
+                    'scryRenderedDOMComponentsWithTag()',
+                    'findRenderedDOMComponentWithTag()',
+                    'scryRenderedComponentsWithType()',
+                    'findRenderedComponentWithType()',
+                    'renderIntoDocument()',
+                    'Simulate',
+                ],
+                Hooks: [
+                    'useState',
+                    'useEffect',
+                    'useContext',
+                    'useReducer',
+                    'useCallback',
+                    'useMemo',
+                    'useRef',
+                    'useImperativeHandle',
+                    'useLayoutEffect',
+                    'useDebugValue',
+                ],
+                ['Render phase']: [
+                    'Render phase',
+                    'Pre-commit phase',
+                    'Commit phase',
+                ],
+                ['Class Component Lifecycle']: [
+                    'constructor',
+                    'render',
+                    'getDerivedStateFromProps',
+                    'getDerivedStateFromError',
+                    'shoulComponentUpdate',
+                    'getSnapshotBeforeUpdate',
+                    'componentDidMount',
+                    'componentDidUpdate',
+                    'componentDidCatch',
+                    'componentWillUnmount',
+                ],
+                ['React Patterns']: [
+                    'Function component',
+                    'Destructuring props',
+                    'JSX spread attributes',
+                    'Merge destructured props with other values',
+                    'Conditional rendering',
+                    'Children types',
+                    'Array as children',
+                    'Function as children',
+                    'Render prop',
+                    'Children pass-through',
+                    'Proxy component',
+                    'Style component',
+                    'Event switch',
+                    'Layout component',
+                    'Container component',
+                    'Higher-order component',
+                    'State hoisting',
+                    'Controlled input',
+                ],
+            },
+            HTML: {
+                ['HTML Basic']: [
+                    '!DOCTYPE',
+                    'html',
+                    'head',
+                    'title',
+                    'body',
+                    'h1 to h6',
+                    'p',
+                    'br',
+                    'hr',
+                    '&lt;!--...--&gt;',
+                    'iframe',
+                    'a',
+                    'link',
+                    'style',
+                ],
+                ['HTML Formating']: [
+                    'abbr',
+                    'address',
+                    'b',
+                    'bdi',
+                    'bdo',
+                    'blockquote',
+                    'cite',
+                    'code',
+                    'del',
+                    'dfn',
+                    'em',
+                    'i',
+                    'ins',
+                    'kbd',
+                    'mark',
+                    'meter',
+                    'pre',
+                    'progress',
+                    'q',
+                    'rp',
+                    'rt',
+                    'ruby',
+                    's',
+                    'samp',
+                    'small',
+                    'strong',
+                    'sub',
+                    'sup',
+                    'template',
+                    'time',
+                    'u',
+                    'var',
+                    'wbr',
+                ],
+                ['HTML Forms and input']: [
+                    'form',
+                    'input',
+                    'textarea',
+                    'button',
+                    'select',
+                    'optgroup',
+                    'option',
+                    'label',
+                    'fieldset',
+                    'legend',
+                    'datalist',
+                    'output',
+                ],
+                ['HTML Images']: [
+                    'img',
+                    'map',
+                    'area',
+                    'canvas',
+                    'figcaption',
+                    'figure',
+                    'picture',
+                    'svg',
+                ],
+                ['HTML Audio&Video']: [
+                    'audio',
+                    'source',
+                    'track',
+                    'video',
+                ],
+                ['HTML Lists']: [
+                    'ul',
+                    'ol',
+                    'li',
+                    'dl',
+                    'dt',
+                    'dd',
+                ],
+                ['HTML Tables']: [
+                    'table',
+                    'caption',
+                    'th',
+                    'tr',
+                    'td',
+                    'thead',
+                    'tbody',
+                    'tfoot',
+                    'col',
+                    'colgroup',
+                ],
+                ['HTML Semantics']: [
+                    'div',
+                    'span',
+                    'header',
+                    'footer',
+                    'main',
+                    'section',
+                    'article',
+                    'aside',
+                    'details',
+                    'dialog',
+                    'summary',
+                    'data',
+                    'nav',
+                ],
+                ['HTML Meta info']: [
+                    'head',
+                    'meta',
+                    'base',
+                ],
+                ['HTML Programming']: [
+                    'script',
+                    'noscript',
+                    'embed',
+                    'object',
+                    'param',
+                ],
+            },
+            CSS: {
+                ['CSS Functions']: [
+                    'attr',
+                    'calc',
+                    'cubic-bezier',
+                    'hsl',
+                    'hsla',
+                    'linear-gradient',
+                    'radial-gradient',
+                    'repeating-linear-gradient',
+                    'repeating-radial-gradient',
+                    'rgb',
+                    'rgba',
+                    'var',
+                ],
+                ['CSS Absolute Lengths']: [
+                    'cm',
+                    'mm',
+                    'in',
+                    'px',
+                    'pt',
+                    'pc',
+                ],
+                ['CSS Relative Lengths']: [
+                    'em',
+                    'ex',
+                    'ch',
+                    'rem',
+                    'vw',
+                    'vh',
+                    'vmin',
+                    'vmax',
+                    '%',
+                ],
+                ['CSS Selectors']: [
+                    'Universal selector (* ns|* *|*)',
+                    'Type selector (elemname)',
+                    'Class selector (.classname)',
+                    'ID selector (#idname)',
+                    'Attribute selector ([attr] [attr=value] [attr~=value] [attr|=value] [attr^=value] [attr$=value] [attr*=value])',
+                    'Grouping Selectors (A, B)',
+                    'Descendant combinator (A B)',
+                    'Child combinator (A > B)',
+                    'General sibling combinator (A ~ B)',
+                    'Adjacent sibling combinator (A + B)',
+                    'Pseudo classes (:)',
+                    'Pseudo elements (::)',
+                ],
+                ['CSS Pseudo-classes']: [
+                    ':active',
+                    ':checked',
+                    ':disabled',
+                    ':empty',
+                    ':enabled',
+                    ':first-child',
+                    ':first-of-type',
+                    ':focus',
+                    ':hover',
+                    ':in-range',
+                    ':invalid',
+                    ':lang(language)',
+                    ':last-child',
+                    ':last-of-type',
+                    ':link',
+                    ':not(selector)',
+                    ':nth-child(n)',
+                    ':nth-last-child(n)',
+                    ':nth-last-of-type(n)',
+                    ':nth-of-type(n)',
+                    ':only-of-type',
+                    ':only-child',
+                    ':optional',
+                    ':out-of-range',
+                    ':read-only',
+                    ':read-write',
+                    ':required',
+                    ':root',
+                    ':target',
+                    ':valid',
+                    ':visited',
+                ],
+                ['CSS Pseudo-elements']: [
+                    '::after',
+                    '::before',
+                    '::first-letter',
+                    '::first-line',
+                    '::selection',
+                ],
+            },
+            DOM: {
+                ['Node Properties']: [
+                    'attributes',
+                    'baseURI',
+                    'childNodes',
+                    'firstChild',
+                    'lastChild',
+                    'nextSibling',
+                    'nodeName',
+                    'nodeType',
+                    'nodeValue',
+                    'ownerDocument',
+                    'parentNode',
+                    'previousSibling',
+                    'textContent',
+                ],
+                ['Node Methods']: [
+                    'appendChild()',
+                    'cloneNode()',
+                    'compareDocumentPosition()',
+                    'getFeature()',
+                    'hasAttributes()',
+                    'hasChildNodes()',
+                    'insertBefore()',
+                    'isDefaultNamespace()',
+                    'isEqualNode()',
+                    'isSameNode()',
+                    'isSupported()',
+                    'lookupNamespaceURI()',
+                    'lookupPrefix()',
+                    'normalize()',
+                    'removeChild()',
+                    'replaceChild()',
+                ],
+                ['Element Methods']: [
+                    'getAttribute()',
+                    'getAttributeNS()',
+                    'getAttributeNode()',
+                    'getAttributeNodeNS()',
+                    'getElementsByTagName()',
+                    'getElementsByTagNameNS()',
+                    'hasAttribute()',
+                    'hasAttributeNS()',
+                    'removeAttribute()',
+                    'removeAttributeNS()',
+                    'removeAttributeNode()',
+                    'setAttribute()',
+                    'setAttributeNS()',
+                    'setAttributeNode()',
+                    'setAttributeNodeNS()',
+                ],
+                ['Window Properties']: [
+                    'closed',
+                    'defaultStatus',
+                    'document',
+                    'frames',
+                    'history',
+                    'innerHeight',
+                    'innerWidth',
+                    'length',
+                    'location',
+                    'name',
+                    'navigator',
+                    'opener',
+                    'outerHeight',
+                    'outerWidth',
+                    'pageXOffset',
+                    'pageYOffset',
+                    'parent',
+                    'screen',
+                    'screenLeft',
+                    'screenTop',
+                    'screenX',
+                    'screenY',
+                    'self',
+                    'status',
+                    'top',
+                ],
+                ['Window Methods']: [
+                    'alert()',
+                    'blur()',
+                    'clearInterval()',
+                    'clearTimeout()',
+                    'close()',
+                    'confirm()',
+                    'focus()',
+                    'moveBy()',
+                    'moveTo()',
+                    'open()',
+                    'print()',
+                    'prompt()',
+                    'resizeBy()',
+                    'resizeTo()',
+                    'scrollBy()',
+                    'scrollTo()',
+                    'setInterval()',
+                    'setTimeout()',
+                    'stop()',
+                ],
+                ['Screen Properties']: [
+                    'availHeight',
+                    'availWidth',
+                    'colorDepth',
+                    'height',
+                    'pixelDepth',
+                    'width',
+                ],
+                ['Mouse Events']: [
+                    'onclick',
+                    'oncontextmenu',
+                    'ondblclick',
+                    'onmousedown',
+                    'onmouseenter',
+                    'onmouseleave',
+                    'onmousemove',
+                    'onmouseover',
+                    'onmouseout',
+                    'onmouseup',
+                ],
+                ['Keyboard Events']: [
+                    'onkeydown',
+                    'onkeypress',
+                    'onkeyup',
+                ],
+                ['Frame Events']: [
+                    'onabort',
+                    'onbeforeunload',
+                    'onerror',
+                    'onhashchange',
+                    'onload',
+                    'onpagehide',
+                    'onpageshow',
+                    'onresize',
+                    'onscroll',
+                    'onunload',
+                ],
+                ['Form Events']: [
+                    'onblur',
+                    'onchange',
+                    'onfocus',
+                    'onfocusin',
+                    'onfocusout',
+                    'oninput',
+                    'oninvalid',
+                    'onreset',
+                    'onsearch',
+                    'onselect',
+                    'onsubmit',
+                ],
+                ['Drag Events']: [
+                    'ondrag',
+                    'ondragend',
+                    'ondragenter',
+                    'ondragleave',
+                    'ondragover',
+                    'ondragstart',
+                    'ondrop',
+                ],
+                ['Clipboard Events']: [
+                    'oncopy',
+                    'oncut',
+                    'onpaste',
+                ],
+                ['Media Events']: [
+                    'onabort',
+                    'oncanplay',
+                    'oncanplaythrough',
+                    'ondurationchange',
+                    'onended',
+                    'onerror',
+                    'onloadeddata',
+                    'onloadedmetadata',
+                    'onloadstart',
+                    'onpause',
+                    'onplay',
+                    'onplaying',
+                    'onprogress',
+                    'onratechange',
+                    'onseeked',
+                    'onseeking',
+                    'onstalled',
+                    'onsuspend',
+                    'ontimeupdate',
+                    'onvolumechange',
+                    'onwaiting',
+                ],
+                ['Animation Events']: [
+                    'animationend',
+                    'animationiteration',
+                    'animationstart',
+                ],
+                ['Other Events']: [
+                    'transitionend',
+                    'onmessage',
+                    'onoffline',
+                    'ononline',
+                    'onpopstate',
+                    'onshow',
+                    'onstorage',
+                    'ontoggle',
+                    'onwheel',
+                    'ontouchcancel',
+                    'ontouchend',
+                    'ontouchmove',
+                    'ontouchstart',
+                ],
+            },
+            NodeJs: {
+                ['Built-in Modules']: [
+                    'assert',
+                    'buffer',
+                    'child_process',
+                    'cluster',
+                    'crypto',
+                    'dgram',
+                    'dns',
+                    'events',
+                    'fs',
+                    'http',
+                    'https',
+                    'net',
+                    'os',
+                    'path',
+                    'querystring',
+                    'readline',
+                    'stream',
+                    'string_decoder',
+                    'timers',
+                    'tls',
+                    'tty',
+                    'url',
+                    'util',
+                    'v8',
+                    'vm',
+                    'zlib',
+                ],
+                ['Assert Module']: [
+                    'assert()',
+                    'deepEqual()',
+                    'deepStrictEqual()',
+                    'equal()',
+                    'fail()',
+                    'ifError()',
+                    'notDeepEqual()',
+                    'notDeepStrictEqual()',
+                    'notEqual()',
+                    'notStrictEqual()',
+                    'ok()',
+                    'strictEqual()',
+                ],
+                ['Buffer Module']: [
+                    'alloc()',
+                    'allocUnsafe()',
+                    'allocUnsafeSlow',
+                    'byteLength()',
+                    'compare()',
+                    'concat()',
+                    'copy()',
+                    'entries()',
+                    'equals()',
+                    'fill()',
+                    'from()',
+                    'includes()',
+                    'indexOf()',
+                    'isBuffer()',
+                    'isEncoding()',
+                    'keys()',
+                    'lastIndexOf()',
+                    'length ',
+                    'poolSize ',
+                    'slice()',
+                    'swap[16|32|64]()',
+                    'toString()',
+                    'toJSON()',
+                    'values()',
+                    'write()',
+                    '[read|write]Double[BE|LE]()',
+                    '[read|write]Float[BE|LE]()',
+                    '[read|write]Int8()',
+                    '[read|write]Int[BE|LE]()',
+                    '[read|write]Int[16|32][BE|LE]()',
+                    '[read|write]UInt8()',
+                    '[read|write]Uint[BE|LE]()',
+                    '[read|write]UInt[16|32][BE|LE]()',
+                ],
+                ['Cluster Module']: [
+                    'disconnect()',
+                    'exitedAfterDisconnect',
+                    'fork()',
+                    'id',
+                    'isConnected',
+                    'isDead',
+                    'isMaster',
+                    'isWorker',
+                    'kill()',
+                    'process',
+                    'schedulingPolicy',
+                    'send()',
+                    'settings',
+                    'setupMaster()',
+                    'worker',
+                    'workers',
+                ],
+                ['Crypto Module']: [
+                    'constants',
+                    'fips',
+                    'createCipher()',
+                    'createCipheriv()',
+                    'createDecipher()',
+                    'createDecipheriv()',
+                    'createDiffieHellman()',
+                    'createECDH()',
+                    'createHash()',
+                    'createHmac()',
+                    'createSign()',
+                    'createVerify()',
+                    'getCiphers',
+                    'getCurves()',
+                    'getDiffieHellman()',
+                    'getHashes()',
+                    'pbkdf2()',
+                    'pbkdf2Sync()',
+                    'privateDecrypt()',
+                    'timingSafeEqual()',
+                    'privateEncrypt()',
+                    'publicDecrypt()',
+                    'publicEncrypt()',
+                    'randomBytes()',
+                    'setEngine()',
+                ],
+                ['DNS Module']: [
+                    'getServers()',
+                    'lookup()',
+                    'lookupService()',
+                    'resolve[4|6|Cname|Mx|Naptr|Ns|Soa|Srv|Ptr|Txt]()',
+                    'reverse()',
+                    'setServers()',
+                ],
+                ['Events Module']: [
+                    'addListener()',
+                    'defaultMaxListeners',
+                    'emit()',
+                    'eventNames()',
+                    'getMaxListeners()',
+                    'listenerCount()',
+                    'listeners()',
+                    'on()',
+                    'once()',
+                    'prependListener()',
+                    'prependOnceListener()',
+                    'removeAllListeners()',
+                    'removeListener()',
+                    'setMaxListeners()',
+                ],
+                ['File System Module (fs)']: [
+                    'access[Sync]()',
+                    'appendFile[Sync]()',
+                    'chmod[Sync]()',
+                    'chown[Sync]()',
+                    'close[Sync]()',
+                    'constants Returns',
+                    'createReadStream()',
+                    'createWriteStream()',
+                    'exists[Sync]()',
+                    'fchmod[Sync]()',
+                    'fchown[Sync]()',
+                    'fdatasync[Sync]()',
+                    'fstat[Sync]()',
+                    'fsync[Sync]()',
+                    'ftruncated[Sync]()',
+                    'futimes[Sync]()',
+                    'lchmod[Sync]()',
+                    'lchown[Sync]()',
+                    'link[Sync]()',
+                    'lstat[Sync]()',
+                    'mkdir[Sync]()',
+                    'mkdtemp[Sync]()',
+                    'open[Sync]()',
+                    'read()',
+                    'readdir[Sync]()',
+                    'readFile[Sync]()',
+                    'readlink[Sync]()',
+                    'realpath[Sync]()',
+                    'rename[Sync]()',
+                    'rmdir[Sync]()',
+                    'stat[Sync]()',
+                    'symlink[Sync]()',
+                    'truncate[Sync]()',
+                    'unlink[Sync]()',
+                    'unwatchFile()',
+                    'utimes[Sync]()',
+                    'watch[Sync]()',
+                    'write[Sync]()',
+                    'writeFile[Sync]()',
+                ],
+                ['HTTP & HTTPS Module']: [
+                    'createClient() <strong>(http only)</strong>',
+                    'createServer()',
+                    'get()',
+                    'globalAgent',
+                    'request()',
+                ],
+                ['TLS Module']: [
+                    'connect()',
+                    'createSecureContext()',
+                    'createServer()',
+                    'getCiphers()',
+                ],
+                ['Net & Datagram (dgram) Module']: [
+                    '<strong>Net Module</strong>',
+                    'connect()',
+                    'createConnection()',
+                    'createServer()',
+                    'isIP',
+                    'isIPv4',
+                    'isIPv6',
+                    '<strong>Datagram (dgram) Module</strong>',
+                    'createSocket()',
+                ],
+                ['URL & Query String (querystring) Module']: [
+                    '<strong>URL Module:</strong>',
+                    'url.format()',
+                    'url.parse()',
+                    'url.resolve()',
+                    '<br/>',
+                    '<strong>Query String (querystring) Module:</strong>',
+                    'escape()',
+                    'parse()',
+                    'stringify()',
+                    'unescape()',
+                ],
+                ['OS Module']: [
+                    'arch()',
+                    'constants',
+                    'cpus()',
+                    'endiannes()',
+                    'EOL',
+                    'freemem()',
+                    'hostname()',
+                    'loadavg()',
+                    'networkInterfaces()',
+                    'platform()',
+                    'release()',
+                    'tmpdir()',
+                    'totalmem()',
+                    'type()',
+                    'uptime()',
+                    'userInfo()',
+                ],
+                ['Path Module']: [
+                    'basename()',
+                    'delimiter',
+                    'dirname()',
+                    'extname()',
+                    'format()',
+                    'isAbsolute()',
+                    'join()',
+                    'normalize()',
+                    'parse()',
+                    'posix',
+                    'relative()',
+                    'resolve()',
+                    'sep',
+                    'win32',
+                ],
+                ['Readline Module']: [
+                    'clearLine()',
+                    'clearScreenDown()',
+                    'createInterface()',
+                    'cursorTo()',
+                    'emitKeypressEvents()',
+                    'moveCursor()',
+                ],
+                ['Stream Module']: [
+                    'pause()',
+                    'isPaused()',
+                    'read()',
+                    'resume()',
+                    'setEncoding()',
+                    'pipe()',
+                    'unpipe()',
+                    'unshift()',
+                    'wrap()',
+                ],
+                ['Timers Module']: [
+                    '[set|clear]Immediate()',
+                    '[set|clear]Interval()',
+                    '[set|clear]Timeout()',
+                    'ref()',
+                    'unref()',
+                ],
+                ['Util & String Decoder (string_decoder) Module']: [
+                    '<strong>Util Module</strong>',
+                    'debuglog()',
+                    'deprecate()',
+                    'format()',
+                    'inherits()',
+                    'inspect()',
+                    '<strong>String Decoder (string_decoder) Module</strong>',
+                    'end()',
+                    'write()',
+                ],
+                ['VM Module']: [
+                    'createContext()',
+                    'isContext()',
+                    'runIn[Debug|Context|NewContext|ThisContext]()',
+                ],
+                ['Zlib Module']: [
+                    'constants',
+                    'createDeflate()',
+                    'createDeflateRaw()',
+                    'createGunzip()',
+                    'createGzip()',
+                    'createInflate()',
+                    'createInflateRaw()',
+                    'createUnzip()',
+                    'deflate[Sync]()',
+                    'deflateRaw[Sync]()',
+                    'gunzip[Sync]()',
+                    'gzip[Sync]()',
+                    'inflate[Sync]()',
+                    'inflateRaw[Sync]()',
+                    'unzip[Sync]()',
+                ],
+            },
+            Other: {
+                ['HTTP Status Codes']: [
+                '1xx: Informational',
+'2xx: Success',
+'3xx: Redirection',
+'4xx: Client Error',
+'5xx: Server Error',
+                ]
+            }
+        };
+    </script>
+
+    <script>
+        const flashcards = [];
+        Object.keys(window.data).forEach((deckName) => {
+            const deck = window.data[deckName];
+            Object.keys(deck).forEach((question) => {
+                const answer = deck[question];
+                const id = deckName + ' - ' + question
+                const storageFlashcardEnableValue = localStorage.getItem(id);
+                const enable = !storageFlashcardEnableValue || storageFlashcardEnableValue === 'true';
+                flashcards.push({
+                    id,
+                    deck: deckName,
+                    question,
+                    answer,
+                    enable,
+                });
+            })
+        });
+
+        const themes = { light: 'lightTheme', dark: 'darkTheme' };
+        const sides = { question: 0, answer: 1 };
+
+        let flashcardIndex = 0;
+        let side = sides.question;
+
+        const getActiveFlashcards = () => flashcards.filter((card) => card.enable);
+
+        const getFlashcardElement = () => document.getElementById('flashcard');
+        const getFlashcardTitleElement = () => document.getElementById('flashcardTitle');
+
+        const buildHtmlList = (list, space) => list.join(space);
+
+        const showFlashcard = () => {
+            const flashcard = getActiveFlashcards()[flashcardIndex];
+            const flashcardElement = getFlashcardElement();
+            const flashcardTitleElement = getFlashcardTitleElement();
+
+            let content = side === sides.question ? flashcard.question : flashcard.answer;
+
+            flashcardElement.style.columnCount = null;
+            if (content instanceof Array) {
+                if (content.length > 15) {
+                    flashcardElement.style.columnCount = 2;
+                }
+
+                content = buildHtmlList(content, '<br/>');
+            }
+
+            flashcardElement.innerHTML = content;
+            flashcardTitleElement.innerHTML = 'Deck: <u>' + flashcard.deck + '</u> Question: <u>' + flashcard.question + '</u>';
+
+            flashcardElement.classList = [side === sides.question ? 'question' : 'answer'];
+        }
+
+        const themeStorageKey = '#THEME'
+        const toggleTheme = () => {
+            const body = document.querySelector('body');
+
+            if (Array.from(body.classList).some((cl) => cl === themes.dark)) {
+                body.classList.replace(themes.dark, themes.light);
+                localStorage.setItem(themeStorageKey, themes.light);
+            } else {
+                body.classList.replace(themes.light, themes.dark);
+                localStorage.setItem(themeStorageKey, themes.dark);
+            }
+        }
+
+        const toggleFlashcard = () => {
+            side = side === sides.question ? sides.answer : sides.question;
+            showFlashcard();
+        }
+
+        const prevFlashcard = () => {
+            const activeFlashCards = getActiveFlashcards();
+            if (activeFlashCards.length === 0) {
+                return;
+            }
+
+            flashcardIndex = flashcardIndex === 0 ? activeFlashCards.length - 1 : flashcardIndex - 1;
+            side = sides.question;
+            showFlashcard();
+        }
+
+        const nextFlashcard = () => {
+            const activeFlashCards = getActiveFlashcards();
+            if (activeFlashCards.length === 0) {
+                return;
+            }
+
+            flashcardIndex = flashcardIndex === activeFlashCards.length - 1 ? 0 : flashcardIndex + 1;
+            side = sides.question;
+            showFlashcard();
+        }
+
+        const showFlashcardList = () => {
+            const editFlashcardList = document.getElementById('editFlashcardList');
+            const flashcardList = document.getElementById('flashcardList');
+            flashcardList.innerHTML = '';
+
+            let currentDeck;
+            let deckBlockElement;
+            let deckCheckboxes = [];
+            let deckSummary;
+
+            const createOnOffButton = (enableValue) => {
+                const deck = currentDeck;
+                const currentDeckCheckboxes = Array.from(deckCheckboxes);
+                const deckOnOff = document.createElement('a');
+                deckOnOff.onclick = (e) => {
+                    flashcards.forEach((fc) => {
+                        if (fc.deck === deck) {
+                            fc.enable = enableValue;
+                            localStorage.setItem(fc.id, enableValue);
+                        }
+                    })
+                    currentDeckCheckboxes.forEach(ch => ch.checked = enableValue);
+                    e.preventDefault();
+                };
+                deckOnOff.textContent = enableValue ? 'On' : 'Off';
+                deckSummary.appendChild(deckOnOff);
+            }
+
+            flashcards
+                .sort((f1, f2) => {
+                    if (f1.deck === f2.deck) {
+                        if (f1.enable === f2.enable) {
+                            return 0;
+                        }
+                        return f1.enable ? -1 : 1;
+                    }
+                    return 1;
+                })
+                .forEach((flashcard) => {
+                    if (flashcard.deck !== currentDeck) {
+                        if (deckSummary) {
+                            createOnOffButton(false);
+                            createOnOffButton(true);
+                        }
+
+                        deckBlockElement = document.createElement('details');
+                        deckBlockElement.open = true;
+
+                        deckSummary = document.createElement('summary');
+                        deckSummary.innerHTML = flashcard.deck;
+
+                        deckBlockElement.appendChild(deckSummary);
+
+                        flashcardList.appendChild(deckBlockElement);
+                        deckCheckboxes = [];
+                        currentDeck = flashcard.deck;
+                    }
+                    const block = document.createElement('div');
+
+                    const checkbox = document.createElement('input');
+                    checkbox.id = flashcard.id;
+                    checkbox.type = 'checkbox';
+                    checkbox.checked = flashcard.enable;
+                    checkbox.onchange = (e) => {
+                        flashcard.enable = e.target.checked;
+                        localStorage.setItem(flashcard.id, flashcard.enable);
+                    }
+                    block.appendChild(checkbox);
+                    deckCheckboxes.push(checkbox);
+
+                    const label = document.createElement('label');
+                    label.htmlFor = flashcard.id;
+                    label.textContent = flashcard.question;
+                    block.appendChild(label);
+
+                    deckBlockElement.appendChild(block);
+                });
+            if (deckSummary) {
+                createOnOffButton(false);
+                createOnOffButton(true);
+            }
+            editFlashcardList.style.display = 'flex';
+        }
+
+        const closeFlashcardList = () => {
+            const editFlashcardList = document.getElementById('editFlashcardList');
+            editFlashcardList.style.display = 'none';
+
+            const activeFlashcards = getActiveFlashcards();
+
+            const buttonDisplay = activeFlashcards.length > 1 ? 'inline' : 'none';
+            const backButton = document.getElementById('backButton');
+            backButton.style.display = buttonDisplay;
+            const nextButton = document.getElementById('nextButton');
+            nextButton.style.display = buttonDisplay;
+
+            if (activeFlashcards.length > 0) {
+                flashcardIndex = 0;
+                showFlashcard();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem(themeStorageKey) === themes.dark) {
+                toggleTheme();
+            }
+            showFlashcard();
+
+            let startX, startY,
+                dist,
+                threshold = 50, //required min distance traveled to be considered swipe
+                allowedTime = 2000, // maximum time allowed to travel that distance
+                elapsedTime, startTime;
+
+            document.addEventListener('touchstart', (e) => {
+                const touchobj = e.changedTouches[0]
+                dist = 0;
+                startX = touchobj.pageX;
+                startY = touchobj.pageY;
+                startTime = new Date().getTime();
+            }, false)
+
+            // document.addEventListener('touchmove', (e) => {
+            //     e.preventDefault(); // prevent scrolling when inside
+            // }, false)
+
+            document.addEventListener('touchend', (e) => {
+                const touchobj = e.changedTouches[0];
+                dist = touchobj.pageX - startX;
+                elapsedTime = new Date().getTime() - startTime;
+
+                if (elapsedTime <= allowedTime && Math.abs(dist) >= threshold && Math.abs(touchobj.pageY - startY) <= 100) {
+                    if (dist > 0) {
+                        prevFlashcard();
+                    } else {
+                        nextFlashcard();
+                    }
+                }
+            }, false)
+
+            document.addEventListener('keydown', (e) => {
+                switch (e.keyCode) {
+                    case 13:    // enter
+                    case 32:    // space
+                        toggleFlashcard();
+                        break;
+                    case 37:    // left
+                    case 74:    // J
+                        prevFlashcard();
+                        break;
+                    case 39:    // right
+                    case 76:    // L
+                        nextFlashcard();
+                        break;
+                }
+            })
+        })
+    </script>
+</head>
+
+<body class="lightTheme">
+    <article class="question" onclick="toggleFlashcard()">
+        <div id="flashcard"></div>
+        <div id="flashcardTitle"></div>
+    </article>
+
+    <nav>
+        <div>
+            <a onclick="prevFlashcard()" id="backButton">Back</a>
+        </div>
+        <div>
+            <a onclick="showFlashcardList()">flashcards</a>
+        </div>
+        <div>
+            <a onclick="toggleTheme()">dark/light</a>
+        </div>
+        <div>
+            <a onclick="nextFlashcard()" id="nextButton">Next</a>
+        </div>
+    </nav>
+
+    <section id="editFlashcardList">
+        <article id="flashcardList"></article>
+        <nav>
+            <a onclick="closeFlashcardList()">Close</a>
+        </nav>
+    </section>
+</body>
+
+</html>
