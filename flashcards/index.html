@@ -1617,14 +1617,27 @@
         const themeStorageKey = '#THEME'
         const toggleTheme = () => {
             const body = document.querySelector('body');
+            const themeToggleButton = document.getElementById('themeToggleButton');
 
             if (Array.from(body.classList).some((cl) => cl === themes.dark)) {
                 body.classList.replace(themes.dark, themes.light);
                 localStorage.setItem(themeStorageKey, themes.light);
+                themeToggleButton.innerText = 'dark';
             } else {
                 body.classList.replace(themes.light, themes.dark);
                 localStorage.setItem(themeStorageKey, themes.dark);
+                themeToggleButton.innerText = 'light';
             }
+        }
+
+        const toggleFullscreen = () => {
+            if (!document.fullscreenElement) {
+				document.documentElement.requestFullscreen();
+			} else {
+				if (document.exitFullscreen) {
+					document.exitFullscreen();
+				}
+			}
         }
 
         const toggleFlashcard = () => {
@@ -1758,6 +1771,8 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             if (localStorage.getItem(themeStorageKey) === themes.dark) {
+                const themeToggleButton = document.getElementById('themeToggleButton');
+                themeToggleButton.innerText = 'light';
                 toggleTheme();
             }
             showFlashcard();
@@ -1832,16 +1847,19 @@
 
     <nav>
         <div>
-            <a onclick="prevFlashcard()" id="backButton">Back</a>
+            <a id="backButton" onclick="prevFlashcard()" title="Back">&lt;</a>
         </div>
         <div>
-            <a onclick="showFlashcardList()">flashcards</a>
+            <a onclick="showFlashcardList()" title="choose flashcards">flashcards</a>
         </div>
         <div>
-            <a onclick="toggleTheme()">dark/light</a>
+            <a id="themeToggleButton" onclick="toggleTheme()" title="toggle theme">dark</a>
         </div>
         <div>
-            <a onclick="nextFlashcard()" id="nextButton">Next</a>
+            <a onclick="toggleFullscreen()" title="fullscreen">fullscreen</a>
+        </div>
+        <div>
+            <a id="nextButton" onclick="nextFlashcard()" title="Next">&gt;</a>
         </div>
     </nav>
 
