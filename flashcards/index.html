@@ -1581,6 +1581,14 @@
 
         const buildHtmlList = (list, space) => list.join(space);
 
+        const flashcardStorageKey = '#FLASHCARD_ID'
+        const lastShownFalshcardId = localStorage.getItem(flashcardStorageKey);
+        if(lastShownFalshcardId){
+            const lastShownFalshcard = getActiveFlashcards().find((card) => card.id === lastShownFalshcardId);
+            if(lastShownFalshcard){
+                flashcardIndex = getActiveFlashcards().findIndex(item => item === lastShownFalshcard);
+            }
+        }
         const showFlashcard = () => {
             const flashcard = getActiveFlashcards()[flashcardIndex];
             const flashcardElement = getFlashcardElement();
@@ -1612,6 +1620,8 @@
             flashcardTitleElement.innerHTML = 'Deck: <u>' + flashcard.deck + '</u> Question: <u>' + flashcard.question + '</u>';
 
             flashcardElement.classList = [side === sides.question ? 'question' : 'answer'];
+
+            localStorage.setItem(flashcardStorageKey, flashcard.id);
         }
 
         const themeStorageKey = '#THEME'
