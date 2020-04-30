@@ -534,17 +534,28 @@
                     'charCodeAt()',
                     'fromCharCode()',
                     'concat()',
+                    'endsWith()',
+                    'includes()',
                     'indexOf()',
                     'lastIndexOf()',
+                    'localeCompare()',
                     'match()',
+                    'matchAll()',
+                    'normalize()',
+                    'padEnd()',
+                    'padStart()',
+                    'repeat()',
                     'replace()',
                     'search()',
                     'slice()',
                     'split()',
-                    'substr()',
+                    'startsWith()',
                     'substring()',
                     'toLowerCase()',
                     'toUpperCase()',
+                    'trim()',
+                    'trimEnd()',
+                    'trimStart()',
                 ],
                 Math: [
                     'E',
@@ -1583,9 +1594,9 @@
 
         const flashcardStorageKey = '#FLASHCARD_ID'
         const lastShownFalshcardId = localStorage.getItem(flashcardStorageKey);
-        if(lastShownFalshcardId){
+        if (lastShownFalshcardId) {
             const lastShownFalshcard = getActiveFlashcards().find((card) => card.id === lastShownFalshcardId);
-            if(lastShownFalshcard){
+            if (lastShownFalshcard) {
                 flashcardIndex = getActiveFlashcards().findIndex(item => item === lastShownFalshcard);
             }
         }
@@ -1642,12 +1653,12 @@
 
         const toggleFullscreen = () => {
             if (!document.fullscreenElement) {
-				document.documentElement.requestFullscreen();
-			} else {
-				if (document.exitFullscreen) {
-					document.exitFullscreen();
-				}
-			}
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
         }
 
         const toggleFlashcard = () => {
