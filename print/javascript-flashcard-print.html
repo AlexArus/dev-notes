@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Printable Flashcards</title>
+    <style>
+        @font-face {
+            font-family: 'Fira Code';
+            src: url('https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/eot/FiraCode-Regular.eot') format('embedded-opentype'),
+                url('https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/woff2/FiraCode-Regular.woff2') format('woff2'),
+                url('https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/woff/FiraCode-Regular.woff') format('woff'),
+                url('https://raw.githubusercontent.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        html,
+        body,
+        article {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+
+            font-family: 'Fira Code';
+            font-size: 14px;
+            font-feature-settings: "liga"on, "calt"on;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        article {
+            border: 1px solid black;
+            page-break-after: always;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+
+        article>div {
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+            text-align: center;
+            overflow: hidden;
+
+            padding: 2mm;
+        }
+
+        .question {
+            font-size: xx-large;
+            font-weight: bold;
+        }
+
+        .answer p {
+            margin: 0;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <article class="question">
+        <div id="question_1">Property descriptors</div>
+        <div id="question_2">Object</div>
+        <div id="question_3">Object prototype</div>
+        <div id="question_4">Function</div>
+        <div id="question_5">Array</div>
+        <div id="question_6">String</div>
+        <div id="question_7">Math</div>
+        <div id="question_8">Date</div>
+        <div id="question_9">Promise</div>
+    </article>
+    <article class="answer">
+        <div id="answer_3">
+            hasOwnProperty<br />
+            isPrototypeOf<br />
+            propertyIsEnumerable<br />
+            toLocaleString<br />
+            toString<br />
+            valueOf<br />
+        </div>
+        <div id="answer_2">
+            <div style="clear: both;">
+                definePropert[y|ies]<br />
+                getOwnPropertyDescriptor[|s]<br />
+                getOwnProperty[Names|Symbols]<br />
+                [get|set]PrototypeOf<br />
+                preventExtensions<br />
+                isExtensible<br />
+            </div>
+            <div style="column-count: 2; padding-top: 2mm;">
+                <p>assign</p>
+                <p>create</p>
+                <p>seal</p>
+                <p>isSealed</p>
+                <p>freeze</p>
+                <p>isFrozen</p>
+                <p>keys</p>
+                <p>entries</p>
+                <p>fromEntries</p>
+                <p>values</p>
+                <p>is</p>
+            </div>
+        </div>
+        <div id="answer_1">
+            get<br />
+            set<br />
+            value<br />
+            writable<br />
+            enumerable<br />
+            configurable<br />
+        </div>
+
+        <div id="answer_6">
+            <p>charAt()</p>
+            <p>charCodeAt()</p>
+            <p>fromCharCode()</p>
+            <p>concat()</p>
+            <p>endsWith()</p>
+            <p>includes()</p>
+            <p>indexOf()</p>
+            <p>lastIndexOf()</p>
+            <p>localeCompare()</p>
+            <p>match()</p>
+            <p>matchAll()</p>
+            <p>normalize()</p>
+            <p>padEnd()</p>
+            <p>padStart()</p>
+            <p>repeat()</p>
+            <p>replace()</p>
+            <p>search()</p>
+            <p>slice()</p>
+            <p>split()</p>
+            <p>startsWith()</p>
+            <p>substring()</p>
+            <p>toLowerCase()</p>
+            <p>toUpperCase()</p>
+            <p>trim()</p>
+            <p>trimEnd()</p>
+            <p>trimStart()</p>
+        </div>
+        <div id="answer_5">
+            length<br />
+            concat()<br />
+            join()<br />
+            indexOf()<br />
+            lastIndexOf()<br />
+            pop()<br />
+            push()<br />
+            shift()<br />
+            unshift()<br />
+            sort()<br />
+            reverse()<br />
+            slice()<br />
+            splice()<br />
+        </div>
+        <div id="answer_4">
+            lenght<br />
+            name<br />
+            apply(thisArg [, argsArray])<br />
+            call()<br />
+            bind(thisArg[, arg1[, ...]])<br />
+        </div>
+
+        <div id="answer_9">
+            catch() <br />
+            then() <br />
+            finally() <br />
+            Promise.all(iterable) <br />
+            Promise.allSettled(iterable) <br />
+            Promise.race(iterable) <br />
+            Promise.reject(reason) <br />
+            Promise.resolve(value) <br />
+        </div>
+        <div id="answer_8">
+            getDay()<br />
+            [get|set]Date()<br />
+            [get|set]FullYear()<br />
+            [get|set]Hours()<br />
+            [get|set]Milliseconds()<br />
+            [get|set]Minutes()<br />
+            [get|set]Month()<br />
+            [get|set]Seconds()<br />
+            [get|set]Time()<br />
+            [get|set]UTCDate()<br />
+            parse<br />
+        </div>
+        <div id="answer_7">
+            <p>E</p>
+            <p>LN2</p>
+            <p>LN10</p>
+            <p>LOG2E</p>
+            <p>LOG10E</p>
+            <p>PI</p>
+            <p>SQRT1_2</p>
+            <p>SQRT2</p>
+            <p>abs(x)</p>
+            <p>ceil(x)</p>
+            <p>cos(x)</p>
+            <p>acos(x)</p>
+            <p>exp(x)</p>
+            <p>floor(x)</p>
+            <p>round(x)</p>
+            <p>log(x)</p>
+            <p>max(x,...,n)</p>
+            <p>min(x,...,n)</p>
+            <p>pow(x,y)</p>
+            <p>random()</p>
+            <p>sin(x)</p>
+            <p>asin(x)</p>
+            <p>sqrt(x)</p>
+            <p>tan(x)</p>
+            <p>atan(x)</p>
+            <p>atan2(y,)</p>
+        </div>
+    </article>
+</body>
+
+</html>
