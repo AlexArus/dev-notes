@@ -1,0 +1,14 @@
+{
+  "name": "print",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev-notes": "live-server",
+    "flashcards": "live-server --open=/flashcards",
+    "cheatsheets": "live-server --open=/cheatsheets",
+    "print": "live-server --open=/print"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

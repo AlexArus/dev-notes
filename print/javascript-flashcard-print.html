@@ -1,3 +1,26 @@
+<!--
+MIT License
+
+Copyright (c) 2020 Alex Arus (Alexander Selivanov)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
 <!DOCTYPE html>
 <html>
 
@@ -52,12 +75,12 @@
             padding: 2mm;
         }
 
-        .question {
-            font-size: xx-large;
+        .front {
+            font-size: 4rem;
             font-weight: bold;
         }
 
-        .answer p {
+        .back p {
             margin: 0;
             
         }
@@ -65,19 +88,19 @@
 </head>
 
 <body>
-    <article class="question">
-        <div id="question_1">Property descriptors</div>
-        <div id="question_2">Object</div>
-        <div id="question_3">Object prototype</div>
-        <div id="question_4">Function</div>
-        <div id="question_5">Array</div>
-        <div id="question_6">String</div>
-        <div id="question_7">Math</div>
-        <div id="question_8">Date</div>
-        <div id="question_9">Promise</div>
+    <article class="front">
+        <div id="front_1">Property descriptors</div>
+        <div id="front_2">Object</div>
+        <div id="front_3">Object prototype</div>
+        <div id="front_4">Function</div>
+        <div id="front_5">Array</div>
+        <div id="front_6">String</div>
+        <div id="front_7">Math</div>
+        <div id="front_8">Date</div>
+        <div id="front_9">Promise</div>
     </article>
-    <article class="answer">
-        <div id="answer_3">
+    <article class="back">
+        <div id="back_3">
             hasOwnProperty<br />
             isPrototypeOf<br />
             propertyIsEnumerable<br />
@@ -85,7 +108,7 @@
             toString<br />
             valueOf<br />
         </div>
-        <div id="answer_2">
+        <div id="back_2">
             <div style="clear: both;">
                 definePropert[y|ies]<br />
                 getOwnPropertyDescriptor[|s]<br />
@@ -108,7 +131,7 @@
                 <p>is</p>
             </div>
         </div>
-        <div id="answer_1">
+        <div id="back_1">
             get<br />
             set<br />
             value<br />
@@ -117,7 +140,7 @@
             configurable<br />
         </div>
 
-        <div id="answer_6">
+        <div id="back_6">
             <p>charAt()</p>
             <p>charCodeAt()</p>
             <p>fromCharCode()</p>
@@ -145,22 +168,38 @@
             <p>trimEnd()</p>
             <p>trimStart()</p>
         </div>
-        <div id="answer_5">
-            length<br />
-            concat()<br />
-            join()<br />
-            indexOf()<br />
-            lastIndexOf()<br />
-            pop()<br />
-            push()<br />
-            shift()<br />
-            unshift()<br />
-            sort()<br />
-            reverse()<br />
-            slice()<br />
-            splice()<br />
+        <div id="back_5">
+            <p>length</p>
+            <p>concat()</p>
+            <p>copyWithin()</p>
+            <p>entries()</p>
+            <p>every()</p>
+            <p>fill()</p>
+            <p>filter()</p>
+            <p>find()</p>
+            <p>findIndex()</p>
+            <p>forEach()</p>
+            <p>from()</p>
+            <p>includes()</p>
+            <p>indexOf()</p>
+            <p>isArray()</p>
+            <p>join()</p>
+            <p>keys()</p>
+            <p>lastIndexOf()</p>
+            <p>map()</p>
+            <p>pop()</p>
+            <p>push()</p>
+            <p>reduce()</p>
+            <p>reduceRight()</p>
+            <p>reverse()</p>
+            <p>shift()</p>
+            <p>slice()</p>
+            <p>some()</p>
+            <p>sort()</p>
+            <p>splice()</p>
+            <p>unshift()</p>
         </div>
-        <div id="answer_4">
+        <div id="back_4">
             lenght<br />
             name<br />
             apply(thisArg [, argsArray])<br />
@@ -168,7 +207,7 @@
             bind(thisArg[, arg1[, ...]])<br />
         </div>
 
-        <div id="answer_9">
+        <div id="back_9">
             catch() <br />
             then() <br />
             finally() <br />
@@ -178,7 +217,7 @@
             Promise.reject(reason) <br />
             Promise.resolve(value) <br />
         </div>
-        <div id="answer_8">
+        <div id="back_8">
             getDay()<br />
             [get|set]Date()<br />
             [get|set]FullYear()<br />
@@ -191,7 +230,7 @@
             [get|set]UTCDate()<br />
             parse<br />
         </div>
-        <div id="answer_7">
+        <div id="back_7">
             <p>E</p>
             <p>LN2</p>
             <p>LN10</p>

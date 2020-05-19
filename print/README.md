@@ -1,0 +1,1 @@
+To use with both side print and landscape orientation use Flip on short edge
