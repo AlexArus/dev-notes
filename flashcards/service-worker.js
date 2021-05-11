@@ -3,7 +3,7 @@ https://codelabs.developers.google.com/codelabs/your-first-pwapp/#0
 https://developers.google.com/web/fundamentals/primers/service-workers
 */
 
-var CACHE_NAME = 'site-cache-v1';
+var CACHE_NAME = 'site-cache-v21.05';
 var urlsToCache = [
     'index.html'
 ];
