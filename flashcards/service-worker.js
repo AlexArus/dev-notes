@@ -20,7 +20,7 @@ self.addEventListener('install', function (event) {
 
 self.addEventListener('fetch', function (event) {
     event.respondWith(
-        caches.match(event.request)
+        caches.match(event.request, { cacheName: CACHE_NAME })
             .then(function (response) {
                 // Cache hit - return response
                 if (response) {
@@ -51,3 +51,15 @@ self.addEventListener('fetch', function (event) {
             })
     );
 });
+
+self.addEventListener('activate', (event) => {
+    event.waitUntil(
+      caches.keys().then((keyList) => {
+        return Promise.all(keyList.map((key) => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        }));
+      })
+    );
+  });
